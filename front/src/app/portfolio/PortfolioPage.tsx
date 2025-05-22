@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import InfiniteTechSlider from "./_components/InfinteTechSlider";
 
 const PortfolioPage = () => {
   return (
@@ -27,22 +28,11 @@ const PortfolioPage = () => {
         </div>
       </div>
 
-      <div className="flex  w-full h-[100px] mt-10 justify-between gap-2">
-        <p className="w-[200px] h-[200px] bg-white">Front-End</p>
-        <p className="w-[200px] h-[200px] bg-white">Back-End</p>
-        <p className="w-[200px] h-[200px] bg-white">lib</p>
-        <p className="w-[200px] h-[200px] bg-white">DB</p>
-        <p className="w-[200px] h-[200px] bg-white">Style</p>
-      </div>
-      <div className="flex  w-full h-[100px] mt-[120px] justify-between gap-2">
-        <p className="w-[200px] h-[200px] bg-white">Front-End</p>
-        <p className="w-[200px] h-[200px] bg-white">Back-End</p>
-        <p className="w-[200px] h-[200px] bg-white">lib</p>
-        <p className="w-[200px] h-[200px] bg-white">DB</p>
-        <p className="w-[200px] h-[200px] bg-white">Style</p>
+      <div className="w-full mt-10">
+        <InfiniteTechSlider />
       </div>
 
-      <div className="flex gap-2 mt-32">
+      <div className="flex gap-2 mt-10">
         <p className="bg-white w-full h-[200px]">배우고 있는 기술 스택</p>
 
         <p className="bg-white w-full h-[200px]">배우고 싶은 기술</p>
