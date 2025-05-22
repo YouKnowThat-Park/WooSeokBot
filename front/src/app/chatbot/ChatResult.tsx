@@ -1,7 +1,12 @@
 import React from "react";
+import AResult from "./_components/AResult";
 
 const ChatResult = () => {
-  return <div>ChatResult</div>;
+  return (
+    <div>
+      <AResult />
+    </div>
+  );
 };
 
 export default ChatResult;
