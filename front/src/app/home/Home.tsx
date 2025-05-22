@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import ChatSearchInput from "../chatbot/ChatSearchInput";
 import PortfolioPage from "../portfolio/PortfolioPage";
 import ChatResult from "../chatbot/ChatResult";
@@ -7,13 +8,26 @@ import ChatBotIcon from "../chatbot/ChatBotIcon";
 
 const Home = () => {
   const [isSearched, setIsSearched] = useState(false);
-  const [query, setQuery] = useState(""); // 검색어 상태 저장
+  const [query, setQuery] = useState("");
+  const [showSearch, setShowSearch] = useState(true);
 
   const handleSearch = (searchTerm: string) => {
     setQuery(searchTerm);
     setIsSearched(true);
-    console.log("검색어:", searchTerm); // Debug용
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowSearch(false);
+      } else {
+        setShowSearch(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="relative min-h-screen">
@@ -28,9 +42,11 @@ const Home = () => {
       </div>
 
       {/* 검색창 */}
-      <div className="fixed w-[700px] top-[400px] left-[600px] z-30">
-        <ChatSearchInput onSearch={handleSearch} />
-      </div>
+      {showSearch && (
+        <div className="fixed w-[700px] top-[400px] left-[600px] z-30 transition-opacity duration-300">
+          <ChatSearchInput onSearch={handleSearch} />
+        </div>
+      )}
     </div>
   );
 };
