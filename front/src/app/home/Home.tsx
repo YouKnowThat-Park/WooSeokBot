@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import ChatSearchInput from "../chatbot/ChatSearchInput";
-import PortfolioPage from "../portfolio/PortfolioPage";
 import ChatResult from "../chatbot/ChatResult";
 import ChatBotIcon from "../chatbot/ChatBotIcon";
 import ProjectRouter from "../_components/ProjectRouter";
