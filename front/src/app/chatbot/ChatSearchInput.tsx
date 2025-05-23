@@ -19,6 +19,21 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2
+        className="text-[100px] font-black flex justify-center relative -top-20 text-gray-900"
+        style={{
+          textShadow: `
+      8px 8px 0px rgba(0, 0, 0, 0.1),
+      16px 16px 4px rgba(0, 0, 0, 0.08),
+      24px 24px 8px rgba(0, 0, 0, 0.06),
+      32px 32px 16px rgba(0, 0, 0, 0.04),
+      40px 40px 32px rgba(0, 0, 0, 0.02)
+    `,
+        }}
+      >
+        WooSeok Bot
+      </h2>
+
       <div className="border-b border-gray-400 flex items-center gap-4 pb-2 z-30">
         <input
           type="text"

@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import ChatSearchInput from "../chatbot/ChatSearchInput";
-import PortfolioPage from "../portfolio/PortfolioPage";
 import ChatResult from "../chatbot/ChatResult";
 import ChatBotIcon from "../chatbot/ChatBotIcon";
+import ProjectRouter from "../_components/ProjectRouter";
 
 const Home = () => {
   const [isSearched, setIsSearched] = useState(false);
@@ -38,7 +38,7 @@ const Home = () => {
 
       {/* 콘텐츠 영역 */}
       <div className="relative z-40 mt-[850px]">
-        {!isSearched ? <PortfolioPage /> : <ChatResult query={query} />}
+        {!isSearched ? <ProjectRouter /> : <ChatResult query={query} />}
       </div>
 
       {/* 검색창 */}
