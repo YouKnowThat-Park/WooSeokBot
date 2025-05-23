@@ -5,11 +5,13 @@ import ChatSearchInput from "../chatbot/ChatSearchInput";
 import ChatResult from "../chatbot/ChatResult";
 import ChatBotIcon from "../chatbot/ChatBotIcon";
 import ProjectRouter from "../_components/ProjectRouter";
+import { useTheme } from "next-themes";
 
 const Home = () => {
   const [isSearched, setIsSearched] = useState(false);
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(true);
+  const { theme, setTheme } = useTheme();
 
   const handleSearch = (searchTerm: string) => {
     setQuery(searchTerm);
@@ -30,8 +32,14 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen ml-[476px] dark:bg-[#3A3A3A]">
       {/* 챗봇 아이콘 */}
+      <div>
+        <button onClick={() => setTheme("light")}>☀️ Light</button>
+        <button onClick={() => setTheme("dark")}>🌙 Dark</button>
+        <button onClick={() => setTheme("system")}>🖥 System</button>
+      </div>
+
       <div className="fixed bottom-10 right-10 z-50">
         <ChatBotIcon />
       </div>
