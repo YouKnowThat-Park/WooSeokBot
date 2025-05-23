@@ -17,16 +17,18 @@ const AboutMe = () => {
 
       {/* 텍스트/내용 박스 */}
       <div className="flex-1 h-[300px] bg-white rounded-md shadow-sm p-4">
-        <h2 className="text-xl font-bold">박우석</h2>
-        <h3 className="mt-3">
-          “세상은 나에게 열려 있어. 좌절보다 도전함을 반겨주는 세상이 나에게
-          열려 있어.”
+        <h2 className="text-xl font-bold">
+          박우석 <span className="text-sm">(WooSeok Park)</span>
+        </h2>
+        <h3 className="mt-3 font-semibold">
+          "The world is open to me. A world that welcomes challenges more than
+          frustration is open to me."
         </h3>
         <h3 className="mt-3">
           좌절보다 도전을 선택하며, 오늘보다 더 나은 내일을 향해 달려가는
           프론트엔드 개발자 박우석입니다.
         </h3>
-        <div className="mt-7 space-y-2 w-auto">
+        <div className="mt-5 space-y-1 w-auto">
           {/* 이메일 */}
           <a
             href="mailto:youkn0wthat@naver.com"

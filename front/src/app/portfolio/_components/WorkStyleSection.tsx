@@ -33,12 +33,19 @@ const WorkStyleSection = () => {
           </li>
 
           <li className="mb-4">
-            배움을 두려워 하지 않고 새로운 기술들을 계속 학습합니다.
-            <div className="mt-2">
-              Zustand에 익숙했더라도 거기서 멈추지 않고, Recoil 같은 구조적 상태
-              관리 방식도 학습하고 직접 프로젝트에 적용해보며 더 나은 개발
-              방식을 탐색하고자 노력했습니다. 현재는 React Native를 학습 중이며,
-              웹에서의 경험을 모바일 앱 개발로 확장하는 데에도 집중하고
+            <div className="text-lg font-bold bg-slate-300 w-fit">
+              배움을 두려워 하지 않고 새로운 기술들을 계속 학습합니다.
+            </div>
+            <div className="mt-2 bg-slate-100">
+              <span className="font-semibold">
+                Zustand에 익숙했더라도 거기서 멈추지 않고, Recoil 같은 구조적
+                상태 관리 방식도 학습
+              </span>
+              하고 직접 프로젝트에 적용해보며 더 나은 개발 방식을 탐색하고자
+              노력했습니다. 현재는
+              <span className="font-semibold">Python Django</span> 를 학습
+              중이며, 프론트 뿐만 아니라
+              <span className="font-semibold"> 백엔드</span>영역을 공부중에
               있습니다. 익숙함보다 도전을 선택하고, 실험과 학습을 통해 계속해서
               앞으로 나아가는 개발자가 되고자 합니다.
             </div>
