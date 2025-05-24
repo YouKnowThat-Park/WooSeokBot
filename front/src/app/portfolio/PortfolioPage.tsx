@@ -36,14 +36,42 @@ const PortfolioPage = () => {
       <div className="border mt-10" />
       <div>
         <h3>Project</h3>
-        <button onClick={() => setActiveProject("Stage101")}>
-          <Image
-            src="/stage101.png"
-            alt="스테이지101 이미지"
-            width={100}
-            height={100}
-          />
-        </button>
+        <div className="flex gap-5">
+          <button onClick={() => setActiveProject("DoGo")}>
+            <Image
+              src="/dogo.png"
+              alt="스테이지101 이미지"
+              width={350}
+              height={100}
+            />
+            <p>Team Project(4 Front, 1 Designer)</p>
+            <p className="text-xs">2025.03.20 ~ 2025.04.30</p>
+          </button>
+          <button onClick={() => setActiveProject("Stage101")}>
+            <Image
+              src="/stage101.png"
+              alt="스테이지101 이미지"
+              width={350}
+              height={100}
+            />
+            <p>Personal Project</p>
+            <p className="text-xs">2025.03.20 ~ 2025.04.30</p>
+          </button>
+          <button onClick={() => setActiveProject("WooseokBot")}>
+            <Image
+              src="/wooseokbot.png"
+              alt="스테이지101 이미지"
+              width={400}
+              height={200}
+            />
+            <p>Personal Project</p>
+            <p className="text-xs">2025.03.20 ~ 2025.04.30</p>
+          </button>
+        </div>
+      </div>
+      <div className="border mt-10" />
+      <div>
+        <h3>Study Projects</h3>
       </div>
     </div>
   );
