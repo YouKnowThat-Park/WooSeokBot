@@ -20,7 +20,7 @@ const Stage101 = () => {
   return (
     <div
       ref={containerRef}
-      className="w-[970px] h-[3000px] mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#3a3a3a]"
+      className="w-[970px] h-[3000px] mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#3a3a3a] dark:shadow-lg"
     >
       <div className="flex gap-4 mt-5">
         <Image
@@ -51,8 +51,8 @@ const Stage101 = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-[500px] mt-10  border bg-[#3A3A3A]">
-        <h2 className="flex justify-center items-center w-auto mt-4 text-[25px] font-semibold text-white  ">
+      <div className="w-full h-[500px] mt-10  border">
+        <h2 className="flex justify-center items-center w-auto mt-4 text-[25px] font-semibold   ">
           "One space. One moment. Infinite possibilities."
         </h2>
         프로젝트 개요 , 프로젝트 소개, 프로젝트 목표, 유저플로우, 기술 스택 선택

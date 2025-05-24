@@ -6,6 +6,7 @@ import ChatResult from "../chatbot/ChatResult";
 import ChatBotIcon from "../chatbot/ChatBotIcon";
 import ProjectRouter from "../_components/ProjectRouter";
 import { useTheme } from "next-themes";
+import ThemeToggle from "../_components/ThemeToggle";
 
 const Home = () => {
   const [isSearched, setIsSearched] = useState(false);
@@ -34,14 +35,9 @@ const Home = () => {
   return (
     <div className="relative min-h-screen ml-[476px] dark:bg-[#3A3A3A]">
       {/* 챗봇 아이콘 */}
-      <div>
-        <button onClick={() => setTheme("light")}>☀️ Light</button>
-        <button onClick={() => setTheme("dark")}>🌙 Dark</button>
-        <button onClick={() => setTheme("system")}>🖥 System</button>
-      </div>
 
-      <div className="fixed bottom-10 right-10 z-50">
-        <ChatBotIcon />
+      <div className="fixed bottom-10 right-[100px] z-50">
+        <ThemeToggle />
       </div>
 
       {/* 콘텐츠 영역 */}
