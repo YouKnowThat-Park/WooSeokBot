@@ -3,7 +3,6 @@
 import { useRecoilValue } from "recoil";
 import { activeProjectAtom } from "@/recoil/ProjectAtom";
 import Stage101 from "@/app/project/stage101/page";
-import Recoil from "@/app/project/Recoil";
 import Horoscope from "@/app/project/Horoscope";
 import PortfolioPage from "@/app/portfolio/PortfolioPage";
 import DoGo from "../project/DoGo";

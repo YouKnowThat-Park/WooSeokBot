@@ -10,7 +10,8 @@ const Home = () => {
   // const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(true);
 
-  const handleSearch = (searchTerm: string) => {
+  // searchTerm: string << 타입 추가 해야됨
+  const handleSearch = () => {
     // setQuery(searchTerm);
     setIsSearched(true);
   };
