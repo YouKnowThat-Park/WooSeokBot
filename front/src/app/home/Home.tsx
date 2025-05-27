@@ -2,17 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import ChatSearchInput from "../chatbot/ChatSearchInput";
-import ChatResult from "../chatbot/ChatResult";
-import ChatBotIcon from "../chatbot/ChatBotIcon";
+import ChatResult from "../Result/ChatResult";
 import ProjectRouter from "../_components/ProjectRouter";
-import { useTheme } from "next-themes";
-import ThemeToggle from "../_components/ThemeToggle";
 
 const Home = () => {
   const [isSearched, setIsSearched] = useState(false);
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(true);
-  const { theme, setTheme } = useTheme();
 
   const handleSearch = (searchTerm: string) => {
     setQuery(searchTerm);
@@ -33,12 +29,8 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen ml-[476px] dark:bg-[#3A3A3A]">
+    <div className="relative min-h-screen dark:bg-[#3A3A3A]">
       {/* 챗봇 아이콘 */}
-
-      <div className="fixed bottom-10 right-[100px] z-50">
-        <ThemeToggle />
-      </div>
 
       {/* 콘텐츠 영역 */}
       <div className="relative z-40 mt-[850px]">
@@ -47,7 +39,7 @@ const Home = () => {
 
       {/* 검색창 */}
       {showSearch && (
-        <div className="fixed w-[700px] top-[400px] left-[600px] z-30 transition-opacity duration-300">
+        <div className="fixed w-[700px] top-[400px] left-[600px] z-30 transition-opacity duration-300 ">
           <ChatSearchInput onSearch={handleSearch} />
         </div>
       )}
