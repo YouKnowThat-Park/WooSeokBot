@@ -1,7 +1,9 @@
 "use client";
 
+import { techModalAtom } from "@/recoil/TechModalAtom";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
 const stackItems = [
   {
@@ -55,6 +57,8 @@ const InfiniteTechSlider = () => {
   const [isTransitioning, setIsTransitioning] = useState(true);
 
   const fullList = [...stackItems, ...stackItems]; // 무한 캐러셀 위해 복제
+
+  const setSelectedTech = useSetRecoilState(techModalAtom);
 
   const handleSlide = (dir: "left" | "right") => {
     setIsTransitioning(true);
@@ -127,6 +131,13 @@ const InfiniteTechSlider = () => {
                         width={45}
                         height={45}
                         className="border rounded-full"
+                        onClick={() =>
+                          setSelectedTech({
+                            isOpen: true,
+                            name: name || "",
+                            imageUrl: src,
+                          })
+                        }
                       />
                       <span className="absolute bottom-full mb-1 px-2 py-1 text-xs bg-black text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 delay-[500ms] whitespace-nowrap z-50">
                         {name}

@@ -7,6 +7,7 @@ import WorkStyleSection from "./_components/WorkStyleSection";
 import ResumeSection from "./_components/ResumeSection";
 import ProjectCard from "./_components/ProjectCard";
 import InfiniteTechSlider from "./_components/InfinteTechSlider";
+import TechProjectsModal from "./_components/TechProjectModal";
 
 const projects = [
   {
@@ -113,6 +114,7 @@ const PortfolioPage = () => {
       {/* 기술 스택 아이콘 */}
       <div className="w-full mt-20 mb-20">
         <InfiniteTechSlider />
+        <TechProjectsModal />
       </div>
 
       {/* 배우고 있는 , 배우고 싶은 기술 스택 */}
