@@ -53,7 +53,7 @@ const Stage101 = () => {
       </div>
       <div className="w-full h-[500px] mt-10  border">
         <h2 className="flex justify-center items-center w-auto mt-4 text-[25px] font-semibold   ">
-          "One space. One moment. Infinite possibilities."
+          &quot;One space. One moment. Infinite possibilities.&quot;
         </h2>
         프로젝트 개요 , 프로젝트 소개, 프로젝트 목표, 유저플로우, 기술 스택 선택
         이유

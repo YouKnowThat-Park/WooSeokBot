@@ -7,11 +7,11 @@ import ProjectRouter from "../_components/ProjectRouter";
 
 const Home = () => {
   const [isSearched, setIsSearched] = useState(false);
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(true);
 
   const handleSearch = (searchTerm: string) => {
-    setQuery(searchTerm);
+    // setQuery(searchTerm);
     setIsSearched(true);
   };
 
@@ -34,7 +34,7 @@ const Home = () => {
 
       {/* 콘텐츠 영역 */}
       <div className="relative z-40 mt-[850px]">
-        {!isSearched ? <ProjectRouter /> : <ChatResult query={query} />}
+        {!isSearched ? <ProjectRouter /> : <ChatResult />}
       </div>
 
       {/* 검색창 */}

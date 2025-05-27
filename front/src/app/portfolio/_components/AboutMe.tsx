@@ -21,8 +21,8 @@ const AboutMe = () => {
           박우석 <span className="text-sm">(WooSeok Park)</span>
         </h2>
         <h3 className="mt-3 font-semibold">
-          "The world is open to me. A world that welcomes challenges more than
-          frustration is open to me."
+          &quot;The world is open to me. A world that welcomes challenges more
+          than frustration is open to me.&quot;
         </h3>
         <h3 className="mt-3">
           좌절보다 도전을 선택하며, 오늘보다 더 나은 내일을 향해 달려가는

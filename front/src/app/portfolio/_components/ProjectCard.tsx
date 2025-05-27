@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 interface ProjectCardProps {
-  id: string;
   title: string;
   date: string;
   image: string;
@@ -14,7 +13,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({
-  id,
   title,
   date,
   image,

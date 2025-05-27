@@ -15,7 +15,9 @@ const ChattingBox = ({ onClose }: ChattingProps) => {
     if (!query.trim()) return;
 
     if (typeof window !== "undefined") {
-      const followUp = (window as any).__handleFollowUp;
+      const followUp = (
+        window as unknown as { __handleFollowUp?: (q: string) => void }
+      ).__handleFollowUp;
       if (typeof followUp === "function") {
         followUp(query);
       }
