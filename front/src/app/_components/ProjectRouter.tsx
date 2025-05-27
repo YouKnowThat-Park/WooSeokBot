@@ -2,12 +2,13 @@
 
 import { useRecoilValue } from "recoil";
 import { activeProjectAtom } from "@/recoil/ProjectAtom";
-import Stage101 from "@/app/project/Stage101";
+import Stage101 from "@/app/project/stage101/page";
 import Recoil from "@/app/project/Recoil";
 import Horoscope from "@/app/project/Horoscope";
 import PortfolioPage from "@/app/portfolio/PortfolioPage";
 import DoGo from "../project/DoGo";
 import WooseokBot from "../project/WooseokBot";
+import GhostHouse from "../project/GhostHouse";
 
 const ProjectRouter = () => {
   const active = useRecoilValue(activeProjectAtom);
@@ -21,6 +22,8 @@ const ProjectRouter = () => {
       return <WooseokBot />;
     case "Horoscope":
       return <Horoscope />;
+    case "GhostHouse":
+      return <GhostHouse />;
     default:
       return <PortfolioPage />; // 초기값 또는 아무것도 선택 안됐을 때
   }
