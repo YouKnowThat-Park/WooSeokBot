@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import RecoilProvider from "@/recoil/RecoilProvider";
+import ThemeToggle from "./_components/ThemeToggle";
 
 const notoSans = Noto_Sans_KR({
   subsets: ["latin"],
@@ -22,8 +23,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${notoSans.className} antialiased ml-[476px]`}>
-        <RecoilProvider>{children}</RecoilProvider>
+      <body
+        className={`${notoSans.className} antialiased  bg-white dark:bg-[#3A3A3A] ml-[476px]`}
+      >
+        <RecoilProvider>
+          {children}
+          <div className="fixed bottom-10 right-[100px] z-50">
+            <ThemeToggle />
+          </div>
+        </RecoilProvider>
       </body>
     </html>
   );

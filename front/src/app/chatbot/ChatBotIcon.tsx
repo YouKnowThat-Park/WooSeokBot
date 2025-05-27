@@ -11,13 +11,14 @@ const ChatBotIcon = () => {
 
   return (
     <>
-      <div className="fixed bottom-10 right-10 z-50 cursor-pointer">
+      <div className="  cursor-pointer">
         <Image
           src="/chatbotIcon.png"
           alt="챗봇 아이콘"
-          width={75}
+          width={55}
           height={75}
           onClick={toggleChat}
+          className="rounded-2xl mr-[150px] mt-2"
         />
       </div>
 
