@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${notoSans.className} antialiased  bg-white dark:bg-[#3A3A3A] ml-[476px]`}
+        className={`${notoSans.className} antialiased  bg-white dark:bg-[#111111] ml-[476px]`}
       >
         <RecoilProvider>
           {children}

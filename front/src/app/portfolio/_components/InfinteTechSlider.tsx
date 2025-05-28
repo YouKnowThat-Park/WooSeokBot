@@ -23,11 +23,11 @@ const stackItems = [
   },
   {
     title: "Lib",
-    icons: ["/zustand.png", "/tanstack_query-react_query.png", "/recoil.png"],
+    icons: ["/zustand.png", "/tanstack_query.png", "/recoil.png"],
   },
   {
     title: "Style",
-    icons: ["/tailwind.png", "/css3.png", "/styled-components.png"],
+    icons: ["/tailwind.png", "/css3.png", "/styled_components.png"],
   },
   {
     title: "DB, Deployment",
@@ -82,11 +82,11 @@ const InfiniteTechSlider = () => {
   }, [offset]);
 
   return (
-    <div className="relative mt-10 w-full overflow-hidden">
+    <div className="relative mt-10 w-full overflow-hidden  ">
       {/* 좌우 버튼 */}
       <button
         onClick={() => handleSlide("left")}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-200 px-2 py-1 rounded"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-200 px-2 py-1 rounded "
       >
         ←
       </button>
@@ -97,7 +97,7 @@ const InfiniteTechSlider = () => {
         →
       </button>
 
-      <div className="overflow-hidden w-full px-6">
+      <div className="overflow-hidden w-full px-6 ">
         <div
           ref={containerRef}
           className={`flex gap-2 ${
@@ -111,7 +111,7 @@ const InfiniteTechSlider = () => {
           {fullList.map((item, i) => (
             <div
               key={`${item.title}-${i}`}
-              className="w-[200px] h-[200px] bg-white p-2 text-center text-sm rounded shadow shrink-0"
+              className="w-[200px] h-[200px] bg-white  dark:bg-[#3a3a3a] border border-white dark:border-gray-400  p-2 text-center text-sm rounded shadow shrink-0 dark:text-[#F4F5F4]"
             >
               <strong>{item.title}</strong>
               <div className="grid grid-cols-3 gap-2 justify-items-center items-center mt-4">
@@ -130,7 +130,7 @@ const InfiniteTechSlider = () => {
                         alt={name || "tech"}
                         width={45}
                         height={45}
-                        className="border rounded-full"
+                        className="border rounded-full cursor-pointer transition-transform duration-200 hover:scale-110"
                         onClick={() =>
                           setSelectedTech({
                             isOpen: true,
@@ -139,7 +139,7 @@ const InfiniteTechSlider = () => {
                           })
                         }
                       />
-                      <span className="absolute bottom-full mb-1 px-2 py-1 text-xs bg-black text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 delay-[500ms] whitespace-nowrap z-50">
+                      <span className="absolute bottom-full mb-1 px-2 py-1 text-xs bg-black  text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 delay-[500ms] whitespace-nowrap z-50">
                         {name}
                       </span>
                     </div>

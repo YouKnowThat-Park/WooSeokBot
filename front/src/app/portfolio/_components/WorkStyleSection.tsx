@@ -3,7 +3,7 @@ import React from "react";
 const WorkStyleSection = () => {
   return (
     <div>
-      <div className="flex flex-col gap-10 h-[520px] mt-4 bg-white">
+      <div className="flex flex-col gap-10 h-[520px] mt-4 bg-white dark:bg-[#111111] dark:text-[#FBFBFB]">
         <h2 className="text-[20px] font-semibold">🔭 업무 스타일</h2>
         <ul className="list-disc ml-8">
           <li className="mb-10">
@@ -33,10 +33,10 @@ const WorkStyleSection = () => {
           </li>
 
           <li className="mb-4">
-            <div className="text-lg font-bold bg-slate-300 w-fit">
+            <div className="text-lg w-fit">
               배움을 두려워 하지 않고 새로운 기술들을 계속 학습합니다.
             </div>
-            <div className="mt-2 bg-slate-100">
+            <div className="mt-2 ">
               <span className="font-semibold">
                 Zustand에 익숙했더라도 거기서 멈추지 않고, Recoil 같은 구조적
                 상태 관리 방식도 학습
