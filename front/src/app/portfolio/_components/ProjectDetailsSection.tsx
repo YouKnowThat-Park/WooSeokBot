@@ -4,62 +4,64 @@ import React from "react";
 
 const ProjectDetailsSection = () => {
   return (
-    <div className="w-full h-full py-10 mt-10 bg-white border dark:bg-[#3a3a3a] dark:text-[#898989]">
+    <div className="w-full h-full py-10 mt-10 bg-white dark:bg-[#3a3a3a] dark:text-[#898989]">
       <h2 className="text-[25px] font-semibold dark:text-[#3ecf8e] mb-4 ml-6">
         Project Details
       </h2>
 
       <div className="space-y-16 px-6">
         {/* Sign In, Sign Up */}
-        <div>
-          <h3 className="text-[18px] font-bold mb-4 dark:text-[#FBFBFB]">
-            [Sign In, Sign Up]
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4 mb-6">
-            <Image
-              src="/stage101auth.png"
-              alt="스테이지 로그인 이미지"
-              width={300}
-              height={100}
-            />
-            <Image
-              src="/stage101auth2.png"
-              alt="스테이지 회원가입 이미지"
-              width={300}
-              height={100}
-            />
+        <div className="border px-4 py-4  ">
+          <div>
+            <h3 className="text-[18px] font-bold mb-4 dark:text-[#FBFBFB]">
+              [Sign In, Sign Up]
+            </h3>
+            <div className="flex flex-wrap justify-center gap-4 mb-6">
+              <Image
+                src="/stage101auth.png"
+                alt="스테이지 로그인 이미지"
+                width={300}
+                height={100}
+              />
+              <Image
+                src="/stage101auth2.png"
+                alt="스테이지 회원가입 이미지"
+                width={300}
+                height={100}
+              />
+            </div>
+            <ul className="list-disc space-y-4 ml-6">
+              <li>
+                <p className="dark:text-[#FBFBFB]">CSR & Server Actions</p>
+                사용자 입력이 많은 인증(Auth)에서는 SSR보다 CSR이 더 적합하며,
+                <br />
+                Server Actions를 활용해 민감한 로직을 서버에서 처리하여 보안성을
+                높였습니다.
+              </li>
+              <li>
+                <p className="dark:text-[#FBFBFB]">RHF, Zod</p>
+                Zod를 사용해 유효성 검사를 동기적으로 처리하고, 런타임 타입
+                체크를 병행하여 안정성 확보
+                <br />
+                RHF를 통해 입력 필드 단위로 상태를 관리해 불필요한 리렌더링을
+                줄이고 성능을 개선
+              </li>
+              <li>
+                <p className="dark:text-[#FBFBFB]">Remember Email</p>
+                사용자가 매번 동일한 이메일을 입력하지 않도록 이메일 저장 체크
+                기능을 추가해 반복적인 입력 부담을 줄였습니다.
+              </li>
+              <li>
+                <p className="dark:text-[#FBFBFB]">Social Login</p>
+                소셜 로그인 기능을 도입해 Kakao 또는 Google로 로그인할 수
+                있게하여 플랫폼 이용 진입 장벅을 낮췄습니다.
+              </li>
+            </ul>
           </div>
-          <ul className="list-disc space-y-4 ml-6">
-            <li>
-              <p className="dark:text-[#FBFBFB]">CSR & Server Actions</p>
-              사용자 입력이 많은 인증(Auth)에서는 SSR보다 CSR이 더 적합하며,
-              <br />
-              Server Actions를 활용해 민감한 로직을 서버에서 처리하여 보안성을
-              높였습니다.
-            </li>
-            <li>
-              <p className="dark:text-[#FBFBFB]">RHF, Zod</p>
-              Zod를 사용해 유효성 검사를 동기적으로 처리하고, 런타임 타입 체크를
-              병행하여 안정성 확보
-              <br />
-              RHF를 통해 입력 필드 단위로 상태를 관리해 불필요한 리렌더링을
-              줄이고 성능을 개선
-            </li>
-            <li>
-              <p className="dark:text-[#FBFBFB]">Remember Email</p>
-              사용자가 매번 동일한 이메일을 입력하지 않도록 이메일 저장 체크
-              기능을 추가해 반복적인 입력 부담을 줄였습니다.
-            </li>
-            <li>
-              <p className="dark:text-[#FBFBFB]">Social Login</p>
-              소셜 로그인 기능을 도입해 Kakao 또는 Google로 로그인할 수 있게하여
-              플랫폼 이용 진입 장벅을 낮췄습니다.
-            </li>
-          </ul>
         </div>
 
         {/* Review */}
-        <div className="ml-6">
+        <div className="border px-4 py-4">
           <h3 className="text-[18px] font-bold mb-4 dark:text-[#FBFBFB]">
             [Review, Write a Review]
           </h3>
@@ -120,7 +122,7 @@ const ProjectDetailsSection = () => {
         </div>
 
         {/* Seat Reservation */}
-        <div className="ml-6">
+        <div className="border px-4 py-4">
           <h3 className="text-[18px] font-bold mb-4 dark:text-[#FBFBFB]">
             Seat Reservation
           </h3>
@@ -157,7 +159,7 @@ const ProjectDetailsSection = () => {
         </div>
 
         {/* Payments */}
-        <div className="ml-6">
+        <div className="border px-4 py-4">
           <h3 className="text-[18px] font-bold mb-4 dark:text-[#FBFBFB]">
             Payments
           </h3>
@@ -201,7 +203,7 @@ const ProjectDetailsSection = () => {
         </div>
 
         {/* Shop */}
-        <div className="ml-6">
+        <div className="border px-4 py-4">
           <h3 className="text-[18px] font-bold mb-4 dark:text-[#FBFBFB]">
             Shop
           </h3>
@@ -239,7 +241,7 @@ const ProjectDetailsSection = () => {
         </div>
 
         {/* Cart */}
-        <div className="ml-6">
+        <div className="border px-4 py-4">
           <h3 className="text-[18px] font-bold mb-4 dark:text-[#FBFBFB]">
             Cart
           </h3>
