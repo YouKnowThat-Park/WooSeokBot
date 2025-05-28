@@ -30,13 +30,15 @@ const ProjectCard = ({
       onClick={handleClick}
       className="min-w-[350px] max-w-[350px] snap-start flex-shrink-0 border p-2 rounded-lg bg-white shadow hover:scale-[1.02] transition-transform"
     >
-      <Image
-        src={image}
-        alt={title}
-        width={350}
-        height={200}
-        className="rounded-md border"
-      />
+      <div className="w-full h-[200px] overflow-hidden rounded-md border">
+        <Image
+          src={image}
+          alt={title}
+          width={350}
+          height={200}
+          className="object-cover"
+        />
+      </div>
       <p className="font-semibold mt-2">{title}</p>
       <p className="text-xs text-gray-500">{description}</p>
       <p className="text-xs text-gray-400">{date}</p>
