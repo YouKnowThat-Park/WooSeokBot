@@ -42,7 +42,7 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
       `;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className=" w-full ml-5">
       <h2
         className="text-[100px] font-black flex justify-center relative -top-20 text-gray-900 dark:text-[#F4F5F4]"
         style={{ textShadow: shadowStyle }}

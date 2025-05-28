@@ -202,7 +202,9 @@ const PortfolioPage = () => {
       <div className="border mt-10 mb-6" />
 
       {/* Projects */}
-      <h3 className="text-xl font-semibold mb-2">Projects</h3>
+      <h3 className="text-xl font-semibold mb-2 dark:text-[#fbfbfb]">
+        Projects
+      </h3>
       <div className="relative">
         <button
           onClick={() => handleScroll("left", projectSliderRef)}
@@ -229,7 +231,9 @@ const PortfolioPage = () => {
 
       {/* Study Projects */}
       <div className="border mt-10 mb-6" />
-      <h3 className="mb-4 text-xl font-semibold">Study Project</h3>
+      <h3 className="mb-4 text-xl font-semibold dark:text-[#fbfbfb]">
+        Study Project
+      </h3>
       <div className="relative">
         <button
           onClick={() => handleScroll("left", studySliderRef)}
