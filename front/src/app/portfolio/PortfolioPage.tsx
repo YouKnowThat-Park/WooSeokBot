@@ -13,6 +13,7 @@ const projects = [
   {
     id: "DoGo",
     title: "DoGo",
+    role: "서비스 기획 PM, Front",
     description: "Team Project(4 Front, 1 Designer)",
     date: "2025.03.20 ~ 2025.04.30",
     image: "/dogo.png",
@@ -22,6 +23,7 @@ const projects = [
     id: "Stage101",
     title: "Stage101",
     description: "Personal Project",
+    role: "서비스 기획 PM, Front",
     date: "2025.03.20 ~ 2025.04.30",
     image: "/stage101.png",
     link: "/project/stage101",
@@ -30,6 +32,7 @@ const projects = [
     id: "WooseokBot",
     title: "WooseokBot",
     description: "Personal Project",
+    role: "서비스 기획 PM, Front",
     date: "2025.03.20 ~ 2025.04.30",
     image: "/wooseokbot.png",
     link: "/project/WooseokBot",
@@ -38,6 +41,7 @@ const projects = [
     id: "AI ChatBot",
     title: "AI ChatBot",
     description: "개발PM",
+    role: "서비스 기획 PM, Front",
     date: "2025.04.21 ~ 2025.04.28",
     image: "/aichatbot.png",
     link: "/project/AiChatBot",
@@ -49,6 +53,7 @@ const studyProjects = [
     id: "GhostHouse",
     title: "GhostHouse",
     description: "Team Project",
+    role: "서비스 기획 PM, Front",
     date: "2025.03.20 ~ 2025.04.30",
     image: "/ghosthouse.png",
     link: "/project/GhostHouse",
@@ -57,6 +62,7 @@ const studyProjects = [
     id: "LoLProject",
     title: "LoL Project",
     description: "Personal Project",
+    role: "서비스 기획 PM, Front",
     date: "2025.03.20 ~ 2025.04.30",
     image: "/lol.png",
     link: "/project/LoLProject",
@@ -65,9 +71,46 @@ const studyProjects = [
     id: "Horoscope",
     title: "Horoscope",
     description: "Team Project",
+    role: "서비스 기획 PM, Front",
     date: "2025.03.20 ~ 2025.04.30",
     image: "/horoscope.png",
     link: "/project/Horoscope",
+  },
+  {
+    id: "Vair Le Chemin",
+    title: "Vair Le Chemin",
+    description: "Team Project",
+    role: "서비스 기획 PM, Front",
+    date: "2025.03.20 ~ 2025.04.30",
+    image: "/vairlechemin.png",
+    link: "/project/VairLeChemin",
+  },
+  {
+    id: "To Do List",
+    title: "To Do List",
+    description: "Personal Project",
+    role: "서비스 기획 PM, Front",
+    date: "2025.03.20 ~ 2025.04.30",
+    image: "/todolist.png",
+    link: "/project/ToDoList",
+  },
+  {
+    id: "mbti",
+    title: "mbti",
+    description: "Personal Project",
+    role: "서비스 기획 PM, Front",
+    date: "2025.03.20 ~ 2025.04.30",
+    image: "/mbti.png",
+    link: "/project/Mbti",
+  },
+  {
+    id: "pokemon",
+    title: "pokemon",
+    description: "Personal Project",
+    role: "Front",
+    date: "2025.03.20 ~ 2025.04.30",
+    image: "/pokemon.png",
+    link: "/project/Pokemon",
   },
 ];
 
@@ -138,10 +181,10 @@ const PortfolioPage = () => {
   };
 
   return (
-    <div className="w-[970px] h-auto mt-[400px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border shadow-xl">
+    <div className="w-[970px] h-auto mt-[400px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border shadow-xl dark:bg-[#111111] dark:border-white">
       <AboutMe />
 
-      <div className="w-full mt-20 mb-20">
+      <div className="w-full mt-20 mb-20 dark:text-whit ">
         <InfiniteTechSlider />
         <TechProjectsModal />
       </div>

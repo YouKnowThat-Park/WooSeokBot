@@ -11,12 +11,12 @@ const AboutMe = () => {
           alt="우석 프로필 이미지"
           width={200}
           height={300}
-          className="rounded-md object-cover bg-white"
+          className="rounded-md object-cover bg-white border dark:border-gray-500 dark:bg-[#111111]"
         />
       </div>
 
       {/* 텍스트/내용 박스 */}
-      <div className="flex-1 h-[300px] bg-white rounded-md shadow-sm p-4">
+      <div className="flex-1 h-[300px] bg-white rounded-md shadow-sm p-4 dark:bg-[#121212] dark:text-[#F4F5F4]">
         <h2 className="text-xl font-bold">
           박우석 <span className="text-sm">(WooSeok Park)</span>
         </h2>

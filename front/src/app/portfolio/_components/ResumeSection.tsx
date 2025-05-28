@@ -2,7 +2,7 @@ import React from "react";
 
 const ResumeSection = () => {
   return (
-    <div className="h-[340px] mt-4 bg-white">
+    <div className="h-[340px] mt-4 bg-white dark:bg-[#111111] dark:text-[#fbfbfb]">
       <div className="flex justify-between px-32 mt-10">
         <div className="mt-10">
           <p className="text-[20px]">🎓 학력</p>
@@ -21,7 +21,7 @@ const ResumeSection = () => {
           <p className="mt-2">방송통신기능사</p>
           <p className="text-sm">2015.07</p>
         </div>
-        <div className="mt-10">
+        <div className="mt-10 mr-[100px]">
           <p className="text-[20px]">🚶 경력</p>
           <p className="mt-2">AI 챗봇 플랫폼 기업</p>
           <p className="text-sm">25.04.21 - 25.04.28</p>
