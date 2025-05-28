@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import TeamRolesSection from "./_components/TeamRolesSection";
 import ProjectOverviewSection from "./_components/ProjectOverviewSection";
 import HeroSection from "./_components/HeroSection";

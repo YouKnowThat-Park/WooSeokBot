@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const TechStackSection = () => {
-  const [isOpen, setIsOpen] = useState();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="my-8 w-full flex flex-col items-start ml-10">
