@@ -23,11 +23,11 @@ const stackItems = [
   },
   {
     title: "Lib",
-    icons: ["/zustand.png", "/tanstack_query-react_query.png", "/recoil.png"],
+    icons: ["/zustand.png", "/tanstack_query.png", "/recoil.png"],
   },
   {
     title: "Style",
-    icons: ["/tailwind.png", "/css3.png", "/styled-components.png"],
+    icons: ["/tailwind.png", "/css3.png", "/styled_components.png"],
   },
   {
     title: "DB, Deployment",
@@ -130,7 +130,7 @@ const InfiniteTechSlider = () => {
                         alt={name || "tech"}
                         width={45}
                         height={45}
-                        className="border rounded-full"
+                        className="border rounded-full cursor-pointer transition-transform duration-200 hover:scale-110"
                         onClick={() =>
                           setSelectedTech({
                             isOpen: true,
