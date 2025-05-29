@@ -2,7 +2,7 @@ import Image from "next/image";
 
 type UserFlowSectionProps = {
   title?: string;
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; width: number }[];
 };
 
 const UserFlowSection = ({
@@ -10,7 +10,7 @@ const UserFlowSection = ({
   images,
 }: UserFlowSectionProps) => {
   return (
-    <div className="mt-10 ml-10">
+    <div className="py-10 ml-10">
       <h3 className="text-[17px] font-bold mb-4">{title}</h3>
       <div className="flex justify-center items-center gap-10 flex-wrap">
         {images.map((img, i) => (
@@ -18,7 +18,7 @@ const UserFlowSection = ({
             key={i}
             src={img.src}
             alt={img.alt}
-            width={300}
+            width={img.width}
             height={300}
             className="rounded shadow"
           />
