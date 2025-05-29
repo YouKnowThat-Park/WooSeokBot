@@ -1,12 +1,17 @@
 import React, { useRef } from "react";
-import ProjectCard from "../portfolio/_components/ProjectCard";
-import useAutoSliderController from "@/hooks/useAutoSliderController.ts";
+import ProjectCard from "../../portfolio/_components/ProjectCard";
 import { projects } from "@/data/project";
+import useAutoSliderController from "@/hooks/useAutoSliderController.ts";
 
-const NextProjectsSlider = () => {
+interface NextProjectsSliderProps {
+  excludeId: string;
+}
+
+const NextProjectsSlider = ({ excludeId }: NextProjectsSliderProps) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
+  const filteredProjects = projects.filter((p) => p.id !== excludeId);
+
   const { scrollByDirection } = useAutoSliderController(sliderRef);
-  const filteredProjects = projects.filter((p) => p.id !== "Stage101");
 
   return (
     <div className="w-full mt-10 mb-6">
