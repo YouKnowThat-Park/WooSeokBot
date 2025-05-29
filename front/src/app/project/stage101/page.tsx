@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import TeamRolesSection from "./_components/TeamRolesSection";
 import ProjectGoalsSection from "./_components/ProjectGoalsSection";
 import PerformanceSection from "../_components/Performance";
 import ProjectDetailsSection from "@/app/portfolio/_components/ProjectDetailsSection";

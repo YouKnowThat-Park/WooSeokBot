@@ -7,7 +7,6 @@ import ProjectHero from "../_components/ProjectHero";
 import ProjectRetrospective from "../_components/ProjectRetrospective";
 import NextProjectsSlider from "@/app/project/_components/NextProjectsSlider";
 import UserFlowSection from "../_components/UserFlowSection";
-import PerformanceSection from "./_components/PerformanceSection";
 import TechStackTable from "../_components/TechStackTable";
 import { DoGoTechItems } from "@/data/DoGoTechItems";
 import ProjectDescription from "../_components/ProjectDescription";
