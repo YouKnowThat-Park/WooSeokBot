@@ -6,6 +6,7 @@ import clsx from "clsx";
 import Draggable from "react-draggable";
 import ChattingBox from "../chatbot/ChattingBox";
 import { useRouter } from "next/navigation";
+import KoreanTimeMinute from "./KoreanTimeMinute";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
@@ -25,7 +26,7 @@ const ThemeToggle = () => {
           {/* 상태 바 */}
           <div className="w-full px-6 text-sm opacity-40 flex justify-between items-center">
             <span className={clsx(isDark ? "text-white" : "text-black")}>
-              4:20
+              <KoreanTimeMinute />
             </span>
             <div className="flex items-center gap-2">
               <div
