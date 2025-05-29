@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-interface ProjectCardProps {
+export interface ProjectCardProps {
   title: string;
   date: string;
   image: string;

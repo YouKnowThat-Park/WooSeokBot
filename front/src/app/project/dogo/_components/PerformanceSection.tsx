@@ -2,10 +2,11 @@ import React from "react";
 
 const PerformanceSection = () => {
   return (
-    <div className="flex flex-col py-4 gap-10 w-full h-full mt-10 border dark:text-[#fbfbfb] ">
+    <div className="flex flex-col py-4 gap-10 w-full h-full mt-10 border dark:text-[#fbfbfb] dark:border-neutral-700 ">
       <h2 className="text-[20px] font-semibold dark:text-[#3ecf8e] mt-2 ml-2">
         Performance
       </h2>
+
       <div className="ml-10">
         <h3 className="text-[17px] font-semibold mb-2">
           Auth 로직 Route가 아닌 Server Actions 사용
@@ -31,6 +32,7 @@ const PerformanceSection = () => {
           </li>
         </ul>
       </div>
+
       <div className="ml-10">
         <h3 className="text-[17px] font-semibold mb-2">
           데이터 로딩 지연에 따른 Skeleton UI 적용
@@ -52,6 +54,31 @@ const PerformanceSection = () => {
             마이페이지 내 구매한 티켓, 상품 정보, 리뷰 데이터를 불러오는
             동안에도 Skeleton UI를 적용하여,
             <br /> 데이터 렌더링 전 사용자의 시각적 불편을 최소화했습니다.
+          </li>
+        </ul>
+      </div>
+
+      <div className="ml-10">
+        <h3 className="text-[17px] font-semibold mb-2">
+          결제 페이지 접근 제어 & UX 안정성 확보
+        </h3>
+        <ul className="list-disc flex flex-col gap-2 dark:text-gray-300">
+          <li>
+            결제 완료 후 뒤로 가기를 통한 재접근을 방지하기 위해
+            history.pushState와 popstate 이벤트 활용
+            <br />→ 사용자가 브라우저 뒤로가기를 눌러도 이미 결제된 세션임을
+            안내하고, 페이지 흐름을 유지하도록 처리했습니다.
+          </li>
+          <li>
+            직접 접근 차단을 위해 sessionStorage 의 allowPaymentsAccess 플래그
+            활용
+            <br />→ 정상적인 결제 흐름을 통해서만 접근할 수 있도록 구성해, 새 탭
+            / 직접 URL 입력 등 예외 접근을 차단했습니다.
+          </li>
+          <li>
+            결제 완료 시 paymentDone 플래그를 세션에 기록
+            <br />→ 동일 세션 내에서 다시 결제 페이지에 진입할 경우 자동
+            리디렉션 처리로 중복 호출을 방지했습니다.
           </li>
         </ul>
       </div>
