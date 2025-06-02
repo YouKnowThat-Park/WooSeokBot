@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import ProjectGoalsSection from "./_components/ProjectGoalsSection";
+import ProjectGoalsSection from "../_components/ProjectGoals";
 import PerformanceSection from "../_components/Performance";
-import ProjectDetailsSection from "@/app/portfolio/_components/ProjectDetailsSection";
-import ProjectHero from "../_components/ProjectHero";
+import ProjectHero from "../../_components/ProjectHero";
 import ProjectRetrospective from "../_components/ProjectRetrospective";
 import NextProjectsSlider from "@/app/project/_components/NextProjectsSlider";
 import UserFlowSection from "../_components/UserFlowSection";
@@ -13,8 +12,10 @@ import { StageTechItems } from "@/data/StageTechItems";
 import ProjectDescription from "../_components/ProjectDescription";
 import ProjectOverview from "../_components/ProjectOverview";
 import TeamRoles from "../_components/TeamRoles";
-import { DoGoTeam } from "@/data/DoGoTeamRoles";
 import { stage101Performance } from "@/data/stage101Performance";
+import ProjectDetails from "../_components/ProjectDetails";
+import { Stage101Details } from "@/data/stage101Details";
+import { StageTeam } from "@/data/StageTeamRoles";
 
 const Stage101 = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -69,9 +70,15 @@ const Stage101 = () => {
               "개발 기간 : 4~5주 정도 진행 되었습니다.",
             ]}
           />
-          <TeamRoles title="👥 팀 구성 및 역할" members={DoGoTeam} />
-
-          <ProjectGoalsSection />
+          <TeamRoles title="👥 팀 구성 및 역할" members={StageTeam} />
+          <ProjectGoalsSection
+            goals={[
+              "다양한 기능을 직접 구현하며 기술 스펙트럼을 확장 시키기 위함",
+              "실제 서비스처럼 유저 흐름이 완성된 플랫폼을 목표",
+              "단순히 개발 만의 목적이 아닌 기획&설계 관점에서도 비지니스 서비스 극대화",
+              "사용자의 경험과 동선을 중심에 두고 기능을 설계",
+            ]}
+          />{" "}
         </div>
 
         {/* 재사용 컴포넌트 */}
@@ -99,7 +106,11 @@ const Stage101 = () => {
         performanceItems={stage101Performance}
       />
 
-      <ProjectDetailsSection />
+      <ProjectDetails
+        title="Project Details"
+        sections={Stage101Details}
+        imageSize={{ width: 400, height: 200 }}
+      />
 
       {/* 재사용 컴포넌트 */}
       <ProjectRetrospective

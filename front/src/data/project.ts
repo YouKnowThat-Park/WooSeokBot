@@ -33,7 +33,7 @@ export const projects = [
     role: "서비스 기획 PM, Front",
     date: "2025.04.21 ~ 2025.04.28",
     image: "/aichatbot.png",
-    link: "/project/AiChatBot",
+    link: "/project/aiChatBot",
   },
 ];
 
@@ -45,7 +45,7 @@ export const studyProjects = [
     role: "서비스 기획 PM, Front",
     date: "2025.03.20 ~ 2025.04.30",
     image: "/ghosthouse.png",
-    link: "/project/GhostHouse",
+    link: "/studyProject/ghostHouse",
   },
   {
     id: "LoLProject",
