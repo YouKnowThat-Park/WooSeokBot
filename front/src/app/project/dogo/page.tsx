@@ -2,8 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 
-import ProjectDetailsSection from "@/app/portfolio/_components/ProjectDetailsSection";
-import ProjectHero from "../_components/ProjectHero";
+import ProjectHero from "../../_components/ProjectHero";
 import ProjectRetrospective from "../_components/ProjectRetrospective";
 import NextProjectsSlider from "@/app/project/_components/NextProjectsSlider";
 import UserFlowSection from "../_components/UserFlowSection";
@@ -12,7 +11,10 @@ import { DoGoTechItems } from "@/data/DoGoTechItems";
 import ProjectDescription from "../_components/ProjectDescription";
 import ProjectOverview from "../_components/ProjectOverview";
 import TeamRoles from "../_components/TeamRoles";
-import { StageTeam } from "@/data/StageTeamRoles";
+import ProjectDetails from "../_components/ProjectDetails";
+import { DoGoDetails } from "@/data/DoGoDetails";
+import ProjectGoals from "../_components/ProjectGoals";
+import { DoGoTeam } from "@/data/DoGoTeamRoles";
 
 const DoGo = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -68,8 +70,14 @@ const DoGo = () => {
               "작업 위치 : 호텔 리스트 페이지, 호텔 상세 페이지 개발",
             ]}
           />
-          <TeamRoles title="👥 팀 구성 및 역할" members={StageTeam} />
-          {/* <ProjectGoalsSection />  */}
+          <TeamRoles title="👥 팀 구성 및 역할" members={DoGoTeam} />
+          <ProjectGoals
+            goals={[
+              "4성급, 5성급 호텔 예약이 가능한 프리미엄 숙박 플랫폼을 구현하고자 했습니다.",
+              "사용자가 호텔을 검색하고 예약하는 과정에서 불편함 없이 자연스럽게 흐름을 이어갈 수 있는 기본 기능을 충실히 갖추는 데 집중했습니다.",
+              "반응형 디자인을 적용해 데스크탑뿐 아니라 모바일 환경에서도 일관된 사용자 경험을 제공하고자 했습니다.",
+            ]}
+          />
         </div>
 
         {/* 재사용 컴포넌트 */}
@@ -85,7 +93,12 @@ const DoGo = () => {
         />
       </div>
 
-      <ProjectDetailsSection />
+      {/* 재사용 컴포넌트 */}
+      <ProjectDetails
+        title="Project Details"
+        sections={DoGoDetails}
+        imageSize={{ width: 500, height: 200 }}
+      />
 
       {/* 재사용 컴포넌트 */}
       <ProjectRetrospective
