@@ -27,7 +27,7 @@ export const projects = [
     link: "/project/WooseokBot",
   },
   {
-    id: "AI ChatBot",
+    id: "AiChatBot",
     title: "AI ChatBot",
     description: "개발PM",
     role: "서비스 기획 PM, Front",

@@ -45,6 +45,8 @@ const Stage101 = () => {
         description="소극장 예약 페이지"
         devEnv="Next.js, TypeScript, Vercel"
         type="개인 프로젝트"
+        imageWidth={920}
+        imageHeight={200}
       />
 
       <div className="w-full h-full mt-10 border border-neutral-300 dark:text-[#fbfbfb]  dark:bg-[#2e2e2e] dark:border-neutral-700">
