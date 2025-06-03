@@ -21,11 +21,11 @@ const AiChatBot = () => {
         imageSrc="/aichatbot.png"
         description="생물학 분석 특화 챗봇"
         devEnv="Next.js, TypeScript, LangChain, ContextAPI"
-        type="개발PM"
+        type="스타트업 개발PM"
         imageWidth={360}
         imageHeight={250}
       />
-      <div className="w-full h-full mt-10 border border-neutral-300 dark:text-[#fbfbfb]  dark:bg-[#1a1a1a] dark:border-neutral-700 py-5">
+      <div className="w-full h-full mt-10 border border-neutral-300 dark:text-[#fbfbfb]  dark:bg-[#1a1a1a] dark:border-neutral-700 py-5 ">
         <div className="flex flex-col justify-center items-center">
           <h2>🚨 본 기획 및 설계의 저작권 및 소유권은 박우석에게 있으며,</h2>
           <p>해당 회사는 박우석 포트폴리오에 추가되는 것을 동의했습니다.</p>

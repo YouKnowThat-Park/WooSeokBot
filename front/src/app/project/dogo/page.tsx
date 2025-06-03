@@ -48,18 +48,18 @@ const DoGo = () => {
         imageHeight={200}
       />
 
+      <ProjectDescription
+        title="Start Your Journey in Style with DoGo"
+        paragraphs={[
+          "DoGo는 부트캠프 React 7기에서 진행한 5인 팀 프로젝트 였으며 해당 주제는 제가 직접 기획한 아이디어로 시작되었습니다.",
+          "아이디어 제안을 적극적으로 했고, 팀 내부에서 아이디어 기반으로 프로젝트를 시작하게 되었고,",
+          "그 중 국내 프리미엄 호텔 예약 플랫폼이라는",
+          "주제가 실제 서비스로 연결될 수 있겠다는 판단 아래 전체 컨셉을 정리한 기획안을 공유하며 팀원들과 프로젝트를 시작했습니다.",
+          "단순한 여행 숙박 앱이 아닌, 리스트 → 상세정보 → 예약까지 자연스럽게 이어지는",
+          "흐름과 고급스러운 UX에 중점을 두고 서비스 전반을 설계하고 구현하는 데 주도적인 적할을 맡았습니다.",
+        ]}
+      />
       <div className="w-full h-full mt-10 border border-neutral-300 dark:text-[#fbfbfb]  dark:bg-[#2e2e2e] dark:border-neutral-700">
-        <ProjectDescription
-          title="Start Your Journey in Style with DoGo"
-          paragraphs={[
-            "DoGo는 부트캠프 React 7기에서 진행한 5인 팀 프로젝트 였으며 해당 주제는 제가 직접 기획한 아이디어로 시작되었습니다.",
-            "아이디어 제안을 적극적으로 했고, 팀 내부에서 아이디어 기반으로 프로젝트를 시작하게 되었고,",
-            "그 중 국내 프리미엄 호텔 예약 플랫폼이라는",
-            "주제가 실제 서비스로 연결될 수 있겠다는 판단 아래 전체 컨셉을 정리한 기획안을 공유하며 팀원들과 프로젝트를 시작했습니다.",
-            "단순한 여행 숙박 앱이 아닌, 리스트 → 상세정보 → 예약까지 자연스럽게 이어지는",
-            "흐름과 고급스러운 UX에 중점을 두고 서비스 전반을 설계하고 구현하는 데 주도적인 적할을 맡았습니다.",
-          ]}
-        />
         <div className="ml-10 mt-10 dark:text-[#fbfbfb]">
           <ProjectOverview
             title="Project Overview"
