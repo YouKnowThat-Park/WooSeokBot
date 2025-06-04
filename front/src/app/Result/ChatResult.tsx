@@ -1,36 +1,24 @@
 "use client";
 
 import React, { useState } from "react";
-import CResult from "../chatbot/_components/CResult";
-import FallbackResult from "../chatbot/_components/FallbackResult";
+import TestResult from "../chatbot/_components/TestResult";
 
-// 🆕 fallback 질문 리스트 받도록 설정
 const ChatResult = () => {
-  const [fallbacks, setFallbacks] = useState<string[]>([]);
+  const [queries, setQueries] = useState<string[]>([]);
 
-  // 챗봇 박스에서 이 함수 호출
   const handleFollowUp = (query: string) => {
-    setFallbacks((prev) => [...prev, query]);
+    setQueries((prev) => [...prev, query]);
   };
 
-  // window에 공유 (간단히 전역 이벤트 시스템 대체)
+  // 전역 함수 등록
   if (typeof window !== "undefined") {
-    // 전역에서 접근 가능하도록 등록
-    (
-      window as unknown as { __handleFollowUp?: (query: string) => void }
-    ).__handleFollowUp = handleFollowUp;
+    (window as any).__handleFollowUp = handleFollowUp;
   }
 
   return (
-    <div className="space-y-4">
-      {/* 기본 검색 결과 */}
-      <CResult />
-
-      {/* 추가 질문에 대한 Fallback */}
-      {fallbacks.map((q, i) => (
-        <div key={i}>
-          <FallbackResult />
-        </div>
+    <div className="space-y-4 mb-20">
+      {queries.map((q, i) => (
+        <TestResult key={i} query={q} />
       ))}
     </div>
   );
