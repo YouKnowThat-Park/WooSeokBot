@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen dark:bg-[#11111]">
+    <div className="relative min-h-screen dark:bg-[#11111] max-w  mx-auto">
       {/* 챗봇 아이콘 */}
 
       {/* 콘텐츠 영역 */}

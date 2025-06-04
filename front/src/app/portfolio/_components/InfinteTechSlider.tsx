@@ -86,13 +86,13 @@ const InfiniteTechSlider = () => {
       {/* 좌우 버튼 */}
       <button
         onClick={() => handleSlide("left")}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-200 px-2 py-1 rounded "
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-gray-200 dark:bg-black/60 px-2 py-1 rounded "
       >
         ←
       </button>
       <button
         onClick={() => handleSlide("right")}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gray-200 px-2 py-1 rounded"
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-gray-200 dark:bg-black/60  px-2 py-1 rounded"
       >
         →
       </button>

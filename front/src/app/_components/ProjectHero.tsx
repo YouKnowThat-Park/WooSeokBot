@@ -49,7 +49,7 @@ const ProjectHero = ({
           />
         )}
         {serviceUrl && (
-          <p className="text-sm ml-[120px] border-b text-gray-300 border-gray-300 w-fit">
+          <p className="text-sm mx-auto my-2 border-b text-gray-300 border-gray-300 w-fit">
             클릭 시 해당 서비스로 이동합니다.
           </p>
         )}

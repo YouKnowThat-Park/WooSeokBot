@@ -9,11 +9,11 @@ import UserFlowSection from "../_components/UserFlowSection";
 import TechStackTable from "../_components/TechStackTable";
 import { DoGoTechItems } from "@/data/DoGoTechItems";
 import ProjectDescription from "../_components/ProjectDescription";
-import ProjectOverview from "../_components/ProjectOverview";
-import TeamRoles from "../_components/TeamRoles";
+import ProjectOverview from "../../_components/ProjectOverview";
+import TeamRoles from "../../_components/TeamRoles";
 import ProjectDetails from "../_components/ProjectDetails";
 import { DoGoDetails } from "@/data/DoGoDetails";
-import ProjectGoals from "../_components/ProjectGoals";
+import ProjectGoals from "../../_components/ProjectGoals";
 import { DoGoTeam } from "@/data/DoGoTeamRoles";
 
 const DoGo = () => {
