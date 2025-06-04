@@ -16,9 +16,8 @@ const LangChainBioChatter = () => {
           이를 보완하기 위해 <strong>BioChatter</strong>와 같은 생물학 특화
           LLM을 LangChain에
           <span className="text-green-600 font-medium">
-            {" "}
             Tool 또는 LLMWrapper
-          </span>{" "}
+          </span>
           형태로 연동하는 방식은 매우 효과적이며,
           <br />
           분석 응답의 신뢰성과 반복된 전문 질의 대응 측면에서 강점을 가집니다.
@@ -39,7 +38,7 @@ const LangChainBioChatter = () => {
           <ul className="list-disc list-inside text-sm space-y-2 dark:text-neutral-200">
             <li>
               <strong>도메인 특화 응답 품질 향상:</strong> GPT보다 유전자,
-              단백질, 약물-표적 상호작용 등 생물학적 질의에 대해 더{" "}
+              단백질, 약물-표적 상호작용 등 생물학적 질의에 대해 더
               <strong>정확하고 신뢰성 높은 응답</strong>을 제공합니다.
             </li>
             <li>
@@ -95,13 +94,13 @@ const LangChainBioChatter = () => {
               측면에서 브랜드 가치 상승에 기여합니다.
             </li>
             <li>
-              기존 LangChain 코드와 충돌 없이{" "}
+              기존 LangChain 코드와 충돌 없이
               <strong>LLM만 선택적으로 교체</strong>할 수 있어 개발 부담이
               적습니다.
             </li>
             <li>
-              GPT가 종종 범하는 "그럴듯하지만 틀린" 응답 가능성을 실질적으로
-              줄일 수 있습니다.
+              GPT가 종종 범하는 &quot그럴듯하지만 틀린&quot 응답 가능성을
+              실질적으로 줄일 수 있습니다.
             </li>
             <li>
               BioChatter 도입은 <strong>단기 성능 확보와 중장기 확장</strong>

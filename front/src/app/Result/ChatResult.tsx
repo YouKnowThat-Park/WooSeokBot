@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TestResult from "../chatbot/_components/TestResult";
 
 const ChatResult = () => {
@@ -10,10 +10,18 @@ const ChatResult = () => {
     setQueries((prev) => [...prev, query]);
   };
 
-  // 전역 함수 등록
-  if (typeof window !== "undefined") {
-    (window as any).__handleFollowUp = handleFollowUp;
-  }
+  // ✅ 여기서 window 타입 확장
+  useEffect(() => {
+    (
+      window as Window & { __handleFollowUp?: (query: string) => void }
+    ).__handleFollowUp = handleFollowUp;
+
+    return () => {
+      (
+        window as Window & { __handleFollowUp?: (query: string) => void }
+      ).__handleFollowUp = undefined;
+    };
+  }, []);
 
   return (
     <div className="space-y-4 mb-20">

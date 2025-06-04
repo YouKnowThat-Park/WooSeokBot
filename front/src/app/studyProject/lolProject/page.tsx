@@ -1,9 +1,7 @@
 import ProjectGoals from "@/app/_components/ProjectGoals";
 import ProjectHero from "@/app/_components/ProjectHero";
 import ProjectOverview from "@/app/_components/ProjectOverview";
-import TeamRoles from "@/app/_components/TeamRoles";
 import ProjectDescription from "@/app/project/_components/ProjectDescription";
-import { HoroscopeTeamRoles } from "@/data/HoroscopeTeamRoles";
 import Image from "next/image";
 import React from "react";
 

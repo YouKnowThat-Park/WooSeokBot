@@ -2,7 +2,6 @@ import ProjectGoals from "@/app/_components/ProjectGoals";
 import ProjectHero from "@/app/_components/ProjectHero";
 import ProjectOverview from "@/app/_components/ProjectOverview";
 import ProjectDescription from "@/app/project/_components/ProjectDescription";
-import Image from "next/image";
 import React from "react";
 
 const page = () => {
