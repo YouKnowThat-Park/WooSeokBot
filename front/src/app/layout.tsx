@@ -24,10 +24,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${notoSans.className} antialiased  bg-white dark:bg-[#111111] ml-[500px]`}
+        className={`${notoSans.className} antialiased bg-white dark:bg-[#111111]`}
       >
         <RecoilProvider>
-          {children}
+          <main className="max-w-[970px] w-full mx-auto ">{children}</main>
           <div className="fixed bottom-10 right-[100px] z-50">
             <ThemeToggle />
           </div>

@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutMe = () => {
   return (
-    <div className="flex items-start gap-x-6   mt-8 rounded-md">
+    <div className="flex items-start gap-x-6 px-10  mt-8 rounded-md">
       {/* 이미지 */}
       <div>
         <Image
@@ -28,7 +28,7 @@ const AboutMe = () => {
           좌절보다 도전을 선택하며, 오늘보다 더 나은 내일을 향해 달려가는
           프론트엔드 개발자 박우석입니다.
         </h3>
-        <div className="mt-5 space-y-1 w-auto">
+        <div className="mt-2 space-y-1 w-auto">
           {/* 이메일 */}
           <a
             href="mailto:youkn0wthat@naver.com"

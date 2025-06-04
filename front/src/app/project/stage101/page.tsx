@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import ProjectGoalsSection from "../_components/ProjectGoals";
 import PerformanceSection from "../_components/Performance";
 import ProjectHero from "../../_components/ProjectHero";
 import ProjectRetrospective from "../_components/ProjectRetrospective";
@@ -10,12 +9,13 @@ import UserFlowSection from "../_components/UserFlowSection";
 import TechStackTable from "../_components/TechStackTable";
 import { StageTechItems } from "@/data/StageTechItems";
 import ProjectDescription from "../_components/ProjectDescription";
-import ProjectOverview from "../_components/ProjectOverview";
-import TeamRoles from "../_components/TeamRoles";
+import ProjectOverview from "../../_components/ProjectOverview";
+import TeamRoles from "../../_components/TeamRoles";
 import { stage101Performance } from "@/data/stage101Performance";
 import ProjectDetails from "../_components/ProjectDetails";
 import { Stage101Details } from "@/data/stage101Details";
 import { StageTeam } from "@/data/StageTeamRoles";
+import ProjectGoals from "../../_components/ProjectGoals";
 
 const Stage101 = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -45,6 +45,8 @@ const Stage101 = () => {
         description="소극장 예약 페이지"
         devEnv="Next.js, TypeScript, Vercel"
         type="개인 프로젝트"
+        imageWidth={920}
+        imageHeight={200}
       />
 
       <div className="w-full h-full mt-10 border border-neutral-300 dark:text-[#fbfbfb]  dark:bg-[#2e2e2e] dark:border-neutral-700">
@@ -71,7 +73,7 @@ const Stage101 = () => {
             ]}
           />
           <TeamRoles title="👥 팀 구성 및 역할" members={StageTeam} />
-          <ProjectGoalsSection
+          <ProjectGoals
             goals={[
               "다양한 기능을 직접 구현하며 기술 스펙트럼을 확장 시키기 위함",
               "실제 서비스처럼 유저 흐름이 완성된 플랫폼을 목표",
