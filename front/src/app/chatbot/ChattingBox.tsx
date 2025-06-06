@@ -30,7 +30,9 @@ const ChattingBox = ({ onClose }: ChattingProps) => {
     <Draggable>
       <div className="fixed bottom-[30px] left-[600px] w-[700px] h-[180px] bg-white shadow-lg border rounded-md z-50 p-4 flex flex-col">
         <div className="flex justify-between items-center mb-2 cursor-move">
-          <h2 className="text-lg font-semibold">박우석 챗봇</h2>
+          <h2 className="text-lg font-semibold">
+            <button>박우석 챗봇 </button> / <button>Feedback</button>
+          </h2>
           <button
             onClick={onClose}
             className="text-sm text-gray-500 hover:text-red-500"

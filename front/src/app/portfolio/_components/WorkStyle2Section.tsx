@@ -27,7 +27,7 @@ const WorkStyle2Section = () => {
         {/* 왼쪽 카드 */}
         <div className="md:w-3/5 relative h-[420px] flex items-center justify-center">
           <div
-            className={`w-[300px] h-[380px] rounded-xl shadow-xl p-6 whitespace-pre-wrap bg-white dark:bg-[#1f1f1f] transition-transform duration-300 ease-in-out  cursor-default`}
+            className={`w-[300px] h-[390px] rounded-xl shadow-xl p-4 whitespace-pre-wrap bg-white dark:bg-[#1f1f1f] transition-transform duration-300 ease-in-out  cursor-default`}
           >
             <h4 className="text-lg font-bold text-[#3ecf8e] mb-2">
               {style.title}
