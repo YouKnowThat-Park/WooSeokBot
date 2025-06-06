@@ -7,7 +7,7 @@ import Draggable from "react-draggable";
 import ChattingBox from "../chatbot/ChattingBox";
 import { useRouter } from "next/navigation";
 import KoreanTimeMinute from "./KoreanTimeMinute";
-
+import { GrMore } from "react-icons/gr";
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -28,21 +28,9 @@ const ThemeToggle = () => {
             <span className={clsx(isDark ? "text-white" : "text-black")}>
               <KoreanTimeMinute />
             </span>
-            <div className="flex items-center gap-2">
-              <div
-                className={clsx(
-                  "w-0 h-0 border-solid border-t-[7.2px] border-l-[6.8px] border-r-[6.8px] rotate-[135deg]",
-                  isDark ? "border-t-white" : "border-t-black",
-                  "border-transparent"
-                )}
-              ></div>
-              <div
-                className={clsx(
-                  "w-[0.85rem] h-[0.45rem]",
-                  isDark ? "bg-white" : "bg-black"
-                )}
-              />
-            </div>
+            <button>
+              <GrMore />
+            </button>
           </div>
 
           {/* 달 아이콘 */}
@@ -97,7 +85,7 @@ const ThemeToggle = () => {
               onClick={() => router.push("/")}
               className="w-[105px] h-11 rounded-full bg-[#f3f3f3] text-black text-sm font-bold shadow hover:bg-white transition "
             >
-              RESET
+              HOME
             </button>
           </div>
         </div>
