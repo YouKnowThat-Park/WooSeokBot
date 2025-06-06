@@ -7,13 +7,18 @@ import FeedbackModal from "./_components/FeedbackModal";
 
 type QA = { query: string; answer: string };
 
+// ✅ window 타입 확장 (파일 내부에서만 사용)
+type FollowUpWindow = typeof window & {
+  __handleFollowUp?: (query: string) => void;
+};
+
 const ChatAnswer = () => {
   const { id } = useParams();
   const chatId = Array.isArray(id) ? id[0] : id;
 
   const [error, setError] = useState<string | null>(null);
   const [chats, setChats] = useState<QA[]>([]);
-  const [isModalOpen, setIsModalOpen] = useState(false); // ✅ 모달 상태
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const savedQuery = sessionStorage.getItem(`query:${chatId}`);
@@ -49,7 +54,8 @@ const ChatAnswer = () => {
 
     fetchChat();
 
-    (window as any).__handleFollowUp = async (newQuery: string) => {
+    const typedWindow = window as FollowUpWindow;
+    typedWindow.__handleFollowUp = async (newQuery: string) => {
       try {
         const res = await fetch("http://localhost:8000/api/chat/ask/", {
           method: "POST",
@@ -88,7 +94,7 @@ const ChatAnswer = () => {
               답변: {chat.answer}
             </p>
             <button
-              onClick={() => setIsModalOpen(true)} // ✅ 모달 열기 트리거
+              onClick={() => setIsModalOpen(true)}
               className="mt-4 ml-[450px] font-semibold text-sm text-red-500 hover:underline"
             >
               답변은 만족 스러우신가요? ✍️ 평가하러 가기
