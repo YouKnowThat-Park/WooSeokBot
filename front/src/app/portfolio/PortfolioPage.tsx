@@ -24,7 +24,7 @@ const PortfolioPage = () => {
 
   return (
     <>
-      <div className="w-[970px] h-auto mt-[400px] mb-[84px] pb-20 bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden border  dark:bg-[#111111] dark:border-white">
+      <div className="w-[970px] h-auto mt-[400px] mb-[84px]  bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden border  dark:bg-[#111111] dark:border-white">
         <AboutMe />
 
         <div className="w-full mt-20 mb-20 dark:text-white">
@@ -32,7 +32,7 @@ const PortfolioPage = () => {
           <TechProjectsModal />
         </div>
 
-        <div className="mb-20 px-10">
+        <div className=" px-10 py-40 bg-[#EDEDED]">
           <LearningStackSection />
         </div>
         <WorkStyleSection />

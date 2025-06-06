@@ -3,7 +3,7 @@ import React from "react";
 
 const LearningStackSection = () => {
   return (
-    <div className="flex gap-2 mt-10 dark:text-[#F4F5F4]">
+    <div className="flex gap-2   dark:text-[#F4F5F4]">
       <div className="bg-white w-full h-[200px] dark:bg-[#3a3a3a]">
         <h3 className="flex justify-center mt-5">배우고 있는 기술 스택</h3>
 
