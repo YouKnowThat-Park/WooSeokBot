@@ -24,7 +24,7 @@ const workStyles = [
   },
 ];
 
-const WorkStyleSection = () => {
+const TopWorkStyleSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextCard = () => {
@@ -73,7 +73,7 @@ const WorkStyleSection = () => {
               <div
                 key={index}
                 onClick={nextCard}
-                className={`absolute transition-all duration-500 ease-in-out w-[300px] h-[380px] rounded-xl shadow-xl p-6 whitespace-pre-wrap cursor-pointer
+                className={`absolute transition-all duration-500 ease-in-out w-[300px] h-[385px] rounded-xl shadow-xl p-4 whitespace-pre-wrap cursor-pointer
         ${getCardStyle(index)} 
         ${isFront ? "hover:scale-[1.05]" : ""}
       bg-white dark:bg-[#1f1f1f]`}
@@ -106,4 +106,4 @@ const WorkStyleSection = () => {
   );
 };
 
-export default WorkStyleSection;
+export default TopWorkStyleSection;

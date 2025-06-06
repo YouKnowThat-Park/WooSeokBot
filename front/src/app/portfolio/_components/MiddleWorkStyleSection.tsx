@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const WorkStyle2Section = () => {
+const MiddleWorkStyleSection = () => {
   const style = {
     title: "사용자의 흐름에 맞춘 UI/UX 설계",
     question:
@@ -12,7 +12,7 @@ const WorkStyle2Section = () => {
   };
 
   return (
-    <section className="w-full px-6 py-16 bg-[#EDEDED] dark:bg-[#111111] text-black dark:text-white flex flex-col items-center">
+    <section className="w-full px-6 py-16 bg-[#EDEDED] dark:bg-[#2e2e2e] text-black dark:text-white flex flex-col items-center">
       <div className="flex flex-col md:flex-row-reverse items-start justify-between gap-10 w-full max-w-[1200px]">
         {/* 오른쪽 텍스트 */}
         <div className="md:w-2/5 text-left space-y-4 mt-28 mr-2">
@@ -27,7 +27,7 @@ const WorkStyle2Section = () => {
         {/* 왼쪽 카드 */}
         <div className="md:w-3/5 relative h-[420px] flex items-center justify-center">
           <div
-            className={`w-[300px] h-[380px] rounded-xl shadow-xl p-6 whitespace-pre-wrap bg-white dark:bg-[#1f1f1f] transition-transform duration-300 ease-in-out  cursor-default`}
+            className={`w-[300px] h-[390px] rounded-xl shadow-xl p-4 whitespace-pre-wrap bg-white dark:bg-[#1f1f1f] transition-transform duration-300 ease-in-out  cursor-default`}
           >
             <h4 className="text-lg font-bold text-[#3ecf8e] mb-2">
               {style.title}
@@ -47,4 +47,4 @@ const WorkStyle2Section = () => {
   );
 };
 
-export default WorkStyle2Section;
+export default MiddleWorkStyleSection;
