@@ -21,7 +21,7 @@ const ChatAnswer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const savedQuery = sessionStorage.getItem(`query:${chatId}`);
+    // const savedQuery = sessionStorage.getItem(`query:${chatId}`);
     const savedAnswer = sessionStorage.getItem(`answer:${chatId}`);
     const token = sessionStorage.getItem(`token:${chatId}`);
 
