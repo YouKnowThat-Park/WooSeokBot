@@ -3,15 +3,15 @@
 import { useRef } from "react";
 import AboutMe from "./_components/AboutMe";
 import LearningStackSection from "./_components/LearningStackSection";
-import WorkStyleSection from "./_components/WorkStyleSection";
 import ResumeSection from "./_components/ResumeSection";
 import ProjectCard from "./_components/ProjectCard";
 import InfiniteTechSlider from "./_components/InfinteTechSlider";
 import TechProjectsModal from "./_components/TechProjectModal";
 import { projects, studyProjects } from "@/data/project";
 import useAutoSliderController from "@/hooks/useAutoSliderController.ts";
-import WorkStyle2Section from "./_components/WorkStyle2Section";
-import WorkStyle3Section from "./_components/WorkStyle3Section";
+import TopWorkStyleSection from "./_components/TopWorkStyleSection";
+import MiddleWorkStyleSection from "./_components/MiddleWorkStyleSection";
+import BottomWorkStyleSection from "./_components/BottomWorkStyleSection";
 
 const PortfolioPage = () => {
   const projectSliderRef = useRef<HTMLDivElement | null>(null);
@@ -35,9 +35,9 @@ const PortfolioPage = () => {
         <div className=" px-10 py-40 bg-[#EDEDED]">
           <LearningStackSection />
         </div>
-        <WorkStyleSection />
-        <WorkStyle2Section />
-        <WorkStyle3Section />
+        <TopWorkStyleSection />
+        <MiddleWorkStyleSection />
+        <BottomWorkStyleSection />
       </div>
 
       <ResumeSection />
