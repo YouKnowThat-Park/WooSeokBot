@@ -12,7 +12,7 @@ const MiddleWorkStyleSection = () => {
   };
 
   return (
-    <section className="w-full px-6 py-16 bg-[#EDEDED] dark:bg-[#111111] text-black dark:text-white flex flex-col items-center">
+    <section className="w-full px-6 py-16 bg-[#EDEDED] dark:bg-[#2e2e2e] text-black dark:text-white flex flex-col items-center">
       <div className="flex flex-col md:flex-row-reverse items-start justify-between gap-10 w-full max-w-[1200px]">
         {/* 오른쪽 텍스트 */}
         <div className="md:w-2/5 text-left space-y-4 mt-28 mr-2">

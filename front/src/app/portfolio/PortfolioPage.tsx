@@ -32,7 +32,7 @@ const PortfolioPage = () => {
           <TechProjectsModal />
         </div>
 
-        <div className=" px-10 py-40 bg-[#EDEDED]">
+        <div className=" px-10 py-40 bg-[#EDEDED] dark:bg-[#2e2e2e]">
           <LearningStackSection />
         </div>
         <TopWorkStyleSection />
