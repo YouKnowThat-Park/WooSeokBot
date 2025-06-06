@@ -27,7 +27,7 @@ const BottomWorkStyleSection = () => {
 
       <div className="flex justify-center items-center relative h-[400px] max-w-[1100px] mx-auto">
         {/* Left card */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 -rotate-[8deg] scale-95 opacity-70 z-10 transition-all duration-300">
+        <div className="absolute left-0 top-1/2 -translate-y-1/2  scale-95 opacity-70 z-10 transition-all duration-300">
           <div className="w-[280px] h-[360px] rounded-lg shadow-xl bg-white dark:bg-[#1f1f1f] p-6 text-left">
             <h4 className="text-base font-bold text-[#3ecf8e] mb-2">
               {workStyles[0].title}
@@ -51,7 +51,7 @@ const BottomWorkStyleSection = () => {
         </div>
 
         {/* Right card */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 rotate-[8deg] scale-95 opacity-70 z-10 transition-all duration-300">
+        <div className="absolute right-0 top-1/2 -translate-y-1/2  scale-95 opacity-70 z-10 transition-all duration-300">
           <div className="w-[280px] h-[360px] rounded-lg shadow-xl bg-white dark:bg-[#1f1f1f] p-6 text-left">
             <h4 className="text-base font-bold text-[#3ecf8e] mb-2">
               {workStyles[2].title}
