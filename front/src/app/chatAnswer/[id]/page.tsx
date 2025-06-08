@@ -44,8 +44,7 @@ const ChatAnswer = () => {
 
         const data = await res.json();
         const query = data.query;
-        const answer = savedAnswer || "로딩 중...";
-
+        const answer = savedAnswer ?? data.answer;
         setChats([{ query, answer }]);
       } catch {
         setError("⚠️ 네트워크 오류");

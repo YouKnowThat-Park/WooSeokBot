@@ -27,18 +27,25 @@ class ChatProject(models.Model):
 class ChatSession(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     query = models.TextField()
-    token = models.CharField(max_length=255)
+    token = models.CharField(max_length=255) 
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Session {self.id}"
     
 class ChatFeedback(models.Model):
+    LIKE_CHOICES = [
+        ("like", "좋아요"),
+        ("dislike", "싫어요"),
+        ("none", "선택안함"),
+    ]
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nickname = models.CharField(max_length=50)
     password_hash = models.CharField(max_length=128)  # client-side에서 해시해서 저장
     content = models.TextField()
     related_project = models.ForeignKey(ChatProject, on_delete=models.CASCADE, related_name="feedbacks", null=True, blank=True)
+    like_status = models.CharField(max_length=10, choices=LIKE_CHOICES, default="none")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
