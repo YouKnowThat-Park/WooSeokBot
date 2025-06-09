@@ -47,25 +47,24 @@ const FeedbackModal = ({ onClose }: Props) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
-      <div className="bg-white rounded-lg shadow-lg p-6 w-[620px] h-[360px]">
-        <div className="flex justify-start items-center my-1 text-2xl font-semibold">
+      <div className="bg-white rounded-lg shadow-lg p-6 w-[620px] h-[360px] relative">
+        <div className="flex justify-start items-center my-1 p-3 text-2xl font-semibold">
           Comment
         </div>
         <button
           onClick={onClose}
-          className="ml-[530px] text-sm bg-gray-300 rounded px-2 py-1"
+          className="absolute top-4 right-4 text-sm bg-gray-300 rounded px-2 py-1"
         >
-          취소
+          닫기
         </button>
         <div className="border-b mb-10" />
-        <div className="flex">
-          <div className="bg-black w-[60px] h-[60px] rounded-full">
+        <div className="flex w-full">
+          <div className="border w-[200px] h-[60px] rounded-full relative overflow-hidden">
             <Image
               src="/interviewer.webp"
               alt="면접관 이미지"
-              width={30}
-              height={30}
-              className="ml-6"
+              fill
+              className="object-contain p-2"
             />
           </div>
           <div className="flex flex-col gap-2 ml-5">
@@ -84,22 +83,30 @@ const FeedbackModal = ({ onClose }: Props) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="w-10 h-20  ml-[220px] mb-4 flex flex-col justify-center items-center border rounded-full border-black cursor-pointer">
-            <AiFillLike
-              className={
-                selection === "like" ? "text-blue-600" : "text-gray-400"
-              }
-              size={20}
-              onClick={() => setSelection("like")}
-            />
-            <div className="border border-black w-full my-2" />
-            <AiFillDislike
-              className={
-                selection === "dislike" ? "text-red-600" : "text-gray-400"
-              }
-              size={20}
-              onClick={() => setSelection("dislike")}
-            />
+          <div className="ml-[220px]  flex flex-col items-center justify-center">
+            <div className="w-12 h-20 rounded-full flex flex-col items-center justify-around p-2">
+              <button
+                onClick={() => setSelection("like")}
+                className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 ${
+                  selection === "like"
+                    ? "bg-blue-500 text-white"
+                    : "bg-white text-gray-400"
+                }`}
+              >
+                <AiFillLike size={18} />
+              </button>
+
+              <button
+                onClick={() => setSelection("dislike")}
+                className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 ${
+                  selection === "dislike"
+                    ? "bg-red-500 text-white"
+                    : "bg-white text-gray-400"
+                }`}
+              >
+                <AiFillDislike size={18} />
+              </button>
+            </div>
           </div>
         </div>
         <div className="flex">
