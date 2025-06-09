@@ -36,7 +36,6 @@ const ThemeToggle = ({
   const [input, setInput] = useState("");
   const [chats, setChats] = useState<QA[]>([]);
   const [isAsking, setIsAsking] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const pathname = usePathname();
@@ -48,7 +47,7 @@ const ThemeToggle = ({
     if (!enableChatbot && expanded) {
       setExpanded(false);
     }
-  }, [pathname, enableChatbot]);
+  }, [pathname, enableChatbot, expanded]);
 
   if (!mounted) return null;
 
@@ -120,10 +119,6 @@ const ThemeToggle = ({
             )}
           />
         </button>
-
-        {error && (
-          <p className="text-red-500 text-sm text-center mb-2">{error}</p>
-        )}
 
         <div className="flex-1 overflow-y-auto space-y-4 pr-2 text-sm text-black dark:text-white">
           {chats.map((chat, idx) => (
