@@ -10,17 +10,24 @@ const Home = () => {
   const [showSearch, setShowSearch] = useState(true);
 
   const handleSearch = async (query: string) => {
-    const res = await fetch("http://localhost:8000/api/chat/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query }),
-    });
+    try {
+      const res = await fetch("http://localhost:8000/api/chat/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      });
 
-    const { chatId, token, answer } = await res.json();
+      if (!res.ok) {
+        const error = await res.text();
+        console.error("❌ GPT 오류:", error);
+        return;
+      }
 
-    sessionStorage.setItem(`token:${chatId}`, token);
-    sessionStorage.setItem(`answer:${chatId}`, answer); // 💡 답변도 저장
-    router.push(`/chatAnswer/${chatId}`);
+      const { chatId } = await res.json(); // ✅ answer, token 안 씀
+      router.push(`/chatAnswer/${chatId}`);
+    } catch (error) {
+      console.error("❌ 네트워크 오류:", error);
+    }
   };
 
   useEffect(() => {
