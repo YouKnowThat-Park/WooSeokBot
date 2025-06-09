@@ -6,7 +6,8 @@ from rest_framework import status
 import uuid, secrets
 from ..models import ChatSession, ChatProfile, ChatProject
 from ..serializers import ChatSessionCreateSerializer
-
+from django.utils import timezone
+from datetime import timedelta
 
 @api_view(['POST'])
 def create_chat(request):
@@ -14,10 +15,14 @@ def create_chat(request):
     if not query:
         return Response({"error": "query is required"}, status=status.HTTP_400_BAD_REQUEST)
 
+    # ✅ 24시간 이전 세션 정리
+    cutoff = timezone.now() - timedelta(hours=24)
+    ChatSession.objects.filter(created_at__lt=cutoff).delete()
+
     chat_id = uuid.uuid4()
     token = secrets.token_hex(32)
 
-    # 키워드 검색
+    # 🔍 키워드 검색
     profiles = ChatProfile.objects.filter(title__icontains=query)
     projects = ChatProject.objects.filter(title__icontains=query)
 
@@ -30,7 +35,13 @@ def create_chat(request):
     else:
         answer = f"우석이의 답변입니다: '{query}'에 대한 정보가 없습니다."
 
-    ChatSession.objects.create(id=chat_id, query=query, token=token)
+    # ✅ 질문 + 응답 저장
+    ChatSession.objects.create(
+        id=chat_id,
+        query=query,
+        response=answer,
+        token=token,
+    )
 
     return Response({
         "chatId": str(chat_id),
@@ -47,12 +58,11 @@ def get_chat(request, chat_id):
     except ChatSession.DoesNotExist:
         return Response({"error": "해당 챗이 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
 
-    client_token = request.headers.get("Authorization", "").replace("Bearer ", "")
-    if client_token != chat.token:
-        return Response({"error": "❌ 인증 실패"}, status=status.HTTP_403_FORBIDDEN)
-
-    return Response({"query": chat.query}, status=status.HTTP_200_OK)
-
+    # ✅ 누구나 볼 수 있도록 인증 제거
+    return Response({
+        "query": chat.query,
+        "response": chat.response,
+    }, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
 def chat_ask(request):
@@ -72,4 +82,7 @@ def chat_ask(request):
     else:
         answer = f"'{query}'에 대한 관련된 정보를 찾을 수 없습니다."
 
-    return Response({"answer": answer}, status=status.HTTP_200_OK)
+    return Response({
+    "query": query,
+    "answer": answer
+}, status=status.HTTP_200_OK)
