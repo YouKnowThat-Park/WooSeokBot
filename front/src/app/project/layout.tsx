@@ -1,8 +1,7 @@
 "use client";
 
 import ThemeToggle from "../_components/ThemeToggle";
-import { useState } from "react";
-import clsx from "clsx";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ProjectLayout({
@@ -10,18 +9,31 @@ export default function ProjectLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [margin, setMargin] = useState(500); // 초기값: 500px
+  const [margin, setMargin] = useState(500);
   const pathname = usePathname();
 
-  const showThemeToggle = [
+  // chatbotButton 관련 페이지
+  const chatbotPages = [
     "/project/stage101",
     "/project/dogo",
     "/project/wooseokBot",
-  ].some((path) => pathname.startsWith(path));
+  ];
+  const showChatbot = chatbotPages.some((path) => pathname.startsWith(path));
+
+  // 경로 바뀔 때 margin 초기화
+  useEffect(() => {
+    if (!showChatbot) setMargin(500);
+  }, [pathname, showChatbot]);
 
   return (
-    <div className={clsx("transition-all duration-300", `ml-[${margin}px]`)}>
-      {showThemeToggle && <ThemeToggle onChatbotClick={() => setMargin(170)} />}
+    <div
+      className="transition-all duration-300"
+      style={{ marginLeft: `${margin}px` }}
+    >
+      <ThemeToggle
+        onChatbotClick={() => setMargin(200)}
+        enableChatbot={showChatbot}
+      />
       {children}
     </div>
   );
