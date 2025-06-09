@@ -43,7 +43,7 @@ const PortfolioPage = () => {
       <ResumeSection />
 
       {/* Projects */}
-      <div className="w-[970px] h-auto  mb-[84px] bg-[#FBFBFB] py-10 px-5 overflow-hidden border shadow-xl dark:bg-[#111111] dark:border-white">
+      <div className="w-[970px] h-auto  mb-[84px] bg-white py-10 px-5 overflow-hidden border  dark:bg-[#111111] dark:border-white">
         <h3 className="text-xl font-semibold mb-2 dark:text-[#fbfbfb]">
           Projects
         </h3>

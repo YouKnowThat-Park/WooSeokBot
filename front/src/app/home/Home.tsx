@@ -2,25 +2,32 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import ProjectRouter from "../_components/ProjectRouter";
 import ChatSearchInput from "../chatbot/ChatSearchInput";
+import PortfolioPage from "../portfolio/PortfolioPage";
 
 const Home = () => {
   const router = useRouter();
   const [showSearch, setShowSearch] = useState(true);
 
   const handleSearch = async (query: string) => {
-    const res = await fetch("http://localhost:8000/api/chat/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query }),
-    });
+    try {
+      const res = await fetch("http://localhost:8000/api/chat/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      });
 
-    const { chatId, token, answer } = await res.json();
+      if (!res.ok) {
+        const error = await res.text();
+        console.error("❌ GPT 오류:", error);
+        return;
+      }
 
-    sessionStorage.setItem(`token:${chatId}`, token);
-    sessionStorage.setItem(`answer:${chatId}`, answer); // 💡 답변도 저장
-    router.push(`/chatAnswer/${chatId}`);
+      const { chatId } = await res.json(); // ✅ answer, token 안 씀
+      router.push(`/chatAnswer/${chatId}`);
+    } catch (error) {
+      console.error("❌ 네트워크 오류:", error);
+    }
   };
 
   useEffect(() => {
@@ -35,7 +42,7 @@ const Home = () => {
   return (
     <div className="relative min-h-screen dark:bg-[#11111]">
       <div className="relative z-40 mt-[850px]">
-        <ProjectRouter />
+        <PortfolioPage />
       </div>
 
       {showSearch && (
