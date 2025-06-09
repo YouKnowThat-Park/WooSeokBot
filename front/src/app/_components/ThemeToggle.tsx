@@ -4,14 +4,28 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Draggable from "react-draggable";
-import ChattingBox from "../chatbot/ChattingBox";
 import { useRouter } from "next/navigation";
 import KoreanTimeMinute from "./KoreanTimeMinute";
 import { GrMore } from "react-icons/gr";
-const ThemeToggle = () => {
+import Image from "next/image";
+
+type QA = {
+  query: string;
+  answer: string;
+};
+
+type ThemeToggleProps = {
+  onChatbotClick?: () => void;
+};
+
+const ThemeToggle = ({ onChatbotClick }: ThemeToggleProps) => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [isChatbotOpen, setIsChatbotOpen] = useState(false); // 추가
+  const [expanded, setExpanded] = useState(false);
+  const [input, setInput] = useState("");
+  const [chats, setChats] = useState<QA[]>([]);
+  const [isAsking, setIsAsking] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   useEffect(() => setMounted(true), []);
@@ -19,81 +33,171 @@ const ThemeToggle = () => {
 
   const isDark = theme === "dark";
 
-  return (
-    <>
-      <Draggable>
-        <div className="relative w-72 h-[380px] bg-white bg-transparent dark:bg-[#3A3A3A] rounded-[40px] shadow-xl flex flex-col items-center justify-start py-4 transition-colors duration-700">
-          {/* 상태 바 */}
-          <div className="w-full px-6 text-sm opacity-40 flex justify-between items-center">
-            <span className={clsx(isDark ? "text-white" : "text-black")}>
-              <KoreanTimeMinute />
-            </span>
-            <button>
-              <GrMore />
-            </button>
-          </div>
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
 
-          {/* 달 아이콘 */}
+    setIsAsking(true);
+    try {
+      const res = await fetch("http://localhost:8000/api/chat/ask/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: input }),
+      });
+
+      if (!res.ok) {
+        const err = await res.text();
+        console.error(`후속 질문 실패: ${err}`);
+        return;
+      }
+
+      const data = await res.json();
+      const newQA: QA = {
+        query: data.query ?? input,
+        answer: data.answer,
+      };
+
+      setChats((prev) => [...prev, newQA]);
+      setInput("");
+    } catch {
+      alert("❌ 네트워크 오류");
+    } finally {
+      setIsAsking(false);
+    }
+  };
+
+  if (expanded) {
+    return (
+      <div className="fixed right-[100px] top-12 w-[500px] h-[800px] bg-white dark:bg-[#222] rounded-3xl border p-6 flex flex-col transition-all duration-500 overflow-hidden">
+        <h2 className="text-xl font-bold mb-4 text-center text-black dark:text-white">
+          챗봇 모드 활성화됨
+        </h2>
+
+        {error && (
+          <p className="text-red-500 text-sm text-center mb-2">{error}</p>
+        )}
+
+        <div className="flex-1 overflow-y-auto space-y-4 pr-2 text-sm text-black dark:text-white">
+          {chats.map((chat, idx) => (
+            <div key={idx} className="space-y-3">
+              {/* 질문 - 오른쪽 정렬 */}
+              <div className="flex justify-end items-start gap-2">
+                <div className="max-w-[70%] bg-blue-100 dark:bg-blue-700 text-sm p-3 rounded-xl text-black dark:text-white">
+                  {chat.query}
+                </div>
+                <Image
+                  src="/wooseok.png"
+                  alt="질문 이미지"
+                  width={30}
+                  height={30}
+                />
+              </div>
+
+              {/* 답변 - 왼쪽 정렬 */}
+              <div className="flex justify-start items-start gap-2">
+                <Image
+                  src="/wooseok.png"
+                  alt="답변 이미지"
+                  width={30}
+                  height={30}
+                />
+                <div className="max-w-[70%] bg-gray-100 dark:bg-gray-800 text-sm p-3 rounded-xl text-black dark:text-white">
+                  {chat.answer}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <form onSubmit={handleSubmit} className="mt-4 flex items-start gap-2">
+          <input
+            type="text"
+            placeholder="궁금한 걸 입력하세요"
+            className="flex-1 border rounded-md px-3 py-2 text-sm h-[40px]"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button
+            type="submit"
+            disabled={isAsking}
+            className="w-[80px] h-[40px] text-sm rounded-md bg-black text-white hover:bg-gray-800 disabled:opacity-50"
+          >
+            {isAsking ? "전송 중..." : "입력"}
+          </button>
+        </form>
+      </div>
+    );
+  }
+
+  return (
+    <Draggable>
+      <div className="fixed top-[470px] right-[100px] w-72 h-[380px] bg-white bg-transparent dark:bg-[#3A3A3A] rounded-[40px] shadow-xl flex flex-col items-center justify-start py-4 transition-colors duration-700">
+        <div className="w-full px-6 text-sm opacity-40 flex justify-between items-center">
+          <span className={clsx(isDark ? "text-white" : "text-black")}>
+            <KoreanTimeMinute />
+          </span>
+          <button>
+            <GrMore />
+          </button>
+        </div>
+
+        <div
+          className={clsx(
+            "relative w-32 h-32 rounded-full mx-auto mt-4 transition-all duration-700",
+            isDark
+              ? "bg-gradient-to-br from-[#8983F7] to-[#A3DAFB]"
+              : "bg-gradient-to-br from-[#FF0080] to-[#FF8C00]"
+          )}
+        >
           <div
             className={clsx(
-              "relative w-32 h-32 rounded-full mx-auto mt-4 transition-all duration-700",
-              isDark
-                ? "bg-gradient-to-br from-[#8983F7] to-[#A3DAFB]"
-                : "bg-gradient-to-br from-[#FF0080] to-[#FF8C00]"
+              "absolute right-0 w-24 h-24 rounded-full transition-transform origin-top-right duration-700",
+              isDark ? "scale-100 bg-[#3A3A3A]" : "scale-0 bg-white"
             )}
-          >
-            <div
-              className={clsx(
-                "absolute right-0 w-24 h-24 rounded-full transition-transform origin-top-right duration-700",
-                isDark ? "scale-100 bg-[#3A3A3A]" : "scale-0 bg-white"
-              )}
-            />
-          </div>
-
-          {/* 다크모드 토글 */}
-          <label
-            onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="relative w-[220px] h-11 bg-black/10 dark:bg-white/20 rounded-full mt-8 mb-2 cursor-pointer transition-all duration-300"
-          >
-            <div
-              className={clsx(
-                "absolute top-0 left-0 w-1/2 h-full rounded-full shadow-md transition-transform duration-300",
-                isDark
-                  ? "translate-x-full bg-[#34323D]"
-                  : "translate-x-0 bg-white"
-              )}
-            />
-            <div className="absolute top-[25%] left-[17.5%] w-[65%] flex justify-between text-[90%] font-bold select-none">
-              <p className={clsx(isDark ? "text-white/50" : "text-black")}>
-                Light
-              </p>
-              <p className={clsx(isDark ? "text-white" : "text-black/50")}>
-                Dark
-              </p>
-            </div>
-          </label>
-
-          {/* 챗봇 / 리셋 버튼 */}
-          <div className="flex gap-3 mt-2">
-            <button
-              onClick={() => setIsChatbotOpen(true)}
-              className="w-[105px] h-11 rounded-full bg-[#f3f3f3] text-black text-sm font-bold shadow hover:bg-white transition"
-            >
-              CHATBOT
-            </button>
-            <button
-              onClick={() => router.push("/")}
-              className="w-[105px] h-11 rounded-full bg-[#f3f3f3] text-black text-sm font-bold shadow hover:bg-white transition "
-            >
-              HOME
-            </button>
-          </div>
+          />
         </div>
-      </Draggable>
 
-      {/* 챗봇 박스 렌더링 */}
-      {isChatbotOpen && <ChattingBox onClose={() => setIsChatbotOpen(false)} />}
-    </>
+        <label
+          onClick={() => setTheme(isDark ? "light" : "dark")}
+          className="relative w-[220px] h-11 bg-black/10 dark:bg-white/20 rounded-full mt-8 mb-2 cursor-pointer transition-all duration-300"
+        >
+          <div
+            className={clsx(
+              "absolute top-0 left-0 w-1/2 h-full rounded-full shadow-md transition-transform duration-300",
+              isDark
+                ? "translate-x-full bg-[#34323D]"
+                : "translate-x-0 bg-white"
+            )}
+          />
+          <div className="absolute top-[25%] left-[17.5%] w-[65%] flex justify-between text-[90%] font-bold select-none">
+            <p className={clsx(isDark ? "text-white/50" : "text-black")}>
+              Light
+            </p>
+            <p className={clsx(isDark ? "text-white" : "text-black/50")}>
+              Dark
+            </p>
+          </div>
+        </label>
+
+        <div className="flex gap-3 mt-2">
+          <button
+            onClick={() => {
+              setExpanded(true);
+              onChatbotClick?.();
+            }}
+            className="w-[105px] h-11 rounded-full bg-[#f3f3f3] text-black text-sm font-bold shadow hover:bg-white transition"
+          >
+            CHATBOT
+          </button>
+          <button
+            onClick={() => router.push("/")}
+            className="w-[105px] h-11 rounded-full bg-[#f3f3f3] text-black text-sm font-bold shadow hover:bg-white transition"
+          >
+            HOME
+          </button>
+        </div>
+      </div>
+    </Draggable>
   );
 };
 
