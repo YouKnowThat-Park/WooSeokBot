@@ -4,10 +4,11 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Draggable from "react-draggable";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import KoreanTimeMinute from "./KoreanTimeMinute";
 import { GrMore } from "react-icons/gr";
 import Image from "next/image";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 type QA = {
   query: string;
@@ -16,9 +17,19 @@ type QA = {
 
 type ThemeToggleProps = {
   onChatbotClick?: () => void;
+  enableChatbot?: boolean;
 };
 
-const ThemeToggle = ({ onChatbotClick }: ThemeToggleProps) => {
+const projectNameMap: Record<string, string> = {
+  dogo: "DoGo",
+  stage101: "Stage101",
+  wooseokBot: "WooseokBot",
+};
+
+const ThemeToggle = ({
+  onChatbotClick,
+  enableChatbot = false,
+}: ThemeToggleProps) => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -28,7 +39,17 @@ const ThemeToggle = ({ onChatbotClick }: ThemeToggleProps) => {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
+  const pathname = usePathname();
+  const slug = pathname.split("/").pop() || "";
+  const displayProjectName = projectNameMap[slug] || slug;
+
   useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    if (!enableChatbot && expanded) {
+      setExpanded(false);
+    }
+  }, [pathname, enableChatbot]);
+
   if (!mounted) return null;
 
   const isDark = theme === "dark";
@@ -39,7 +60,7 @@ const ThemeToggle = ({ onChatbotClick }: ThemeToggleProps) => {
 
     setIsAsking(true);
     try {
-      const res = await fetch("http://localhost:8000/api/chat/ask/", {
+      const res = await fetch(`http://localhost:8000/api/chat/ask/${slug}/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: input }),
@@ -69,9 +90,36 @@ const ThemeToggle = ({ onChatbotClick }: ThemeToggleProps) => {
   if (expanded) {
     return (
       <div className="fixed right-[100px] top-12 w-[500px] h-[800px] bg-white dark:bg-[#222] rounded-3xl border p-6 flex flex-col transition-all duration-500 overflow-hidden">
-        <h2 className="text-xl font-bold mb-4 text-center text-black dark:text-white">
-          챗봇 모드 활성화됨
-        </h2>
+        <div className="relative mb-4 h-8 flex items-center justify-center">
+          {/* 왼쪽 백 버튼 */}
+          <button
+            onClick={() => setExpanded(false)}
+            className="absolute left-0 text-gray-500 hover:text-black dark:hover:text-white transition"
+          >
+            <IoIosArrowRoundBack className="w-6 h-6" />
+          </button>
+
+          {/* 가운데 텍스트 */}
+          <h2 className="text-xl font-bold text-black dark:text-white">
+            {displayProjectName} 전용 챗봇
+          </h2>
+        </div>
+        <button
+          onClick={() => setTheme(isDark ? "light" : "dark")}
+          className={clsx(
+            "relative w-[3.5em] h-[2em] left-[400px] rounded-full transition-colors duration-300",
+            isDark ? "bg-[#303136]" : "bg-[#f4f4f5]"
+          )}
+        >
+          <span
+            className={clsx(
+              "absolute top-1/2 transform -translate-y-1/2 w-[1.4em] h-[1.4em] rounded-full transition-all duration-300",
+              isDark
+                ? "left-[calc(100%-1.7em)] bg-[#303136] shadow-[inset_-3px_-2px_5px_-2px_#8983f7,inset_-10px_-4px_0_0_#a3dafb]"
+                : "left-[0.3em] bg-gradient-to-br from-[#ff0080] to-[#ff8c00]"
+            )}
+          />
+        </button>
 
         {error && (
           <p className="text-red-500 text-sm text-center mb-2">{error}</p>
@@ -80,7 +128,6 @@ const ThemeToggle = ({ onChatbotClick }: ThemeToggleProps) => {
         <div className="flex-1 overflow-y-auto space-y-4 pr-2 text-sm text-black dark:text-white">
           {chats.map((chat, idx) => (
             <div key={idx} className="space-y-3">
-              {/* 질문 - 오른쪽 정렬 */}
               <div className="flex justify-end items-start gap-2">
                 <div className="max-w-[70%] bg-blue-100 dark:bg-blue-700 text-sm p-3 rounded-xl text-black dark:text-white">
                   {chat.query}
@@ -93,7 +140,6 @@ const ThemeToggle = ({ onChatbotClick }: ThemeToggleProps) => {
                 />
               </div>
 
-              {/* 답변 - 왼쪽 정렬 */}
               <div className="flex justify-start items-start gap-2">
                 <Image
                   src="/wooseok.png"
@@ -182,10 +228,17 @@ const ThemeToggle = ({ onChatbotClick }: ThemeToggleProps) => {
         <div className="flex gap-3 mt-2">
           <button
             onClick={() => {
+              if (!enableChatbot) return;
               setExpanded(true);
               onChatbotClick?.();
             }}
-            className="w-[105px] h-11 rounded-full bg-[#f3f3f3] text-black text-sm font-bold shadow hover:bg-white transition"
+            disabled={!enableChatbot}
+            className={clsx(
+              "w-[105px] h-11 rounded-full text-sm font-bold shadow transition",
+              enableChatbot
+                ? "bg-[#f3f3f3] text-black hover:bg-white"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            )}
           >
             CHATBOT
           </button>
