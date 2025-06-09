@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import ProjectRouter from "../_components/ProjectRouter";
 import ChatSearchInput from "../chatbot/ChatSearchInput";
+import PortfolioPage from "../portfolio/PortfolioPage";
 
 const Home = () => {
   const router = useRouter();
@@ -42,7 +42,7 @@ const Home = () => {
   return (
     <div className="relative min-h-screen dark:bg-[#11111]">
       <div className="relative z-40 mt-[850px]">
-        <ProjectRouter />
+        <PortfolioPage />
       </div>
 
       {showSearch && (
