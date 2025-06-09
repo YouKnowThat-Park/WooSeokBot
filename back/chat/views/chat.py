@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 import uuid, secrets
-from ..models import ChatSession, ChatProfile, ChatProject
+from ..models import ChatSession, ChatProfile, ChatProject, SlugChatProject
 from ..serializers import ChatSessionCreateSerializer
 from django.utils import timezone
 from datetime import timedelta
@@ -49,6 +49,34 @@ def create_chat(request):
         "query": query,
         "answer": answer,
     }, status=status.HTTP_201_CREATED)
+
+@api_view(['POST'])
+def chat_ask_by_slug(request, slug: str):
+    query = request.data.get("query")
+    if not query:
+        return Response({"error": "query is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        project = SlugChatProject.objects.get(slug=slug)
+    except SlugChatProject.DoesNotExist:
+        return Response({"error": f"프로젝트 '{slug}'을 찾을 수 없습니다."}, status=status.HTTP_404_NOT_FOUND)
+
+    matched = []
+    
+    # ✅ 대소문자 무시하고 검색
+    if query.lower() in project.title.lower() or query.lower() in project.description.lower():
+        matched.append(project.description)
+
+    if matched:
+        answer = "\n\n".join(matched)
+    else:
+        answer = f"'{query}'에 대한 '{slug}' 프로젝트 관련 정보를 찾을 수 없습니다."
+
+    return Response({
+        "query": query,
+        "answer": answer
+    }, status=status.HTTP_200_OK)
+
 
 
 @api_view(['GET'])

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ChatSession, ChatProfile, ChatProject, ChatFeedback
+from .models import ChatSession, ChatProfile, ChatProject, ChatFeedback, SlugChatProject
 @admin.register(ChatSession)
 class ChatSessionAdmin(admin.ModelAdmin):
     list_display = ('id', 'query', 'token', 'created_at')
@@ -25,3 +25,9 @@ class ChatFeedbackAdmin(admin.ModelAdmin):
     search_fields = ('nickname', 'content')
     list_filter = ('created_at',)
     readonly_fields = ('nickname', 'content', 'password_hash', 'created_at')
+
+@admin.register(SlugChatProject)
+class SlugChatProjectAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'slug', 'created_at')
+    search_fields = ('title', 'slug', 'description')
+    list_filter = ('created_at',)
