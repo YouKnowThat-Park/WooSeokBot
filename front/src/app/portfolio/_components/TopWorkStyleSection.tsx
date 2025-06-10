@@ -93,7 +93,7 @@ const TopWorkStyleSection = () => {
                       height={28}
                       className="rounded-full mt-1"
                     />
-                    <div className="bg-blue-100 dark:bg-blue-700 text-sm text-black dark:text-white p-3 rounded-xl whitespace-pre-wrap max-w-[85%]">
+                    <div className="bg-blue-100 dark:bg-blue-700 text-[12px] text-black dark:text-white p-3 rounded-xl whitespace-pre-wrap max-w-[85%]">
                       {style.question}
                     </div>
                   </div>
@@ -106,7 +106,7 @@ const TopWorkStyleSection = () => {
                       height={28}
                       className="rounded-full mt-1"
                     />
-                    <div className="bg-gray-100 dark:bg-gray-800 text-sm text-black dark:text-white p-1.5 text-[12px] rounded-xl whitespace-pre-wrap max-w-[85%]">
+                    <div className="bg-gray-100 dark:bg-gray-800 text-[12px] text-black dark:text-white p-1.5 text-[12px] rounded-xl whitespace-pre-wrap max-w-[85%]">
                       {style.answer}
                     </div>
                   </div>
