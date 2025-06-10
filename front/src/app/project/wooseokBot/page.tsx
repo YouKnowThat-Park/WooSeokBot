@@ -1,9 +1,5 @@
 "use client";
 import ProjectHero from "@/app/_components/ProjectHero";
-import AboutMe from "@/app/portfolio/_components/AboutMe";
-import InfiniteTechSlider from "@/app/portfolio/_components/InfinteTechSlider";
-import LearningStackSection from "@/app/portfolio/_components/LearningStackSection";
-import TechProjectsModal from "@/app/portfolio/_components/TechProjectModal";
 import React, { useEffect, useRef } from "react";
 import ProjectDescription from "../_components/ProjectDescription";
 import ProjectOverview from "@/app/_components/ProjectOverview";
@@ -11,13 +7,11 @@ import TeamRoles from "@/app/_components/TeamRoles";
 import ProjectGoals from "@/app/_components/ProjectGoals";
 import UserFlowSection from "../_components/UserFlowSection";
 import TechStackTable from "../_components/TechStackTable";
-import PerformanceSection from "../dogo/_components/PerformanceSection";
 import ProjectDetails from "../_components/ProjectDetails";
 import ProjectRetrospective from "../_components/ProjectRetrospective";
 import NextProjectsSlider from "../../_components/NextProjectsSlider";
 import { StageTeam } from "@/data/StageTeamRoles";
 import { StageTechItems } from "@/data/StageTechItems";
-import { stage101Performance } from "@/data/stage101Performance";
 import { Stage101Details } from "@/data/stage101Details";
 
 const WooSeokBot = () => {

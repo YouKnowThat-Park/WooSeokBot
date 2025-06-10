@@ -1,14 +1,10 @@
 "use client";
 
-import { useRef } from "react";
 import AboutMe from "./_components/AboutMe";
 import LearningStackSection from "./_components/LearningStackSection";
 import ResumeSection from "./_components/ResumeSection";
-import ProjectCard from "./_components/ProjectCard";
 import InfiniteTechSlider from "./_components/InfinteTechSlider";
 import TechProjectsModal from "./_components/TechProjectModal";
-import { projects, studyProjects } from "@/data/project";
-import useAutoSliderController from "@/hooks/useAutoSliderController.ts";
 import TopWorkStyleSection from "./_components/TopWorkStyleSection";
 import MiddleWorkStyleSection from "./_components/MiddleWorkStyleSection";
 import BottomWorkStyleSection from "./_components/BottomWorkStyleSection";
@@ -16,14 +12,6 @@ import NextProjectsSlider from "../_components/NextProjectsSlider";
 import NextStudyProjectsSlider from "../_components/NextStudyProjectSlider";
 
 const PortfolioPage = () => {
-  const projectSliderRef = useRef<HTMLDivElement | null>(null);
-  const studySliderRef = useRef<HTMLDivElement | null>(null);
-
-  const { scrollByDirection: scrollProjects } =
-    useAutoSliderController(projectSliderRef);
-  const { scrollByDirection: scrollStudies } =
-    useAutoSliderController(studySliderRef);
-
   return (
     <>
       <div className="w-[970px] h-auto mt-[400px] mb-[84px]  bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden border  dark:bg-[#111111] dark:border-white">
