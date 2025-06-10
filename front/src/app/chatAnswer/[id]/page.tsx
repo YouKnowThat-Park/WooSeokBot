@@ -74,44 +74,54 @@ const ChatAnswer = () => {
   }
 
   return (
-    <div className="w-full max-w-[970px] h-screen mx-auto flex flex-col bg-[#FBFBFB] rounded-tl-[45px]">
+    <div className="w-full max-w-[970px] h-screen  flex flex-col bg-[#FBFBFB]  dark:bg-[#111111]">
       {/* 채팅 내역 영역 */}
-      <div className="flex-1 overflow-y-auto px-6 py-4 space-y-8">
+      <div className="flex-1 overflow-y-auto py-4 space-y-5">
         {chats.map((chat, idx) => (
-          <div
-            key={idx}
-            className="flex items-start gap-x-6 bg-white p-4 rounded-md shadow-sm"
-          >
-            <Image
-              src="/wooseok.png"
-              alt="우석 프로필 이미지"
-              width={120}
-              height={180}
-              className="rounded-md object-cover bg-white"
-            />
-            <div className="flex-1 relative min-h-[200px]">
-              <p className="font-semibold text-black mb-2">
-                질문: {chat.query}
-              </p>
-              <p className="text-gray-800 whitespace-pre-line">
-                답변: {chat.answer}
-              </p>
+          <div key={idx} className="space-y-3">
+            {/* 질문 - 오른쪽 정렬 */}
+            <div className="flex items-start gap-3 flex-row-reverse max-w-[85%]">
+              <Image
+                src="/interviewer.webp"
+                alt="팀원"
+                width={28}
+                height={28}
+                className="rounded-full mt-1"
+              />
+              <div className="bg-blue-100 dark:bg-blue-700 text-sm text-black dark:text-white p-3 rounded-xl whitespace-pre-wrap">
+                {chat.query}
+              </div>
+            </div>
 
-              {idx === chats.length - 1 && (
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="absolute bottom-[-50px] right-3 font-semibold text-sm text-red-500 hover:underline"
-                >
-                  답변은 만족 스러우신가요? ✍️ 평가하러 가기
-                </button>
-              )}
+            {/* 답변 - 왼쪽 정렬 */}
+            <div className="flex items-start gap-3">
+              <Image
+                src="/wooseok.png"
+                alt="박우석"
+                width={28}
+                height={28}
+                className="rounded-full mt-1"
+              />
+              <div className="bg-gray-100 dark:bg-gray-800  text-black dark:text-white p-1.5  rounded-xl whitespace-pre-wrap max-w-[85%] relative">
+                {chat.answer}
+
+                {/* 마지막 채팅에만 평가 버튼 표시 */}
+                {idx === chats.length - 1 && (
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="absolute -bottom-8 right-3 py-2 font-semibold text-xs text-red-500 hover:underline"
+                  >
+                    답변은 만족 스러우신가요? ✍️ 평가하러 가기
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         ))}
       </div>
 
       {/* 채팅 입력창 */}
-      <div className="border-t border-gray-300 p-4 bg-white">
+      <div className="border-t border-gray-300  bg-white">
         <ChattingBox />
       </div>
 

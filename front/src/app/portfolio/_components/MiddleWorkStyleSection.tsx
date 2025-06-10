@@ -1,18 +1,20 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 
 const MiddleWorkStyleSection = () => {
   const style = {
-    title: "사용자의 흐름에 맞춘 UI/UX 설계",
+    title: "목적 중심 기능 설계",
     question:
-      "팀원 김 :\n우석님, 왜 예약하기 버튼이 카드랑 모달 양쪽에 있는 건가요? 밖에만 있어도 되는 거 아닌가요?",
-    answer:
-      "박우석 : 많은 사용자가 여러 호텔을 반복해서 비교합니다. 예를 들어 A호텔의 B객실을 봤다가, C호텔의 A객실을 본 뒤 다시 A호텔의 B객실로 돌아오는 식이죠.\n\n이때 어떤 사용자는 상세 정보를 보고 바로 예약하고 싶어하고, 어떤 사용자는 카드를 보고 다시 예약하려 할 수 있습니다. 만약 버튼이 모달에만 있다면, 예약하려고 할 때마다 다시 모달을 열어야 하는 번거로움이 생깁니다.",
+      "(Voir)팀원 C:\n이미지를 여러 장 업로드하는 건 디자인도 복잡하고 기술적으로도 어려운데 다른 방법이 있을까요?",
+    answer1: "튜터님 : 사진 한장만 올릴 수 있게 하는건 어떤가요?",
+    answer2:
+      "박우석:\n그건 안됩니다. 여행 SNS에서 사진은 핵심 콘텐츠입니다. 텍스트 몇 줄과 사진 한 장만으로는 사용자의 감정을 자극하기엔 부족하다 생각합니다.\n\nVoir는 여행 감정을 공유하는 서비스입니다. 그 목적에 맞는 기능이라면, 구현이 어렵더라도 반드시 들어가야 합니다. 힘들다고 핵심 기능을 빼면, 플랫폼의 존재 의미가 사라집니다.",
   };
 
   return (
-    <section className="w-full px-6 py-16 bg-[#EDEDED] dark:bg-[#2e2e2e] text-black dark:text-white flex flex-col items-center">
+    <section className="w-full px-6 py-16 bg-[#F9FAFB] dark:bg-[#2e2e2e] shadow-lg text-black dark:text-white flex flex-col items-center">
       <div className="flex flex-col md:flex-row-reverse items-start justify-between gap-10 w-full max-w-[1200px]">
         {/* 오른쪽 텍스트 */}
         <div className="md:w-2/5 text-left space-y-4 mt-28 mr-2">
@@ -24,22 +26,47 @@ const MiddleWorkStyleSection = () => {
           </p>
         </div>
 
-        {/* 왼쪽 카드 */}
-        <div className="md:w-3/5 relative h-[420px] flex items-center justify-center">
-          <div
-            className={`w-[300px] h-[390px] rounded-xl shadow-xl p-4 whitespace-pre-wrap bg-white dark:bg-[#1f1f1f] transition-transform duration-300 ease-in-out  cursor-default`}
-          >
-            <h4 className="text-lg font-bold text-[#3ecf8e] mb-2">
-              {style.title}
-            </h4>
-
-            <p className="text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-1">
+        <div className="w-full md:w-[440px] ml-5 bg-white dark:bg-neutral-900 shadow-xl rounded-xl p-5 space-y-4 transition-transform duration-300 ease-in-out hover:scale-105">
+          {/* 질문 */}
+          <div className="flex items-start gap-3">
+            <Image
+              src="/girl.webp"
+              alt="팀원"
+              width={28}
+              height={28}
+              className="rounded-full mt-1"
+            />
+            <div className="bg-blue-100 dark:bg-blue-700 text-sm text-black dark:text-white p-3 rounded-xl whitespace-pre-wrap max-w-[85%]">
               {style.question}
-            </p>
-            <div className="border my-2" />
-            <p className="text-[13px] text-neutral-800 dark:text-neutral-300">
-              {style.answer}
-            </p>
+            </div>
+          </div>
+
+          {/* 답변1 */}
+          <div className="flex items-start justify-end gap-3">
+            <div className="bg-blue-100 dark:bg-blue-700 text-sm text-black dark:text-white p-3 rounded-xl whitespace-pre-wrap max-w-[85%]">
+              {style.answer1}
+            </div>
+            <Image
+              src="/wooseok.png"
+              alt="튜터"
+              width={28}
+              height={28}
+              className="rounded-full mt-1"
+            />
+          </div>
+
+          {/* 답변2 */}
+          <div className="flex items-start gap-3">
+            <Image
+              src="/wooseok.png"
+              alt="박우석"
+              width={28}
+              height={28}
+              className="rounded-full mt-1"
+            />
+            <div className="bg-gray-100 dark:bg-gray-800 text-sm text-black dark:text-white p-3 rounded-xl whitespace-pre-wrap max-w-[85%]">
+              {style.answer2}
+            </div>
           </div>
         </div>
       </div>

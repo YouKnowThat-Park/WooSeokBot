@@ -22,14 +22,14 @@ const ChattingBox = () => {
   };
 
   return (
-    <div className=" w-full h-[180px] cursor-move bg-white shadow-lg border rounded-md z-50 p-4 flex flex-col">
+    <div className="  cursor-move  border rounded-md z-50  flex flex-col">
       <form onSubmit={handleSubmit} className="flex gap-2 mt-auto">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="우석이에게 추가 질문을 해보세요"
-          className="flex-1 border rounded px-4 py-2 outline-none"
+          className="flex-1 border rounded px-4 py-2 outline-none w- h-[100px]"
         />
         <button
           type="submit"
