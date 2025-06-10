@@ -22,7 +22,7 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setBotAttacks(true);
-    }, 700);
+    }, 400);
     return () => clearTimeout(timer);
   }, []);
 
@@ -76,7 +76,7 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
             className={`
               text-[100px] font-black ml-4
               text-gray-900 dark:text-[#F4F5F4]
-              transition-all duration-700
+              transition-all duration-100
               ${
                 botAttacks
                   ? "opacity-100 translate-x-0"

@@ -129,23 +129,21 @@ const ResumeSection = () => {
         →
       </button>
 
-      {/* 스크롤 영역 */}
+      {/* 스크롤 가능한 영역 */}
       <div
         ref={scrollRef}
-        id="timeline-scroll"
-        className="relative overflow-x-auto scroll-smooth px-4 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]"
+        className="overflow-x-auto scroll-smooth px-12 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]"
       >
-        {/* 타임라인 라인 및 아이템 */}
-        <div className="min-w-[3000px] relative z-10 h-[400px] flex snap-x snap-mandatory">
+        <div className="relative z-10 h-[400px] flex snap-x snap-mandatory w-max pr-8">
           {/* 중심선 */}
           <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gray-300 dark:bg-gray-600 -translate-y-1/2 z-0" />
 
           {timelineItems.map((item, idx) => (
             <div
               key={idx}
-              className="relative w-[250px] mx-8 flex flex-col items-center snap-center"
+              className="relative w-[250px] flex-shrink-0 mx-4 flex flex-col items-center snap-center"
             >
-              {/* 위 */}
+              {/* 위쪽 아이템 */}
               {item.position === "top" && (
                 <div className="absolute bottom-[230px] text-center w-[250px]">
                   <p className="text-[16px] font-semibold">{item.title}</p>
@@ -158,10 +156,10 @@ const ResumeSection = () => {
                 </div>
               )}
 
-              {/* 점 */}
+              {/* 중앙 점 */}
               <div className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-black dark:bg-white rounded-full border-4 border-white dark:border-[#111111] z-10" />
 
-              {/* 아래 */}
+              {/* 아래쪽 아이템 */}
               {item.position === "bottom" && (
                 <div className="absolute bottom-[95px] text-center w-[250px]">
                   <p className="text-sm text-gray-500 dark:text-gray-400">

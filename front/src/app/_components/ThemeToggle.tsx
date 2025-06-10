@@ -17,6 +17,8 @@ type QA = {
 
 type ThemeToggleProps = {
   onChatbotClick?: () => void;
+  onChatbotClose?: () => void;
+
   enableChatbot?: boolean;
 };
 
@@ -24,10 +26,12 @@ const projectNameMap: Record<string, string> = {
   dogo: "DoGo",
   stage101: "Stage101",
   wooseokBot: "WooseokBot",
+  aiChatBot: "AiChatBot",
 };
 
 const ThemeToggle = ({
   onChatbotClick,
+  onChatbotClose,
   enableChatbot = false,
 }: ThemeToggleProps) => {
   const { theme, setTheme } = useTheme();
@@ -92,7 +96,10 @@ const ThemeToggle = ({
         <div className="relative mb-4 h-8 flex items-center justify-center">
           {/* 왼쪽 백 버튼 */}
           <button
-            onClick={() => setExpanded(false)}
+            onClick={() => {
+              setExpanded(false);
+              onChatbotClose?.(); // 챗봇 닫을 때 margin 복원
+            }}
             className="absolute left-0 text-gray-500 hover:text-black dark:hover:text-white transition"
           >
             <IoIosArrowRoundBack className="w-6 h-6" />
@@ -229,13 +236,18 @@ const ThemeToggle = ({
             }}
             disabled={!enableChatbot}
             className={clsx(
-              "w-[105px] h-11 rounded-full text-sm font-bold shadow transition",
+              "relative group w-[105px] h-11 rounded-full text-sm font-bold shadow transition",
               enableChatbot
                 ? "bg-[#f3f3f3] text-black hover:bg-white"
                 : "bg-gray-300 text-gray-500 cursor-not-allowed"
             )}
           >
             CHATBOT
+            {!enableChatbot && (
+              <span className="absolute left-1/2 -top-9 -translate-x-1/2 whitespace-nowrap rounded bg-black px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Project에서만 사용 가능
+              </span>
+            )}
           </button>
           <button
             onClick={() => router.push("/")}

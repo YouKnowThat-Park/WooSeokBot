@@ -1,10 +1,10 @@
 "use client";
 
-import ThemeToggle from "../_components/ThemeToggle";
+import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-export default function ProjectLayout({
+export default function ThemeLayoutProvider({
   children,
 }: {
   children: React.ReactNode;
@@ -17,6 +17,7 @@ export default function ProjectLayout({
     "/project/stage101",
     "/project/dogo",
     "/project/wooseokBot",
+    "/project/aiChatBot",
   ];
   const showChatbot = chatbotPages.some((path) => pathname.startsWith(path));
 
@@ -24,6 +25,8 @@ export default function ProjectLayout({
   useEffect(() => {
     if (!showChatbot) setMargin(500);
   }, [pathname, showChatbot]);
+  console.log("📍 pathname", pathname);
+  console.log("✅ showChatbot", showChatbot);
 
   return (
     <div
@@ -32,6 +35,7 @@ export default function ProjectLayout({
     >
       <ThemeToggle
         onChatbotClick={() => setMargin(200)}
+        onChatbotClose={() => setMargin(500)}
         enableChatbot={showChatbot}
       />
       {children}

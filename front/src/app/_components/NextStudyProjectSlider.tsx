@@ -1,22 +1,23 @@
 import React, { useRef } from "react";
-import ProjectCard from "../../portfolio/_components/ProjectCard";
-import { projects } from "@/data/project";
+import ProjectCard from "../portfolio/_components/ProjectCard";
 import useAutoSliderController from "@/hooks/useAutoSliderController.ts";
+import { studyProjects } from "@/data/project";
 
 interface NextProjectsSliderProps {
   excludeId: string;
 }
 
-const NextProjectsSlider = ({ excludeId }: NextProjectsSliderProps) => {
-  const sliderRef = useRef<HTMLDivElement | null>(null);
-  const filteredProjects = projects.filter((p) => p.id !== excludeId);
+const NextStudyProjectsSlider = ({ excludeId }: NextProjectsSliderProps) => {
+  const studySliderRef = useRef<HTMLDivElement | null>(null);
+  const filteredProjects = studyProjects.filter((p) => p.id !== excludeId);
 
-  const { scrollByDirection } = useAutoSliderController(sliderRef);
+  const { scrollByDirection } = useAutoSliderController(studySliderRef);
 
   return (
-    <div className="w-full mt-10 mb-6">
+    <>
+      <div className="border mt-10 mb-6" />
       <h3 className="mb-4 text-xl font-semibold dark:text-[#fbfbfb]">
-        다른 프로젝트
+        Study Project
       </h3>
       <div className="relative">
         <button
@@ -32,7 +33,7 @@ const NextProjectsSlider = ({ excludeId }: NextProjectsSliderProps) => {
           →
         </button>
         <div
-          ref={sliderRef}
+          ref={studySliderRef}
           className="overflow-x-auto snap-x snap-mandatory flex gap-4 pb-4 scroll-smooth [&::-webkit-scrollbar]:hidden"
         >
           {[...filteredProjects, ...filteredProjects].map((project, i) => (
@@ -40,8 +41,8 @@ const NextProjectsSlider = ({ excludeId }: NextProjectsSliderProps) => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default NextProjectsSlider;
+export default NextStudyProjectsSlider;

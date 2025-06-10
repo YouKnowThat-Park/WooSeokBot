@@ -4,7 +4,7 @@ import NoticeModal from "./_components/NoticeModal";
 
 const page = () => {
   return (
-    <div className="mx-[500px]">
+    <div>
       <Home />
       <NoticeModal />
     </div>
