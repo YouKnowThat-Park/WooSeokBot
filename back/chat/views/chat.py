@@ -62,7 +62,7 @@ def chat_ask_by_slug(request, slug: str):
         return Response({"error": f"프로젝트 '{slug}'을 찾을 수 없습니다."}, status=status.HTTP_404_NOT_FOUND)
 
     matched = []
-    
+
     # ✅ 대소문자 무시하고 검색
     if query.lower() in project.title.lower() or query.lower() in project.description.lower():
         matched.append(project.description)
@@ -72,10 +72,24 @@ def chat_ask_by_slug(request, slug: str):
     else:
         answer = f"'{query}'에 대한 '{slug}' 프로젝트 관련 정보를 찾을 수 없습니다."
 
+    # ✅ 항상 ChatSession 저장되도록 수정
+    chat_id = uuid.uuid4()
+    token = secrets.token_hex(32)
+
+    ChatSession.objects.create(
+        id=chat_id,
+        query=query,
+        response=answer,
+        token=token,
+    )
+
     return Response({
+        "chatId": str(chat_id),
+        "token": token,
         "query": query,
         "answer": answer
     }, status=status.HTTP_200_OK)
+
 
 
 
