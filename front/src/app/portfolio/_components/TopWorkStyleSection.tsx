@@ -18,9 +18,11 @@ const workStyles = [
       "박우석 :\n 키워드 기반은 입력이 조금만 달라도 인식이 어렵습니다. 예: '바나나분석 해줘', '바나나ㅏ 분석'처럼 오타 하나로도 의도가 누락되죠. 이런 방식은 UX를 해칠 뿐 아니라 챗봇 본연의 목적성도 잃게 됩니다.\n\n 자연어 분기는 사용자의 표현을 유연하게 해석합니다. GPT처럼 철자가 틀려도 의도를 파악하고, 가장 적절한 분기로 연결하는 구조가 필요합니다.",
   },
   {
-    title: "배움을 두려워하지 않는 성장 중심 개발자",
-    description:
-      "Zustand에 익숙했지만 Recoil, Django까지 확장하며 프론트뿐 아니라 백엔드 영역도 지속적으로 학습하고 있습니다.",
+    title: "직관적 파일 분석 기능 배치",
+    question:
+      "A 회사 개발팀장:\n왜 기존 키워드 입력 방식에서 벗어나, 초기 화면에 업로더를 노출시키는 방식으로 바꿔야 하나요?",
+    answer:
+      "박우석:\n현재는 키워드 입력 전까지 파일 분석 기능이 보이지 않아,또한, 여러 파일을 반복 분석하려면 매번 키워드를 입력하고 업로더를 다시 여는 과정을 반복해야 해 UX 흐름이 끊기고 피로도가 높아집니다.\n\n업로더를 초기 화면에 고정 배치하면 진입과 동시에 기능을 인지하고, 반복 분석도 빠르게 이어갈 수 있습니다. 이는 단순 UI 개선을 넘어, 핵심 기능 전달력을 높이는 전략입니다.",
   },
 ];
 
@@ -63,7 +65,6 @@ const TopWorkStyleSection = () => {
         {/* 오른쪽 카드 */}
         <div className="md:w-3/5 relative h-[420px] flex items-center justify-center">
           {workStyles.map((style, index) => {
-            const isQA = !!style.question && !!style.answer;
             const position =
               (index - currentIndex + workStyles.length) % workStyles.length;
 
@@ -73,7 +74,7 @@ const TopWorkStyleSection = () => {
               <div
                 key={index}
                 onClick={nextCard}
-                className={`absolute transition-all duration-500 ease-in-out w-[300px] h-[385px] rounded-xl shadow-xl p-4 whitespace-pre-wrap cursor-pointer
+                className={`absolute transition-all duration-500 ease-in-out w-[300px] h-[385px] rounded-xl shadow-xl py-2 px-4 whitespace-pre-wrap cursor-pointer
         ${getCardStyle(index)} 
         ${isFront ? "hover:scale-[1.05]" : ""}
       bg-white dark:bg-[#1f1f1f]`}
@@ -82,21 +83,15 @@ const TopWorkStyleSection = () => {
                   {style.title}
                 </h4>
 
-                {isQA ? (
-                  <>
-                    <p className="text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-1">
-                      {style.question}
-                    </p>
-                    <div className="border my-2" />
-                    <p className="text-[13px] text-neutral-800 dark:text-neutral-300">
-                      {style.answer}
-                    </p>
-                  </>
-                ) : (
-                  <p className="text-sm text-neutral-800 dark:text-neutral-300">
-                    {style.description}
+                <>
+                  <p className="text-sm font-semibold text-neutral-700 dark:text-neutral-200 mb-1">
+                    {style.question}
                   </p>
-                )}
+                  <div className="border my-2" />
+                  <p className="text-[12px] text-neutral-800 dark:text-neutral-300">
+                    {style.answer}
+                  </p>
+                </>
               </div>
             );
           })}
