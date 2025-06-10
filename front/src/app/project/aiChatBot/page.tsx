@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import ProjectHero from "../../_components/ProjectHero";
-import NextProjectsSlider from "../_components/NextProjectsSlider";
+import NextProjectsSlider from "../../_components/NextProjectsSlider";
 import ConsultingArchitecture from "./_components/ConsultingArchitecture";
 import AlternativeConsultingStructure from "./_components/AlternativeConsultingStructure";
 import LangChainLangGraph from "./_components/LangChainLangGraph";

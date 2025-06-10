@@ -24,7 +24,7 @@ export const projects = [
     role: "서비스 기획 PM, Front",
     date: "2025.05.22 ~ 개발 중",
     image: "/wooseokbot.png",
-    link: "/project/WooseokBot",
+    link: "/project/wooseokBot",
   },
   {
     id: "AiChatBot",

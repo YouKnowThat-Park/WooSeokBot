@@ -1,3 +1,5 @@
+"use client";
+import NextStudyProjectsSlider from "@/app/_components/NextStudyProjectSlider";
 import ProjectGoals from "@/app/_components/ProjectGoals";
 import ProjectHero from "@/app/_components/ProjectHero";
 import ProjectOverview from "@/app/_components/ProjectOverview";
@@ -22,7 +24,7 @@ const page = () => {
         />
       </div>
 
-      <div className="w-full h-full px-10 py-10 mt-10 mb-10 border border-neutral-300 dark:text-[#fbfbfb]  dark:bg-[#2e2e2e] dark:border-neutral-700">
+      <div className="w-[970px] h-full mt-10 p-4 border border-neutral-300 dark:text-[#fbfbfb]  dark:bg-[#2e2e2e] dark:border-neutral-700">
         <ProjectDescription
           title="개인 프로젝트 과제"
           paragraphs={[
@@ -67,6 +69,9 @@ const page = () => {
           width={460}
           height={100}
         />
+      </div>
+      <div className="w-[1000px]">
+        <NextStudyProjectsSlider excludeId="To Do List" />
       </div>
     </>
   );

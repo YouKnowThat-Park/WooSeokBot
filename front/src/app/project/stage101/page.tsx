@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import PerformanceSection from "../_components/Performance";
 import ProjectHero from "../../_components/ProjectHero";
 import ProjectRetrospective from "../_components/ProjectRetrospective";
-import NextProjectsSlider from "@/app/project/_components/NextProjectsSlider";
+import NextProjectsSlider from "@/app/_components/NextProjectsSlider";
 import UserFlowSection from "../_components/UserFlowSection";
 import TechStackTable from "../_components/TechStackTable";
 import { StageTechItems } from "@/data/StageTechItems";
