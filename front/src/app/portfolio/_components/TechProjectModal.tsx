@@ -4,6 +4,7 @@ import { techModalAtom } from "@/recoil/TechModalAtom";
 import { useRecoilState } from "recoil";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { projects, studyProjects } from "@/data/project";
 
 const techToProjects: Record<string, string[]> = {
   REACT: ["vairlechemin", "Pokemon", "MBTI", "GhostHouse"],
@@ -31,8 +32,16 @@ const techToProjects: Record<string, string[]> = {
   JAVASCRIPT: ["Pokemon", "vairlechemin", "MBTI", "GhostHouse"],
 };
 
-const toImageSrc = (projectName: string) =>
-  `/${projectName.toLowerCase().replace(/\s+/g, "-")}.png`;
+const combinedProjects = [...projects, ...studyProjects];
+
+const projectMap: Record<string, { image: string; link: string }> =
+  combinedProjects.reduce((acc, project) => {
+    acc[project.id.toLowerCase().replace(/\s+/g, "")] = {
+      image: project.image,
+      link: project.link,
+    };
+    return acc;
+  }, {} as Record<string, { image: string; link: string }>);
 
 const TechProjectsModal = () => {
   const [selectedTech, setSelectedTech] = useRecoilState(techModalAtom);
@@ -44,8 +53,12 @@ const TechProjectsModal = () => {
   const projects = techToProjects[techName] || [];
 
   const handleProjectClick = (projectName: string) => {
+    const normalizedName = projectName.toLowerCase().replace(/\s+/g, "");
+    const project = projectMap[normalizedName];
+    if (!project) return;
+
     setSelectedTech({ isOpen: false, name: undefined, imageUrl: undefined });
-    router.push(`/project/${projectName.toLowerCase().replace(/\s+/g, "-")}`);
+    router.push(project.link);
   };
 
   return (
@@ -68,22 +81,26 @@ const TechProjectsModal = () => {
 
         {projects.length > 0 ? (
           <ul className="space-y-4">
-            {projects.map((p) => (
-              <li
-                key={p}
-                className="flex items-center gap-3 cursor-pointer hover:underline"
-                onClick={() => handleProjectClick(p)}
-              >
-                <Image
-                  src={toImageSrc(p)}
-                  alt={p}
-                  width={40}
-                  height={40}
-                  className="rounded border shadow-sm"
-                />
-                <span className="text-blue-600 dark:text-blue-400">{p}</span>
-              </li>
-            ))}
+            {projects.map((p) => {
+              const normalized = p.toLowerCase().replace(/\s+/g, "");
+              const project = projectMap[normalized];
+              return (
+                <li
+                  key={p}
+                  className="flex items-center gap-3 cursor-pointer hover:underline"
+                  onClick={() => handleProjectClick(p)}
+                >
+                  <Image
+                    src={project?.image || "/default.png"}
+                    alt={p}
+                    width={40}
+                    height={40}
+                    className="rounded border shadow-sm"
+                  />
+                  <span className="text-blue-600 dark:text-blue-400">{p}</span>
+                </li>
+              );
+            })}
           </ul>
         ) : (
           <p className="text-sm text-gray-500 dark:text-gray-400">
