@@ -1,14 +1,13 @@
-# chat/views/chat.py
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 import uuid, secrets
 from ..models import ChatSession, ChatProfile, ChatProject, SlugChatProject
-from ..serializers import ChatSessionCreateSerializer
 from django.utils import timezone
 from datetime import timedelta
+from ratelimit.decorators import ratelimit
 
+@ratelimit(key='ip', late='12/m', block=True)
 @api_view(['POST'])
 def create_chat(request):
     query = request.data.get("query")
@@ -25,10 +24,13 @@ def create_chat(request):
     # 🔍 키워드 검색
     profiles = ChatProfile.objects.filter(title__icontains=query)
     projects = ChatProject.objects.filter(title__icontains=query)
+    slugs = SlugChatProject.objects.filter(title__icontains=query) | SlugChatProject.objects.filter(description__icontains=query)
 
     profile_results = [p.description for p in profiles]
     project_results = [p.description for p in projects]
-    all_results = profile_results + project_results
+    slug_results = [s.description for s in slugs]
+
+    all_results = profile_results + project_results + slug_results
 
     if all_results:
         answer = "\n\n".join(all_results)
@@ -49,6 +51,7 @@ def create_chat(request):
         "query": query,
         "answer": answer,
     }, status=status.HTTP_201_CREATED)
+
 
 @api_view(['POST'])
 def chat_ask_by_slug(request, slug: str):
@@ -91,8 +94,6 @@ def chat_ask_by_slug(request, slug: str):
     }, status=status.HTTP_200_OK)
 
 
-
-
 @api_view(['GET'])
 def get_chat(request, chat_id):
     try:
@@ -106,6 +107,7 @@ def get_chat(request, chat_id):
         "response": chat.response,
     }, status=status.HTTP_200_OK)
 
+
 @api_view(['POST'])
 def chat_ask(request):
     query = request.data.get("query")
@@ -114,10 +116,13 @@ def chat_ask(request):
 
     profiles = ChatProfile.objects.filter(title__icontains=query)
     projects = ChatProject.objects.filter(title__icontains=query)
+    slugs = SlugChatProject.objects.filter(title__icontains=query) | SlugChatProject.objects.filter(description__icontains=query)
 
     profile_results = [p.description for p in profiles]
     project_results = [p.description for p in projects]
-    all_results = profile_results + project_results
+    slug_results = [s.description for s in slugs]
+
+    all_results = profile_results + project_results + slug_results
 
     if all_results:
         answer = "\n\n".join(all_results)
@@ -125,6 +130,6 @@ def chat_ask(request):
         answer = f"'{query}'에 대한 관련된 정보를 찾을 수 없습니다."
 
     return Response({
-    "query": query,
-    "answer": answer
-}, status=status.HTTP_200_OK)
+        "query": query,
+        "answer": answer
+    }, status=status.HTTP_200_OK)
