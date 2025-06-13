@@ -5,8 +5,8 @@ import NoticeModal from "./_components/NoticeModal";
 const page = () => {
   return (
     <div>
-      <Home />
       <NoticeModal />
+      <Home />
     </div>
   );
 };

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 interface SearchProps {
   onSearch?: (query: string) => void;
@@ -56,6 +57,24 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
        32px 32px 16px rgba(0, 0, 0, 0.04),
        40px 40px 32px rgba(0, 0, 0, 0.02)`;
 
+  const kVariants = {
+    initial: {
+      y: 0,
+      rotate: 0,
+      scale: 1,
+    },
+    attack: {
+      y: [0, -100, -100, 0], // 올라가서 고정 후 내려옴
+      rotate: [0, 0, 360, 360], // 올라갈 때는 회전 X, 공중에서만 회전
+      scale: [1, 1.1, 1.1, 1],
+      transition: {
+        duration: 1.2,
+        ease: "easeInOut",
+        times: [0, 0.2, 0.8, 1], // ← 타이밍 제어
+      },
+    },
+  };
+
   return (
     <form onSubmit={handleSubmit} className="w-full ml-5">
       <div className="relative h-[140px] mb-10 flex justify-center items-center">
@@ -65,11 +84,29 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
             transform: botAttacks ? "translateX(-20px)" : "translateX(0px)",
           }}
         >
-          <h2
-            className="text-[100px] font-black text-gray-900 dark:text-[#F4F5F4]"
-            style={{ textShadow: shadowStyle }}
-          >
-            WooSeok
+          <h2 className="text-[100px] font-black text-gray-900 dark:text-[#F4F5F4] flex">
+            {"WooSeo".split("").map((char, idx) => (
+              <span
+                key={idx}
+                className="inline-block"
+                style={{ textShadow: shadowStyle }}
+              >
+                {char}
+              </span>
+            ))}
+
+            <motion.span
+              variants={kVariants}
+              initial="initial"
+              animate={botAttacks ? "attack" : "initial"}
+              className="inline-block origin-center"
+              style={{
+                textShadow: shadowStyle,
+                display: "inline-block",
+              }}
+            >
+              k
+            </motion.span>
           </h2>
 
           <span
