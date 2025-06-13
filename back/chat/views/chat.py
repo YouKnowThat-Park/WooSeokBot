@@ -6,7 +6,8 @@ from ..models import ChatSession, ChatProfile, ChatProject, SlugChatProject
 from django.utils import timezone
 from datetime import timedelta
 from django_ratelimit.decorators import ratelimit
-@ratelimit(key='ip', late='12/m', block=True)
+
+@ratelimit(key='ip', rate='12/m', block=True)
 @api_view(['POST'])
 def create_chat(request):
     query = request.data.get("query")
