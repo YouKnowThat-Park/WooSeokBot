@@ -22,20 +22,36 @@ const ChattingBox = () => {
   };
 
   return (
-    <div className="  cursor-move  border rounded-md z-50  flex flex-col">
-      <form onSubmit={handleSubmit} className="flex gap-2 mt-auto">
+    <div className="w-full mx-auto ml-[90px]">
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-center px-4 py-2 mb-10 w-full max-w-2xl h-[100px] bg-white border rounded-2xl shadow-md"
+      >
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="우석이에게 추가 질문을 해보세요"
-          className="flex-1 border rounded px-4 py-2 outline-none w- h-[100px]"
+          placeholder="지원자 Ai(박우석)에게 궁금한것을 물어봐주세요."
+          className="flex-1 text-sm outline-none bg-transparent placeholder-gray-500"
         />
         <button
           type="submit"
-          className="px-4 py-2 bg-black text-white rounded hover:opacity-80"
+          className="w-8 h-8 mt-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200"
         >
-          전송
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-4 h-4 text-gray-600"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
+            />
+          </svg>
         </button>
       </form>
     </div>

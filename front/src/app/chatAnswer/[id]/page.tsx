@@ -74,9 +74,21 @@ const ChatAnswer = () => {
   }
 
   return (
-    <div className="w-full max-w-[970px] h-screen  flex flex-col bg-[#FBFBFB]  dark:bg-[#111111]">
+    <div className="w-full max-w-[800px] ml-[115px] flex flex-col  dark:bg-[#111111] py-10 px-4">
       {/* 채팅 내역 영역 */}
-      <div className="flex-1 overflow-y-auto py-4 space-y-5">
+      <div className="flex flex-col gap-6">
+        <div className="flex items-start gap-3">
+          <Image
+            src="/wooseok.png"
+            alt="박우석"
+            width={28}
+            height={28}
+            className="rounded-full mt-1"
+          />
+          <div className="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-1.5 rounded-xl whitespace-pre-wrap max-w-[85%] relative">
+            <p>안녕하세요 지원자 Ai 박우석 입니다.</p>
+          </div>
+        </div>
         {chats.map((chat, idx) => (
           <div key={idx} className="space-y-3">
             {/* 질문 - 오른쪽 정렬 */}
@@ -102,10 +114,9 @@ const ChatAnswer = () => {
                 height={28}
                 className="rounded-full mt-1"
               />
-              <div className="bg-gray-100 dark:bg-gray-800  text-black dark:text-white p-1.5  rounded-xl whitespace-pre-wrap max-w-[85%] relative">
+              <div className="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-1.5 rounded-xl whitespace-pre-wrap max-w-[85%] relative">
                 {chat.answer}
 
-                {/* 마지막 채팅에만 평가 버튼 표시 */}
                 {idx === chats.length - 1 && (
                   <button
                     onClick={() => setIsModalOpen(true)}
@@ -121,8 +132,10 @@ const ChatAnswer = () => {
       </div>
 
       {/* 채팅 입력창 */}
-      <div className="border-t border-gray-300  bg-white">
-        <ChattingBox />
+      <div className="fixed bottom-0 left-0 w-full bg-white  z-50">
+        <div className="max-w-[800px] mx-auto px-4">
+          <ChattingBox />
+        </div>
       </div>
 
       {isModalOpen && <FeedbackModal onClose={() => setIsModalOpen(false)} />}
