@@ -25,7 +25,7 @@ const ChattingBox = () => {
     <div className="w-full mx-auto ml-[90px]">
       <form
         onSubmit={handleSubmit}
-        className="flex items-center px-4 py-2 mb-10 w-full max-w-2xl h-[100px] bg-white border rounded-2xl shadow-md"
+        className="flex items-center px-4 py-2 mb-10 w-full max-w-2xl h-[100px] bg-white dark:bg-[#2e2e2e] border rounded-2xl shadow-md"
       >
         <input
           type="text"

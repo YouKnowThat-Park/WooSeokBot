@@ -76,7 +76,7 @@ const ChatAnswer = () => {
   return (
     <div className="w-full max-w-[800px] ml-[115px] flex flex-col  dark:bg-[#111111] py-10 px-4">
       {/* 채팅 내역 영역 */}
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 pb-[140px]">
         <div className="flex items-start gap-3">
           <Image
             src="/wooseok.png"
@@ -114,7 +114,7 @@ const ChatAnswer = () => {
                 height={28}
                 className="rounded-full mt-1"
               />
-              <div className="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-1.5 rounded-xl whitespace-pre-wrap max-w-[85%] relative">
+              <div className="bg-gray-100 dark:bg-[#2e2e2e] text-black dark:text-white p-1.5 rounded-xl whitespace-pre-wrap max-w-[85%] relative">
                 {chat.answer}
 
                 {idx === chats.length - 1 && (
@@ -132,7 +132,7 @@ const ChatAnswer = () => {
       </div>
 
       {/* 채팅 입력창 */}
-      <div className="fixed bottom-0 left-0 w-full bg-white  z-50">
+      <div className="fixed bottom-0 left-0 w-full dark:bg-[#111111] z-50">
         <div className="max-w-[800px] mx-auto px-4">
           <ChattingBox />
         </div>
