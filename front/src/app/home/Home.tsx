@@ -40,7 +40,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen dark:bg-[#11111]">
+    <div className="relative min-h-screen mx-auto  dark:bg-[#11111]">
       <div className="relative z-40 mt-[850px]">
         <PortfolioPage />
       </div>

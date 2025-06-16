@@ -15,7 +15,7 @@ const NextProjectsSlider = ({ excludeId }: NextProjectsSliderProps) => {
 
   return (
     <>
-      <div className="w-full mt-10 mb-6">
+      <div className="w-full mx-auto mt-10 mb-6">
         <h3 className="mb-4 text-xl font-semibold dark:text-[#fbfbfb]">
           Project
         </h3>

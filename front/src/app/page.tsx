@@ -4,7 +4,7 @@ import NoticeModal from "./_components/NoticeModal";
 
 const page = () => {
   return (
-    <div>
+    <div className="flex justify-end items-end mr-[450px]">
       <NoticeModal />
       <Home />
     </div>

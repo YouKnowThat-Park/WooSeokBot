@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutMe = () => {
   return (
-    <div className="flex items-start gap-x-6 px-10  mt-8 rounded-md">
+    <div className="flex items-start gap-x-6 px-10 mx-auto  mt-8 rounded-md">
       {/* 이미지 */}
       <div>
         <Image

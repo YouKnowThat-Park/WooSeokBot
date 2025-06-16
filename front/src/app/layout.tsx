@@ -26,7 +26,7 @@ export default function RootLayout({
         className={`${notoSans.className} antialiased bg-white dark:bg-[#111111]`}
       >
         <AppProviders>
-          <main className="w-full">{children}</main>
+          <main className="">{children}</main>
         </AppProviders>
       </body>
     </html>

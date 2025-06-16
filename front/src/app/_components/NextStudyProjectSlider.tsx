@@ -15,7 +15,7 @@ const NextStudyProjectsSlider = ({ excludeId }: NextProjectsSliderProps) => {
 
   return (
     <>
-      <div className="border mt-10 mb-6" />
+      <div className="border mt-10 mb-6 mx-auto" />
       <h3 className="mb-4 text-xl font-semibold dark:text-[#fbfbfb]">
         Study Project
       </h3>

@@ -82,7 +82,7 @@ const InfiniteTechSlider = () => {
   }, [offset]);
 
   return (
-    <div className="relative mt-10 w-full overflow-hidden  ">
+    <div className="relative mt-10 mx-auto overflow-hidden  ">
       {/* 좌우 버튼 */}
       <button
         onClick={() => handleSlide("left")}
