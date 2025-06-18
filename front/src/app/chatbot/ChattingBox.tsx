@@ -32,7 +32,7 @@ const ChattingBox = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="지원자 Ai(박우석)에게 궁금한것을 물어봐주세요."
-          className="flex-1 text-sm outline-none bg-transparent placeholder-gray-500"
+          className="flex-1 text-sm outline-none bg-transparent dark:text-white placeholder-gray-500"
         />
         <button
           type="submit"
