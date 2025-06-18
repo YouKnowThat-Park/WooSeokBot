@@ -62,7 +62,7 @@ const TechProjectsModal = () => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 mx-auto bg-black/50 z-50 flex items-center justify-center">
       <div className="bg-white dark:bg-[#1b1b1b] p-6 rounded shadow-lg max-w-md w-full relative text-center dark:text-white">
         <button
           className="absolute top-2 right-2 text-gray-500 hover:text-black dark:hover:text-white"

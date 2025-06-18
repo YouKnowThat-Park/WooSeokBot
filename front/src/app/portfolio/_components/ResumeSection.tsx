@@ -114,7 +114,7 @@ const ResumeSection = () => {
   }, []);
 
   return (
-    <div className="relative bg-white dark:bg-[#111111] dark:text-[#fbfbfb] pb-14">
+    <div className="relative mx-auto bg-white dark:bg-[#111111] dark:text-[#fbfbfb] pb-14">
       {/* 스크롤 버튼 */}
       <button
         onClick={scrollLeft}

@@ -10,9 +10,9 @@ import TechStackTable from "../_components/TechStackTable";
 import ProjectDetails from "../_components/ProjectDetails";
 import ProjectRetrospective from "../_components/ProjectRetrospective";
 import NextProjectsSlider from "../../_components/NextProjectsSlider";
-import { StageTeam } from "@/data/StageTeamRoles";
-import { StageTechItems } from "@/data/StageTechItems";
 import { Stage101Details } from "@/data/stage101Details";
+import { WooseokBot } from "@/data/WooseokBot";
+import { WooseokBotTechItems } from "@/data/WooseokBotTechItems";
 
 const WooSeokBot = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -60,22 +60,21 @@ const WooSeokBot = () => {
           <ProjectOverview
             title="Project Overview"
             items={[
-              "프로젝트명 : STAGE_101",
-              "한줄 설명 : 하나의 공간에서 무한한 가능성을 단 한 번의 경험으로 STAGE_101",
+              "프로젝트명 : WooSeok Bot",
+              "한줄 설명 : AI 챗봇으로 구현한 인터랙티브 포트폴리오",
               "반응형 디자인 : 모든 페이지는 최소 430px을 기준으로 반응형 구현되어 모바일, 데스크탑 모두 최적화 되었습니다.",
               "스켈레톤 UI : 데이터 로딩 시간이 길어질 때 사용자에게 빈 화면 대신 스켈레톤 UI를 제공하여 더 나은 UX 제공",
-              "개발 기간 : 4~5주 정도 진행 되었습니다.",
+              "개발 기간 : 2025.5.22 ~ 2025.6.",
             ]}
           />
-          <TeamRoles title="👥 팀 구성 및 역할" members={StageTeam} />
+          <TeamRoles title="👥 팀 구성 및 역할" members={WooseokBot} />
           <ProjectGoals
             goals={[
-              "다양한 기능을 직접 구현하며 기술 스펙트럼을 확장 시키기 위함",
-              "실제 서비스처럼 유저 흐름이 완성된 플랫폼을 목표",
-              "단순히 개발 만의 목적이 아닌 기획&설계 관점에서도 비지니스 서비스 극대화",
-              "사용자의 경험과 동선을 중심에 두고 기능을 설계",
+              "Django 기반 백엔드 개발과 PostgreSQL을 활용한 데이터베이스 설계 역량 강화",
+              "자연어 처리를 활용한 고도화된 AI 챗봇 구현 경험",
+              "사용자 경험(UX)을 중심으로 챗봇 인터랙션 설계 및 개선",
             ]}
-          />{" "}
+          />
         </div>
 
         {/* 재사용 컴포넌트 */}
@@ -93,8 +92,8 @@ const WooSeokBot = () => {
         {/* 재사용 컴포넌트 */}
         <TechStackTable
           title="📌 내가 사용한 기술 스택과 라이브러리 선택 이유"
-          description="(프로젝트 내에 자세한 설명이 추가되어 있습니다.)"
-          items={StageTechItems}
+          description=""
+          items={WooseokBotTechItems}
         />
       </div>
 
@@ -111,8 +110,8 @@ const WooSeokBot = () => {
 
       {/* 재사용 컴포넌트 */}
       <ProjectRetrospective
-        learned={`이번 프로젝트를 통해 단순히 화면을 구현하는 것을 넘어, 서비스의 흐름과 사용자의 입장을 함께 고민하며 개발하는 경험을 할 수 있었습니다. 처음에는 내가 구현해야 할 기능만 보였지만, 점점 이 기능이 사용자에게 어떤 흐름 속에서 필요한지, 불편함은 없는지, 어떤 예외 상황이 생길 수 있을지를 스스로 묻고 판단하면서 개발을 진행하게 되었습니다. 또한 프로젝트 전체를 직접 구조화하고, 구현 순서를 정하고, 상황에 따라 기획을 수정하는 과정을 통해 기능 구현뿐 아니라 왜 이 기능이 필요한지를 설명할 수 있는 힘도 함께 기를 수 있었다고 생각합니다.`}
-        regret={`이번 프로젝트에서 가장 아쉬웠던 점은 Supabase의 스키마 구조를 설계 초기에 충분히 고민하지 못해 기능 구현 중 여러 차례 테이블 구조를 수정해야 했고 그로 인해 연쇄적으로 다른 로직까지 반복적으로 리팩토링 해야 했던 경험이었습니다. 프론트엔드 개발자라 하더라도 백엔드 데이터 흐름에 대한 충분한 이해와 구조적 설계 능력이 중요하다는 것을 체감했으며, 이후에도 ERD 설계 도구 등을 활용해 더 체계적으로 접근해야겠다는 필요성을 느낄 수 있는 프로젝트였습니다.`}
+        learned={`이번 프로젝트를 통해 백엔드와 AI 챗봇 개발에 대한 실질적인 경험을 쌓을 수 있었습니다. 단순히 기능 구현에 그치지 않고, 챗봇의 응답 흐름과 사용자 인터랙션을 설계하면서 서비스의 본질을 고민할 수 있었고, 특히 AI와 사용자 간의 자연스러운 소통을 위해 어떤 데이터를 어떻게 처리하고 학습시켜야 할지를 체득하는 계기가 되었습니다. WooSeok Bot은 제 정보를 기반으로 동작하는 챗봇이기 때문에, 개발 과정 내내 '나'라는 사람을 되돌아보고 표현하는 과정을 거칠 수밖에 없었습니다. 이는 단순히 기술적인 구현을 넘어 나 자신을 깊이 있게 마주하고 정리하는 과정이었고, 동시에 쉽지 않은 작업이었습니다. 덕분에 기술뿐만 아니라 나 자신에 대해서도 더 명확하게 이해할 수 있었던 값진 경험이었습니다.`}
+        regret={``}
       />
 
       {/* 재사용 컴포넌트 */}

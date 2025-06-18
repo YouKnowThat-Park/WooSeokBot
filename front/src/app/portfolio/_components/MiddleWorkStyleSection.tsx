@@ -26,7 +26,7 @@ const MiddleWorkStyleSection = () => {
           </p>
         </div>
 
-        <div className="w-full md:w-[440px] ml-5 bg-white dark:bg-neutral-900 shadow-xl rounded-xl p-5 space-y-4 transition-transform duration-300 ease-in-out hover:scale-105">
+        <div className="w-full mx-auto md:w-[440px] ml-5 bg-white dark:bg-neutral-900 shadow-xl rounded-xl p-5 space-y-4 transition-transform duration-300 ease-in-out hover:scale-105">
           {/* 질문 */}
           <div className="flex items-start gap-3">
             <Image

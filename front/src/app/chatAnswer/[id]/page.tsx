@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import FeedbackModal from "./_components/FeedbackModal";
 import ChattingBox from "@/app/chatbot/ChattingBox";
+import LoadingDots from "./_components/LoadingDots";
 
 type QA = {
   query: string;
@@ -14,72 +15,118 @@ type QA = {
 const ChatAnswer = () => {
   const { id } = useParams();
   const chatId = Array.isArray(id) ? id[0] : id;
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("q");
 
-  const [error, setError] = useState<string | null>(null);
+  const tokenRef = useRef<string | null>(null);
+  const bottomRef = useRef<HTMLDivElement | null>(null);
   const [chats, setChats] = useState<QA[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [token, setToken] = useState<string | null>(null);
 
+  // ✅ 처음 질문 있을 경우, 바로 보여주기
   useEffect(() => {
-    const fetchInitialChat = async () => {
+    if (initialQuery) {
+      setChats([{ query: initialQuery, answer: "⏳ 답변 생성 중..." }]);
+    }
+  }, [initialQuery]);
+
+  // ✅ 답변 받아오기
+  useEffect(() => {
+    const fetchAnswer = async () => {
       try {
         const res = await fetch(`http://localhost:8000/api/chat/${chatId}/`);
-        if (!res.ok) {
-          const err = await res.text();
-          setError(`❌ 서버 오류: ${res.status} ${err}`);
-          return;
-        }
-
         const data = await res.json();
-        setChats([{ query: data.query, answer: data.response }]);
+
+        setToken(data.token);
+        tokenRef.current = data.token;
+
+        setChats((prev) =>
+          prev.map((item) =>
+            item.query === data.query
+              ? { ...item, answer: data.response }
+              : item
+          )
+        );
       } catch {
-        setError("⚠️ 네트워크 오류");
+        // 오류 무시
       }
     };
 
-    fetchInitialChat();
+    if (chatId && initialQuery) fetchAnswer();
+  }, [chatId, initialQuery]);
 
-    // 후속 질문 핸들러 등록
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chats]);
+
+  useEffect(() => {
+    if (!token) return;
+
+    tokenRef.current = token;
+
     (
       window as typeof window & {
         __handleFollowUp?: (query: string) => void;
       }
     ).__handleFollowUp = async (newQuery: string) => {
+      const currentToken = tokenRef.current;
+      if (!currentToken) {
+        alert("❌ 토큰이 유실되었습니다. 새로고침 해주세요.");
+        return;
+      }
+
+      const newIndex = chats.length;
+      setChats((prev) => [
+        ...prev,
+        { query: newQuery, answer: "⏳ 답변 생성 중..." },
+      ]);
+
       try {
         const res = await fetch("http://localhost:8000/api/chat/ask/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ query: newQuery }),
+          body: JSON.stringify({ query: newQuery, token: currentToken }),
         });
 
-        if (!res.ok) {
-          const err = await res.text();
-          console.error(`후속 질문 실패: ${err}`);
-          return;
-        }
-
         const data = await res.json();
-        const newQA: QA = {
-          query: data.query ?? newQuery,
-          answer: data.answer,
-        };
-        setChats((prev) => [...prev, newQA]);
+        setChats((prev) =>
+          prev.map((item, idx) =>
+            idx === newIndex ? { ...item, answer: data.answer } : item
+          )
+        );
       } catch {
-        alert("❌ 후속 질문 오류");
+        setChats((prev) =>
+          prev.map((item, idx) =>
+            idx === newIndex ? { ...item, answer: "❌ 답변 생성 실패" } : item
+          )
+        );
       }
     };
-  }, [chatId]);
+  }, [token, chats.length]);
 
-  if (error) {
-    return <div className="p-10 text-red-500">{error}</div>;
+  if (!initialQuery) {
+    return <div className="p-10 text-gray-500">질문을 찾을 수 없습니다.</div>;
   }
 
   return (
-    <div className="w-full max-w-[970px] h-screen  flex flex-col bg-[#FBFBFB]  dark:bg-[#111111]">
-      {/* 채팅 내역 영역 */}
-      <div className="flex-1 overflow-y-auto py-4 space-y-5">
+    <div className="w-[800px] ml-[115px] flex flex-col dark:bg-[#111111] py-10 px-4">
+      <div className="flex flex-col gap-6 mb-[150px]">
+        <div className="flex items-start gap-3">
+          <Image
+            src="/wooseok.png"
+            alt="박우석"
+            width={28}
+            height={28}
+            className="rounded-full mt-1"
+          />
+          <div className="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-1.5 rounded-xl whitespace-break-spaces relative">
+            <p>안녕하세요 지원자 Ai 박우석 입니다.</p>
+          </div>
+        </div>
+
         {chats.map((chat, idx) => (
           <div key={idx} className="space-y-3">
-            {/* 질문 - 오른쪽 정렬 */}
             <div className="flex items-start gap-3 flex-row-reverse max-w-[85%]">
               <Image
                 src="/interviewer.webp"
@@ -93,7 +140,6 @@ const ChatAnswer = () => {
               </div>
             </div>
 
-            {/* 답변 - 왼쪽 정렬 */}
             <div className="flex items-start gap-3">
               <Image
                 src="/wooseok.png"
@@ -102,27 +148,39 @@ const ChatAnswer = () => {
                 height={28}
                 className="rounded-full mt-1"
               />
-              <div className="bg-gray-100 dark:bg-gray-800  text-black dark:text-white p-1.5  rounded-xl whitespace-pre-wrap max-w-[85%] relative">
-                {chat.answer}
+              <div>
+                <div className="w-[130px] bg-gray-100 dark:bg-[#2e2e2e] text-black font-semibold dark:text-white p-2 mb-2 rounded-xl relative">
+                  Ai 박우석 지원자
+                </div>
+                <div className="bg-gray-100 dark:bg-[#2e2e2e] text-black dark:text-white p-1.5 max-w-[630px] rounded-xl whitespace-break-spaces relative">
+                  {chat.answer === "⏳ 답변 생성 중..." ? (
+                    <span className="inline-flex items-center">
+                      <LoadingDots />
+                    </span>
+                  ) : (
+                    chat.answer
+                  )}
 
-                {/* 마지막 채팅에만 평가 버튼 표시 */}
-                {idx === chats.length - 1 && (
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="absolute -bottom-8 right-3 py-2 font-semibold text-xs text-red-500 hover:underline"
-                  >
-                    답변은 만족 스러우신가요? ✍️ 평가하러 가기
-                  </button>
-                )}
+                  {idx === chats.length - 1 && !chat.answer.includes("⏳") && (
+                    <button
+                      onClick={() => setIsModalOpen(true)}
+                      className="absolute -bottom-8 w-full right-3 py-2 font-semibold text-xs text-red-500 hover:underline"
+                    >
+                      답변은 만족 스러우신가요? ✍️ 평가하러 가기
+                    </button>
+                  )}
+                  <div ref={bottomRef} />
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* 채팅 입력창 */}
-      <div className="border-t border-gray-300  bg-white">
-        <ChattingBox />
+      <div className="fixed bottom-0 right-7 w-full dark:bg-[#111111] z-50">
+        <div className="max-w-[800px] mx-auto px-4">
+          <ChattingBox />
+        </div>
       </div>
 
       {isModalOpen && <FeedbackModal onClose={() => setIsModalOpen(false)} />}
