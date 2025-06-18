@@ -1,4 +1,3 @@
-// ChatAnswer.tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -21,7 +20,6 @@ const ChatAnswer = () => {
 
   const tokenRef = useRef<string | null>(null);
   const bottomRef = useRef<HTMLDivElement | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [chats, setChats] = useState<QA[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [token, setToken] = useState<string | null>(null);
@@ -38,17 +36,11 @@ const ChatAnswer = () => {
     const fetchAnswer = async () => {
       try {
         const res = await fetch(`http://localhost:8000/api/chat/${chatId}/`);
-        if (!res.ok) {
-          const err = await res.text();
-          setError(`❌ 서버 오류: ${res.status} ${err}`);
-          return;
-        }
-
         const data = await res.json();
+
         setToken(data.token);
         tokenRef.current = data.token;
 
-        // 질문에 맞는 답변 업데이트
         setChats((prev) =>
           prev.map((item) =>
             item.query === data.query
@@ -57,7 +49,7 @@ const ChatAnswer = () => {
           )
         );
       } catch {
-        setError("⚠️ 네트워크 오류");
+        // 오류 무시
       }
     };
 
@@ -118,7 +110,7 @@ const ChatAnswer = () => {
   }
 
   return (
-    <div className=" w-[800px] ml-[115px] flex flex-col dark:bg-[#111111] py-10 px-4">
+    <div className="w-[800px] ml-[115px] flex flex-col dark:bg-[#111111] py-10 px-4">
       <div className="flex flex-col gap-6 mb-[150px]">
         <div className="flex items-start gap-3">
           <Image
@@ -128,7 +120,7 @@ const ChatAnswer = () => {
             height={28}
             className="rounded-full mt-1"
           />
-          <div className="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-1.5 rounded-xl whitespace-break-spaces  relative">
+          <div className="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-1.5 rounded-xl whitespace-break-spaces relative">
             <p>안녕하세요 지원자 Ai 박우석 입니다.</p>
           </div>
         </div>
@@ -160,7 +152,7 @@ const ChatAnswer = () => {
                 <div className="w-[130px] bg-gray-100 dark:bg-[#2e2e2e] text-black font-semibold dark:text-white p-2 mb-2 rounded-xl relative">
                   Ai 박우석 지원자
                 </div>
-                <div className="bg-gray-100 dark:bg-[#2e2e2e] text-black dark:text-white p-1.5 max-w-[630px] rounded-xl whitespace-break-spaces  relative">
+                <div className="bg-gray-100 dark:bg-[#2e2e2e] text-black dark:text-white p-1.5 max-w-[630px] rounded-xl whitespace-break-spaces relative">
                   {chat.answer === "⏳ 답변 생성 중..." ? (
                     <span className="inline-flex items-center">
                       <LoadingDots />
