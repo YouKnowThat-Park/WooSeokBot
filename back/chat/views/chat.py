@@ -50,7 +50,7 @@ def create_chat(request):
         "answer": answer,
     }, status=status.HTTP_201_CREATED)
 
-
+@ratelimit(key='ip', rate='12/m', block=True)
 @api_view(['POST'])
 def chat_ask(request):
     query = request.data.get("query")
