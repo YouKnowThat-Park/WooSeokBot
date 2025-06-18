@@ -131,7 +131,7 @@ const ThemeToggle = ({
           {chats.map((chat, idx) => (
             <div key={idx} className="space-y-3">
               <div className="flex justify-end items-start gap-2">
-                <div className="max-w-[70%] bg-blue-100 dark:bg-blue-700 text-sm p-3 rounded-xl text-black dark:text-white">
+                <div className="max-w-[70%] bg-blue-100 dark:bg-blue-700 text-sm p-3 whitespace-pre-wrap rounded-xl text-black dark:text-white">
                   {chat.query}
                 </div>
                 <Image
@@ -149,7 +149,7 @@ const ThemeToggle = ({
                   width={30}
                   height={30}
                 />
-                <div className="max-w-[70%] bg-gray-100 dark:bg-gray-800 text-sm p-3 rounded-xl text-black dark:text-white">
+                <div className="max-w-[70%] bg-gray-100 dark:bg-gray-800 text-sm p-3 whitespace-pre-wrap rounded-xl text-black dark:text-white">
                   {chat.answer}
                 </div>
               </div>
