@@ -6,7 +6,7 @@ from django_ratelimit.decorators import ratelimit
 import uuid, secrets
 from datetime import timedelta
 
-from ..models import ChatSession, ChatProfile, ChatFeedback, SlugChatProject
+from ..models import ChatSession, ChatProfile, SlugChatProject
 from ..prompts import generate_ai_answer
 
 
