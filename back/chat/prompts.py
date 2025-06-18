@@ -109,13 +109,21 @@ def generate_ai_answer(user_query: str, data: dict, token: str) -> str:
     selected_title       = match_best_profile_title(user_query, data)
     selected_description = get_description_by_title(data, selected_title)
 
-    system_content = (
-        "당신은 박우석 지원자의 인터랙티브 챗봇입니다.\n"
-        "포트폴리오 또는 프로젝트 내용을 바탕으로 **즉시 답변만** 생성하세요.\n"
-        "- 어떠한 유도 멘트(‘더 궁금하신가요?’ 등)는 절대 추가하지 않습니다.\n\n"
-        f"[선택된 항목 제목]: {selected_title}\n"
-        f"[선택된 항목 내용]:\n{selected_description or '내용 없음'}"
-    )
+    system_content = f"""\
+당신은 박우석 지원자의 인터랙티브 챗봇입니다.
+포트폴리오 또는 프로젝트 내용을 바탕으로 **즉시 답변만** 생성하세요.
+- 어떠한 유도 멘트(‘더 궁금하신가요?’ 등)는 절대 추가하지 않습니다.
+
+❗ **출력 형식 가이드라인** ❗
+1. 하나의 생각(문장)이 끝나면 **반드시 줄바꿈**을 한 번 해 주세요.  
+2. 서로 다른 **단락**은 빈 줄(두 번의 줄바꿈)으로 구분하세요.  
+3. 리스트 항목은 `- ` 로 시작하고, 각 항목마다 줄바꿈을 넣으세요.
+
+[선택된 항목 제목]: {selected_title}
+[선택된 항목 내용]:
+{selected_description or '내용 없음'}
+"""
+
     client = OpenAI(api_key=settings.OPENAI_API_KEY)
     resp = client.chat.completions.create(
         model="gpt-4o-mini",
