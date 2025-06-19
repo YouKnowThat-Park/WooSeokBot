@@ -21,7 +21,7 @@ export const projects = [
     id: "WooseokBot",
     title: "WooseokBot",
     description: "Personal Project",
-    role: "PM, Front",
+    role: "PM, Front, Back",
     date: "2025.05.22 ~ 개발 중",
     image: "/wooseokbot.png",
     link: "/project/wooseokBot",
