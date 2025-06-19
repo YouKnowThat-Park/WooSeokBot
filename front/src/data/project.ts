@@ -29,7 +29,7 @@ export const projects = [
   {
     id: "AiChatBot",
     title: "AI ChatBot",
-    description: "개발PM",
+    description: "Team Project",
     role: "개발PM",
     date: "2025.04.21 ~ 2025.04.28",
     image: "/aichatbot.png",
