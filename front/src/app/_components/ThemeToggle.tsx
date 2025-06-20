@@ -16,9 +16,8 @@ type QA = {
 };
 
 type ThemeToggleProps = {
-  onChatbotClick?: () => void;
+  onChatbotClick?: (direction: "left" | "right") => void;
   onChatbotClose?: () => void;
-
   enableChatbot?: boolean;
 };
 
@@ -40,8 +39,10 @@ const ThemeToggle = ({
   const [input, setInput] = useState("");
   const [chats, setChats] = useState<QA[]>([]);
   const [isAsking, setIsAsking] = useState(false);
-  const router = useRouter();
+  const [direction, setDirection] = useState<"left" | "right">("right");
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
+  const router = useRouter();
   const pathname = usePathname();
   const slug = pathname.split("/").pop() || "";
   const displayProjectName = projectNameMap[slug] || slug;
@@ -92,24 +93,29 @@ const ThemeToggle = ({
 
   if (expanded) {
     return (
-      <div className="fixed right-[100px] top-12 w-[500px] h-[800px] bg-white dark:bg-[#222] rounded-3xl border p-6 flex flex-col transition-all duration-500 overflow-hidden">
+      <div
+        className={clsx(
+          "fixed top-12 w-[500px] h-[800px] bg-white dark:bg-[#222] rounded-3xl border p-6 flex flex-col transition-all duration-500 overflow-hidden z-[9999]",
+          direction === "right" ? "right-[100px]" : "left-[100px]"
+        )}
+      >
         <div className="relative mb-4 h-8 flex items-center justify-center">
-          {/* 왼쪽 백 버튼 */}
           <button
             onClick={() => {
               setExpanded(false);
-              onChatbotClose?.(); // 챗봇 닫을 때 margin 복원
+              setPosition({ x: 0, y: 0 });
+              setDirection("right");
+              onChatbotClose?.();
             }}
             className="absolute left-0 text-gray-500 hover:text-black dark:hover:text-white transition"
           >
             <IoIosArrowRoundBack className="w-6 h-6" />
           </button>
-
-          {/* 가운데 텍스트 */}
           <h2 className="text-xl font-bold text-black dark:text-white">
             {displayProjectName} 전용 챗봇
           </h2>
         </div>
+
         <button
           onClick={() => setTheme(isDark ? "light" : "dark")}
           className={clsx(
@@ -141,7 +147,6 @@ const ThemeToggle = ({
                   height={30}
                 />
               </div>
-
               <div className="flex justify-start items-start gap-2">
                 <Image
                   src="/wooseok.png"
@@ -178,8 +183,16 @@ const ThemeToggle = ({
   }
 
   return (
-    <Draggable>
-      <div className="fixed top-[470px] right-[100px] w-72 h-[380px] bg-white bg-transparent dark:bg-[#3A3A3A] rounded-[40px] shadow-xl flex flex-col items-center justify-start py-4 transition-colors duration-700 z-[9999]">
+    <Draggable
+      position={position}
+      onStop={(_, data) => {
+        setPosition({ x: data.x, y: data.y });
+      }}
+    >
+      <div
+        id="chatbot-toggle"
+        className="fixed top-[470px] right-[100px] w-72 h-[380px] bg-white bg-transparent dark:bg-[#3A3A3A] rounded-[40px] shadow-xl flex flex-col items-center justify-start py-4 transition-colors duration-700 z-[9999]"
+      >
         <div className="w-full px-6 text-sm opacity-40 flex justify-between items-center">
           <span className={clsx(isDark ? "text-white" : "text-black")}>
             <KoreanTimeMinute />
@@ -231,8 +244,16 @@ const ThemeToggle = ({
           <button
             onClick={() => {
               if (!enableChatbot) return;
+
+              const el = document.getElementById("chatbot-toggle");
+              const middle = window.innerWidth / 2;
+              const rect = el?.getBoundingClientRect();
+
+              const direction = rect && rect.left < middle ? "left" : "right";
+
+              setDirection(direction); // 내부 상태 설정
+              onChatbotClick?.(direction); // 부모에 방향 전달
               setExpanded(true);
-              onChatbotClick?.();
             }}
             disabled={!enableChatbot}
             className={clsx(

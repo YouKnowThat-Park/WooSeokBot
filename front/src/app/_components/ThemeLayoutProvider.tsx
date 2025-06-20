@@ -9,10 +9,10 @@ export default function ThemeLayoutProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [margin, setMargin] = useState(500);
+  const [offset, setOffset] = useState(0);
+  const [side, setSide] = useState<"left" | "right">("right");
   const pathname = usePathname();
 
-  // chatbotButton 관련 페이지
   const chatbotPages = [
     "/project/stage101",
     "/project/dogo",
@@ -21,24 +21,38 @@ export default function ThemeLayoutProvider({
   ];
   const showChatbot = chatbotPages.some((path) => pathname.startsWith(path));
 
-  // 경로 바뀔 때 margin 초기화
+  // 경로가 바뀌면 오프셋 초기화
   useEffect(() => {
-    if (!showChatbot) setMargin(500);
+    if (!showChatbot) {
+      setOffset(0);
+    }
   }, [pathname, showChatbot]);
-  console.log("📍 pathname", pathname);
-  console.log("✅ showChatbot", showChatbot);
 
   return (
-    <div
-      className="transition-all duration-300"
-      style={{ marginLeft: `${margin}px` }}
-    >
+    <div className="flex relative">
+      {/* fixed 위치의 챗봇 토글 (레이아웃 이동에 영향 없음) */}
       <ThemeToggle
-        onChatbotClick={() => setMargin(200)}
-        onChatbotClose={() => setMargin(500)}
         enableChatbot={showChatbot}
+        onChatbotClick={(dir) => {
+          setSide(dir);
+          setOffset(200); // 챗봇 열린 방향의 반대쪽으로 200px 밀기
+        }}
+        onChatbotClose={() => {
+          setOffset(0); // 닫을 땐 원위치
+        }}
       />
-      {children}
+
+      {/* 여기에만 translateX 적용 */}
+      <div
+        className="flex-1 transition-transform duration-300"
+        style={{
+          transform: `translateX(${side === "right" ? -offset : offset}px)`,
+        }}
+      >
+        <div className="w-full flex justify-center">
+          <div className="w-full max-w-[970px]">{children}</div>
+        </div>
+      </div>
     </div>
   );
 }
