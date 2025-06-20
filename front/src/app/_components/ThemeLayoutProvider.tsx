@@ -1,13 +1,13 @@
 "use client";
 
 import ThemeToggle from "./ThemeToggle";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
 export default function ThemeLayoutProvider({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const [offset, setOffset] = useState(0);
   const [side, setSide] = useState<"left" | "right">("right");
@@ -35,18 +35,18 @@ export default function ThemeLayoutProvider({
         enableChatbot={showChatbot}
         onChatbotClick={(dir) => {
           setSide(dir);
-          setOffset(200); // 챗봇 열린 방향의 반대쪽으로 200px 밀기
+          setOffset(400); // 챗봇 열린 방향의 반대쪽으로 200px 밀기
         }}
         onChatbotClose={() => {
           setOffset(0); // 닫을 땐 원위치
         }}
       />
 
-      {/* 여기에만 translateX 적용 */}
+      {/* margin-left 로 슬라이딩 적용, fixed 요소에 영향 없음 */}
       <div
-        className="flex-1 transition-transform duration-300"
+        className="flex-1 transition-all duration-300"
         style={{
-          transform: `translateX(${side === "right" ? -offset : offset}px)`,
+          marginLeft: side === "right" ? `-${offset}px` : `${offset}px`,
         }}
       >
         <div className="w-full flex justify-center">
