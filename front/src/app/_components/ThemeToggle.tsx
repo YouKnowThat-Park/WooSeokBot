@@ -265,7 +265,7 @@ const ThemeToggle = ({
           >
             CHATBOT
             {!enableChatbot && (
-              <span className="absolute left-1/2 -top-9 -translate-x-1/2 whitespace-nowrap rounded bg-black px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <span className="absolute left-1/2 -top-7 -translate-x-1/2 whitespace-nowrap rounded bg-black px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 Project에서만 사용 가능
               </span>
             )}
