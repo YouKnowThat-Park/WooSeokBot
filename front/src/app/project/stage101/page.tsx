@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import PerformanceSection from "../_components/Performance";
 import ProjectHero from "../../_components/ProjectHero";
 import ProjectRetrospective from "../_components/ProjectRetrospective";
@@ -18,24 +18,8 @@ import { StageTeam } from "@/data/StageTeamRoles";
 import ProjectGoals from "../../_components/ProjectGoals";
 
 const Stage101 = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const top =
-        containerRef.current.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: top - 150,
-        behavior: "smooth",
-      });
-    }
-  }, []);
-
   return (
-    <div
-      ref={containerRef}
-      className="w-[970px] h-full mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg"
-    >
+    <div className="w-[970px] h-full mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg">
       {/* 재사용 컴포넌트 */}
       <ProjectHero
         title="STAGE_101"
