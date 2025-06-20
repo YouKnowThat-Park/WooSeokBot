@@ -7,7 +7,7 @@ import uuid, secrets
 from datetime import timedelta
 
 from ..models import ChatSession, ChatProfile, SlugChatProject
-from ..prompts import generate_ai_answer
+from ..services.ai_matcher import generate_ai_answer
 
 
 @ratelimit(key='ip', rate='12/m', block=True)
