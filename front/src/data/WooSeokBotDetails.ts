@@ -1,6 +1,6 @@
 import { ProjectSection } from "@/type/ProjerctSection-type";
 
-export const DoGoDetails: ProjectSection[] = [
+export const WooSeokBotDetails: ProjectSection[] = [
   {
     title: "호텔 리스트 페이지 - CSR 랜더링",
     images: [{ src: "/dogolist.png", alt: "호텔 리스트 페이지" }],

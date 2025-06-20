@@ -46,13 +46,15 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen mx-auto dark:bg-[#11111]">
+    <div className="relative min-h-screen mr-[-450px] dark:bg-[#111]">
+      {/* 메인 콘텐츠 */}
       <div className="relative z-40 mt-[850px]">
         <PortfolioPage />
       </div>
 
+      {/* 검색창 (오직 홈에서) */}
       {showSearch && (
-        <div className="fixed w-[700px] top-[400px] left-[600px] z-30">
+        <div className="fixed w-[700px] top-[400px] ml-32 z-30">
           <ChatSearchInput onSearch={handleSearch} />
         </div>
       )}

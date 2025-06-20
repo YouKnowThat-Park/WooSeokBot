@@ -1,6 +1,6 @@
 "use client";
 import ProjectHero from "@/app/_components/ProjectHero";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import ProjectDescription from "../_components/ProjectDescription";
 import ProjectOverview from "@/app/_components/ProjectOverview";
 import TeamRoles from "@/app/_components/TeamRoles";
@@ -10,29 +10,13 @@ import TechStackTable from "../_components/TechStackTable";
 import ProjectDetails from "../_components/ProjectDetails";
 import ProjectRetrospective from "../_components/ProjectRetrospective";
 import NextProjectsSlider from "../../_components/NextProjectsSlider";
-import { Stage101Details } from "@/data/stage101Details";
 import { WooseokBot } from "@/data/WooseokBot";
 import { WooseokBotTechItems } from "@/data/WooseokBotTechItems";
+import { WooSeokBotDetails } from "@/data/WooSeokBotDetails";
 
 const WooSeokBot = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const top =
-        containerRef.current.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: top - 150,
-        behavior: "smooth",
-      });
-    }
-  }, []);
-
   return (
-    <div
-      ref={containerRef}
-      className="w-[970px] h-full mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg"
-    >
+    <div className="w-[970px] h-full mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg">
       {/* 재사용 컴포넌트 */}
       <ProjectHero
         title="Wooseok Bot"
@@ -62,9 +46,9 @@ const WooSeokBot = () => {
             items={[
               "프로젝트명 : WooSeok Bot",
               "한줄 설명 : AI 챗봇으로 구현한 인터랙티브 포트폴리오",
-              "반응형 디자인 : 모든 페이지는 최소 430px을 기준으로 반응형 구현되어 모바일, 데스크탑 모두 최적화 되었습니다.",
-              "스켈레톤 UI : 데이터 로딩 시간이 길어질 때 사용자에게 빈 화면 대신 스켈레톤 UI를 제공하여 더 나은 UX 제공",
-              "개발 기간 : 2025.5.22 ~ 2025.6.",
+              "자연어 유연성 처리: 오타, 말줄임, 문장 순서가 바뀐 질문에도 의도를 파악할 수 있도록 설계하여, 실사용자 환경에서도 안정적인 대화 흐름을 제공합니다.",
+              "대화 문맥 유지: 이전 질문과의 맥락을 기억하고 이어서 응답하는 구조로 설계되어, 단발성 응답이 아닌 인터뷰처럼 연속된 대화 경험을 제공합니다.",
+              "개발 기간 : 2025.5.22 ~ 2025.6.20",
             ]}
           />
           <TeamRoles title="👥 팀 구성 및 역할" members={WooseokBot} />
@@ -104,7 +88,7 @@ const WooSeokBot = () => {
 
       <ProjectDetails
         title="Project Details"
-        sections={Stage101Details}
+        sections={WooSeokBotDetails}
         imageSize={{ width: 400, height: 200 }}
       />
 
