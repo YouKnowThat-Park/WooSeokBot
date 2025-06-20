@@ -52,7 +52,7 @@ const Home = () => {
       </div>
 
       {showSearch && (
-        <div className="fixed w-[700px] top-[400px] left-[600px] z-30">
+        <div className="fixed w-[700px] top-[400px] ml-32 z-30">
           <ChatSearchInput onSearch={handleSearch} />
         </div>
       )}
