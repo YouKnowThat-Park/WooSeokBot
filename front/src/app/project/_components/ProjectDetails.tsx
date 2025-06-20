@@ -1,18 +1,8 @@
 "use client";
 
+import { ProjectSection } from "@/type/ProjerctSection-type";
 import Image from "next/image";
 import React from "react";
-
-type ProjectItem = {
-  title: string;
-  content: string;
-};
-
-type ProjectSection = {
-  title: string;
-  images?: { src: string; alt: string }[];
-  items: ProjectItem[];
-};
 
 type ProjectDetailsSectionProps = {
   title: string;
