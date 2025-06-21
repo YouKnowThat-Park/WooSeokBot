@@ -177,7 +177,7 @@ const ChatAnswer = () => {
         ))}
       </div>
 
-      <div className="fixed bottom-0 right-7 w-full dark:bg-[#111111] z-50">
+      <div className="fixed bottom-0 right-[60px] w-full dark:bg-[#111111] z-50">
         <div className="max-w-[800px] mx-auto px-4">
           <ChattingBox />
         </div>
