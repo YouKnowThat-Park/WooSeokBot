@@ -104,36 +104,24 @@ def chat_ask_by_slug(request, slug: str):
     if not query:
         return Response({"error": "query is required"}, status=status.HTTP_400_BAD_REQUEST)
 
-    # token이 없으면 새로 만들기
     token = request.data.get("token")
     new_token = False
     if not token:
         token = secrets.token_hex(32)
         new_token = True
 
-    # 슬러그가 실제로 존재하는지 체크
-    try:
-        project = SlugChatProject.objects.get(slug=slug)
-    except SlugChatProject.DoesNotExist:
-        return Response(
-            {"error": f"프로젝트 '{slug}'을 찾을 수 없습니다."},
-            status=status.HTTP_404_NOT_FOUND
-        )
+    # 🔥 전체 프로젝트 불러오기 (이게 핵심)
+    profiles = ChatProfile.objects.all()
+    slugs = SlugChatProject.objects.all()
 
-    # GPT에 넘길 data 구성
     data = {
-        "profiles":      [],
-        "slug_projects": [{
-            "slug":        project.slug,
-            "title":       project.title,
-            "description": project.description
-        }],
+        "profiles": list(profiles.values("title", "description")),
+        "slug_projects": list(slugs.values("slug", "title", "description"))
     }
 
-    # 답변 생성
-    answer = generate_ai_answer(query, data, token)
+    # ✅ slug는 여전히 넘기되
+    answer = generate_ai_answer(query, data, token, slug=slug)
 
-    # DB에 세션 저장 (create_chat처럼)
     chat_id = uuid.uuid4()
     ChatSession.objects.create(
         id=chat_id,
@@ -142,13 +130,10 @@ def chat_ask_by_slug(request, slug: str):
         token=token,
     )
 
-    # 새 토큰을 발급한 경우엔 201, 기존 토큰이면 200
     status_code = status.HTTP_201_CREATED if new_token else status.HTTP_200_OK
-    response_payload = {
+    return Response({
         "chatId": str(chat_id),
-        "token":   token,
-        "query":   query,
-        "answer":  answer
-    }
-
-    return Response(response_payload, status=status_code)
+        "token": token,
+        "query": query,
+        "answer": answer,
+    }, status=status_code)
