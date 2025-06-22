@@ -152,7 +152,7 @@ const ChatAnswer = () => {
                 <div className="w-[130px] bg-gray-100 dark:bg-[#2e2e2e] text-black font-semibold dark:text-white p-2 mb-2 rounded-xl relative">
                   Ai 박우석 지원자
                 </div>
-                <div className="bg-gray-100 dark:bg-[#2e2e2e] text-black dark:text-white p-1.5 max-w-[630px] rounded-xl whitespace-break-spaces relative">
+                <div className="bg-gray-100 dark:bg-[#2e2e2e] text-black dark:text-white p-1.5 max-w-[630px] w-fit rounded-xl whitespace-break-spaces relative">
                   {chat.answer === "⏳ 답변 생성 중..." ? (
                     <span className="inline-flex items-center">
                       <LoadingDots />
