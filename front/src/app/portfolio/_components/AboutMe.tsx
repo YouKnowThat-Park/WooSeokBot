@@ -7,7 +7,7 @@ const AboutMe = () => {
       {/* 이미지 */}
       <div>
         <Image
-          src="/wooseok.png"
+          src="/wooseok.webp"
           alt="우석 프로필 이미지"
           width={200}
           height={300}
@@ -36,7 +36,12 @@ const AboutMe = () => {
             rel="noopener noreferrer"
             className="flex items-center gap-2 w-fit hover:underline"
           >
-            <Image src="/email.png" alt="email 아이콘" width={40} height={40} />
+            <Image
+              src="/email.webp"
+              alt="email 아이콘"
+              width={40}
+              height={40}
+            />
             <span>youkn0wthat@naver.com</span>
           </a>
 
@@ -48,7 +53,7 @@ const AboutMe = () => {
             className="flex items-center gap-2 w-fit hover:underline"
           >
             <Image
-              src="/github.png"
+              src="/github.webp"
               alt="깃허브 아이콘"
               width={40}
               height={40}
@@ -64,7 +69,7 @@ const AboutMe = () => {
             className="flex items-center gap-2 w-fit hover:underline"
           >
             <Image
-              src="/tstory.png"
+              src="/tstory.webp"
               alt="티스토리 블로그 아이콘"
               width={40}
               height={40}

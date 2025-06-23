@@ -114,7 +114,7 @@ const ChatAnswer = () => {
       <div className="flex flex-col gap-6 mb-[150px]">
         <div className="flex items-start gap-3">
           <Image
-            src="/wooseok.png"
+            src="/wooseok.webp"
             alt="박우석"
             width={28}
             height={28}
@@ -142,7 +142,7 @@ const ChatAnswer = () => {
 
             <div className="flex items-start gap-3">
               <Image
-                src="/wooseok.png"
+                src="/wooseok.webp"
                 alt="박우석"
                 width={28}
                 height={28}

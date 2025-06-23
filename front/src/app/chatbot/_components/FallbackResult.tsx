@@ -8,7 +8,7 @@ const FallbackResult = () => {
         {/* 이미지 */}
         <div>
           <Image
-            src="/wooseok.png"
+            src="/wooseok.webp"
             alt="우석 프로필 이미지"
             width={200}
             height={300}

@@ -143,7 +143,7 @@ const TechProjectsModal = () => {
                   onClick={() => handleProjectClick(p)}
                 >
                   <Image
-                    src={project?.image || "/default.png"}
+                    src={project?.image || "/default.webp"}
                     alt={p}
                     width={40}
                     height={40}

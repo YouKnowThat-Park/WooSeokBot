@@ -18,7 +18,7 @@ const AiChatBot = () => {
     <div className="w-[970px] h-full mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg [&>p]:py-2 text-center">
       <ProjectHero
         title="AiChatBot"
-        imageSrc="/aichatbot.png"
+        imageSrc="/aichatbot.webp"
         description="생물학 분석 특화 챗봇"
         devEnv="Next.js, TypeScript, LangChain, ContextAPI"
         type="스타트업 개발PM"

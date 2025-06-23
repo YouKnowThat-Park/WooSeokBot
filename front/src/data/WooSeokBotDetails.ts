@@ -5,7 +5,7 @@ export const WooSeokBotDetails: ProjectSection[] = [
     title: "메인화면 애니메이션 효과",
     video: {
       src: "/wooseokbot_home.mp4",
-      poster: "/dogolist.png",
+      poster: "/dogolist.webp",
       type: "mp4",
     },
     items: [
@@ -30,7 +30,7 @@ export const WooSeokBotDetails: ProjectSection[] = [
     title: "테마 모드 (다크/라이트)",
     video: {
       src: "/wooseokbot_theme.mp4",
-      poster: "/dogolist.png",
+      poster: "/dogolist.webp",
       type: "mp4",
     },
     items: [
@@ -203,7 +203,7 @@ export const WooSeokBotDetails: ProjectSection[] = [
   },
   {
     title: "핸들링 고도화",
-    images: [{ src: "/dogomap.png", alt: "카카오 지도 정보" }],
+    images: [{ src: "/dogomap.webp", alt: "카카오 지도 정보" }],
     items: [
       {
         title: "Kakao Map 연동",

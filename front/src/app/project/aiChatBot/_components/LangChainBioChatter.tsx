@@ -24,7 +24,7 @@ const LangChainBioChatter = () => {
         </p>
 
         <Image
-          src="/aichatbotBioChatter.png"
+          src="/aichatbotBioChatter.webp"
           alt="바이오채터 유저플로우"
           width={300}
           height={300}

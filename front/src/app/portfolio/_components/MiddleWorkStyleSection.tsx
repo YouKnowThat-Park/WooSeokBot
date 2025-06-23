@@ -47,7 +47,7 @@ const MiddleWorkStyleSection = () => {
               {style.answer1}
             </div>
             <Image
-              src="/wooseok.png"
+              src="/wooseok.webp"
               alt="튜터"
               width={28}
               height={28}
@@ -58,7 +58,7 @@ const MiddleWorkStyleSection = () => {
           {/* 답변2 */}
           <div className="flex items-start gap-3">
             <Image
-              src="/wooseok.png"
+              src="/wooseok.webp"
               alt="박우석"
               width={28}
               height={28}

@@ -20,7 +20,7 @@ const WooSeokBot = () => {
       {/* 재사용 컴포넌트 */}
       <ProjectHero
         title="Wooseok Bot"
-        imageSrc="/wooseokbot.png"
+        imageSrc="/wooseokbot.webp"
         githubUrl="https://github.com/YouKnowThat-Park/WooSeokBot"
         description="AI Portfolio"
         devEnv="Next.js, TypeScript, Django, Vercel, Reader"

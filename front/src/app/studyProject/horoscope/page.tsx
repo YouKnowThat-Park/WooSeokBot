@@ -15,7 +15,7 @@ const page = () => {
       <div className="w-[970px] h-full mt-[100px]  mb-[10px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg">
         <ProjectHero
           title="Horoscope"
-          imageSrc="/horoscope.png"
+          imageSrc="/horoscope.webp"
           githubUrl="https://github.com/Noonsae/Horoscope-Project?tab=readme-ov-file"
           description="운세 및 별자리 테스트"
           devEnv="Next.js, TypeScript, Vercel"

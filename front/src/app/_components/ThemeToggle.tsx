@@ -141,7 +141,7 @@ const ThemeToggle = ({
                   {chat.query}
                 </div>
                 <Image
-                  src="/wooseok.png"
+                  src="/wooseok.webp"
                   alt="질문 이미지"
                   width={30}
                   height={30}
@@ -149,7 +149,7 @@ const ThemeToggle = ({
               </div>
               <div className="flex justify-start items-start gap-2">
                 <Image
-                  src="/wooseok.png"
+                  src="/wooseok.webp"
                   alt="답변 이미지"
                   width={30}
                   height={30}

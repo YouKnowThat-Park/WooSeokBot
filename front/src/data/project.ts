@@ -5,7 +5,7 @@ export const projects = [
     role: "PM, Front",
     description: "Team Project(4 Front, 1 Designer)",
     date: "2024.12.31 ~ 2025.02.07",
-    image: "/dogo.png",
+    image: "/dogo.webp",
     link: "/project/dogo",
   },
   {
@@ -14,7 +14,7 @@ export const projects = [
     description: "Personal Project",
     role: "PM, Front",
     date: "2025.03.02 ~ 2025.04.10",
-    image: "/stage101.png",
+    image: "/stage101.webp",
     link: "/project/stage101",
   },
   {
@@ -23,7 +23,7 @@ export const projects = [
     description: "Personal Project",
     role: "PM, Front, Back",
     date: "2025.05.22 ~ 개발 중",
-    image: "/wooseokbot.png",
+    image: "/wooseokbot.webp",
     link: "/project/wooseokBot",
   },
   {
@@ -32,7 +32,7 @@ export const projects = [
     description: "Team Project",
     role: "개발PM",
     date: "2025.04.21 ~ 2025.04.28",
-    image: "/aichatbot.png",
+    image: "/aichatbot.webp",
     link: "/project/aiChatBot",
   },
 ];
@@ -44,7 +44,7 @@ export const studyProjects = [
     description: "Team Project",
     role: "Front",
     date: "2024.11.29 ~ 2024.12.05",
-    image: "/ghosthouse.png",
+    image: "/ghosthouse.webp",
     link: "/studyProject/ghostHouse",
   },
   {
@@ -53,7 +53,7 @@ export const studyProjects = [
     description: "Personal Project",
     role: "Front",
     date: "2024.12.09 ~ 2024.12.19",
-    image: "/lol.png",
+    image: "/lol.webp",
     link: "/studyProject/lolProject",
   },
   {
@@ -62,7 +62,7 @@ export const studyProjects = [
     description: "Team Project",
     role: "Front",
     date: "2024.12.20 ~ 2024.12.30",
-    image: "/horoscope.png",
+    image: "/horoscope.webp",
     link: "/studyProject/horoscope",
   },
   {
@@ -71,7 +71,7 @@ export const studyProjects = [
     description: "Team Project",
     role: "서비스 기획 PM, Front",
     date: "2024.11.15 ~ 2024.11.21",
-    image: "/vairlechemin.png",
+    image: "/vairlechemin.webp",
     link: "/studyProject/voirLeChemin",
   },
   {
@@ -80,7 +80,7 @@ export const studyProjects = [
     description: "Personal Project",
     role: "Front",
     date: "2025.05.01 ~ 2025.05.06",
-    image: "/todolist.png",
+    image: "/todolist.webp",
     link: "/studyProject/todoList",
   },
   {
@@ -89,7 +89,7 @@ export const studyProjects = [
     description: "Personal Project",
     role: "Front",
     date: "2024.11.06 ~ 2024.11.14",
-    image: "/pokemon.png",
+    image: "/pokemon.webp",
     link: "/studyProject/pokemon",
   },
 ];
