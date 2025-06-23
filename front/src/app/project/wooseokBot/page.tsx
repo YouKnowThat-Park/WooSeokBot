@@ -13,6 +13,8 @@ import NextProjectsSlider from "../../_components/NextProjectsSlider";
 import { WooseokBot } from "@/data/WooseokBot";
 import { WooseokBotTechItems } from "@/data/WooseokBotTechItems";
 import { WooSeokBotDetails } from "@/data/WooSeokBotDetails";
+import { WooseokBotPerformance } from "@/data/wooseokBotPerformance";
+import Performance from "../_components/Performance";
 
 const WooSeokBot = () => {
   return (
@@ -85,10 +87,10 @@ const WooSeokBot = () => {
         />
       </div>
 
-      {/* <PerformanceSection
+      <Performance
         title="Performance"
-        performanceItems={stage101Performance}
-      /> */}
+        performanceItems={WooseokBotPerformance}
+      />
 
       <ProjectDetails
         title="Project Details"
