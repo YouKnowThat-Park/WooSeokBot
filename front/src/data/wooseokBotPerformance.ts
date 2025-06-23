@@ -15,4 +15,12 @@ export const WooseokBotPerformance = [
       "Performance 점수를 98점에서 100점으로 향상시킴으로써 페이지 초기 로딩 최적화 완성",
     ],
   },
+  {
+    title: "접근성 개선 (Accessibility)",
+    points: [
+      "버튼에 aria-label 를 추가하여 스크린 리더 사용자도 기능을 인식할 수 있도록 개선",
+      "버튼, 토글 등의 핵심 인터랙션 요소에 명확한 역할과 의미를 부여",
+      "Lighthouse 접근성 점수를 87점에서 94점으로 개선",
+    ],
+  },
 ];
