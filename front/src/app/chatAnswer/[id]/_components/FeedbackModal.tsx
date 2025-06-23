@@ -55,6 +55,7 @@ const FeedbackModal = ({ onClose }: Props) => {
           <button
             onClick={onClose}
             className="text-xs bg-neutral-300 dark:bg-neutral-700 rounded-full px-2 py-1"
+            aria-label="닫기"
           >
             X
           </button>
@@ -95,6 +96,7 @@ const FeedbackModal = ({ onClose }: Props) => {
           <div className="flex flex-col items-center bg-neutral-100 dark:bg-neutral-800 rounded-md py-2">
             <button
               onClick={() => setSelection("like")}
+              aria-label="좋아요! 버튼"
               className={`w-8 h-8 rounded-full flex items-center justify-center mb-1 transition-colors ${
                 selection === "like"
                   ? "bg-blue-500 text-white"
@@ -106,6 +108,7 @@ const FeedbackModal = ({ onClose }: Props) => {
             <div className="w-4 h-px bg-neutral-300 my-1" />
             <button
               onClick={() => setSelection("dislike")}
+              aria-label="싫어요; 버튼"
               className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
                 selection === "dislike"
                   ? "bg-red-500 text-white"
@@ -131,6 +134,7 @@ const FeedbackModal = ({ onClose }: Props) => {
               <button
                 onClick={handleSubmit}
                 className="w-24 h-9 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-lg transition-colors"
+                aria-label="작성하기 버튼"
               >
                 등록
               </button>

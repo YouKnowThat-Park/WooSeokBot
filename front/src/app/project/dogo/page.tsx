@@ -22,7 +22,7 @@ const DoGo = () => {
       {/* 재사용 컴포넌트 */}
       <ProjectHero
         title="DoGo"
-        imageSrc="/dogo.png"
+        imageSrc="/dogo.webp"
         serviceUrl="https://do-go-project.vercel.app/"
         githubUrl="https://github.com/Noonsae/DoGo_project"
         description="호텔 예약 페이지"
@@ -68,7 +68,7 @@ const DoGo = () => {
 
         {/* 재사용 컴포넌트 */}
         <UserFlowSection
-          images={[{ src: "/dogouser.png", alt: "유저 플로우", width: 500 }]}
+          images={[{ src: "/dogouser.webp", alt: "유저 플로우", width: 500 }]}
         />
 
         {/* 재사용 컴포넌트 */}

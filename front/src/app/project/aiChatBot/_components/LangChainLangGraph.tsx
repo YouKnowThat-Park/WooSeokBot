@@ -16,7 +16,7 @@ const LangChainLangGraph = () => {
         </p>
 
         <Image
-          src="/aichatbotGragpuserflow.png"
+          src="/aichatbotGragpuserflow.webp"
           alt="LangGraph 구조도"
           width={700}
           height={300}

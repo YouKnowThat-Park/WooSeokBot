@@ -3,7 +3,7 @@ import { ProjectSection } from "@/type/ProjerctSection-type";
 export const DoGoDetails: ProjectSection[] = [
   {
     title: "호텔 리스트 페이지 - CSR 랜더링",
-    images: [{ src: "/dogolist.png", alt: "호텔 리스트 페이지" }],
+    images: [{ src: "/dogolist.webp", alt: "호텔 리스트 페이지" }],
     items: [
       {
         title: "검색 결과 기반 호텔 노출",
@@ -29,7 +29,7 @@ export const DoGoDetails: ProjectSection[] = [
   },
   {
     title: "호텔 상세 페이지 - CSR 랜더링",
-    images: [{ src: "/dogodetail.png", alt: "호텔 상세 페이지" }],
+    images: [{ src: "/dogodetail.webp", alt: "호텔 상세 페이지" }],
     items: [
       {
         title: "네비게이션 스크롤 이동",
@@ -55,7 +55,7 @@ export const DoGoDetails: ProjectSection[] = [
   },
   {
     title: "호텔 사진 모달",
-    images: [{ src: "/dogohotelmodal.png", alt: "호텔 사진 모달" }],
+    images: [{ src: "/dogohotelmodal.webp", alt: "호텔 사진 모달" }],
     items: [
       {
         title: "모든 호텔 사진 제공",
@@ -66,7 +66,7 @@ export const DoGoDetails: ProjectSection[] = [
   },
   {
     title: "객실 카드 & 모달",
-    images: [{ src: "/dogoroom.png", alt: "객실 카드 & 모달" }],
+    images: [{ src: "/dogoroom.webp", alt: "객실 카드 & 모달" }],
     items: [
       {
         title: "자세히 보기 → 모달 상세 정보",
@@ -82,7 +82,7 @@ export const DoGoDetails: ProjectSection[] = [
   },
   {
     title: "객실 상세 모달",
-    images: [{ src: "/dogoroommodal.png", alt: "객실 상세 모달" }],
+    images: [{ src: "/dogoroommodal.webp", alt: "객실 상세 모달" }],
     items: [
       {
         title: "모달 내 객실 상세 정보",
@@ -98,7 +98,7 @@ export const DoGoDetails: ProjectSection[] = [
   },
   {
     title: "리뷰 섹션",
-    images: [{ src: "/dogoreview.png", alt: "호텔 리뷰 섹션" }],
+    images: [{ src: "/dogoreview.webp", alt: "호텔 리뷰 섹션" }],
     items: [
       {
         title: "요약 리뷰 제공",
@@ -114,7 +114,7 @@ export const DoGoDetails: ProjectSection[] = [
   },
   {
     title: "리뷰 모달",
-    images: [{ src: "/dogoreviewmodal.png", alt: "호텔 리뷰 모달" }],
+    images: [{ src: "/dogoreviewmodal.webp", alt: "호텔 리뷰 모달" }],
     items: [
       {
         title: "상단 리뷰 점수 요약 및 별점 분포",
@@ -130,7 +130,7 @@ export const DoGoDetails: ProjectSection[] = [
   },
   {
     title: "시설 및 정책 정보",
-    images: [{ src: "/dogofacility.png", alt: "시설 및 정책 정보" }],
+    images: [{ src: "/dogofacility.webp", alt: "시설 및 정책 정보" }],
     items: [
       {
         title: "시설 정보",
@@ -146,7 +146,7 @@ export const DoGoDetails: ProjectSection[] = [
   },
   {
     title: "지도 정보",
-    images: [{ src: "/dogomap.png", alt: "카카오 지도 정보" }],
+    images: [{ src: "/dogomap.webp", alt: "카카오 지도 정보" }],
     items: [
       {
         title: "Kakao Map 연동",

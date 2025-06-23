@@ -114,7 +114,7 @@ const ChatAnswer = () => {
       <div className="flex flex-col gap-6 mb-[150px]">
         <div className="flex items-start gap-3">
           <Image
-            src="/wooseok.png"
+            src="/wooseok.webp"
             alt="박우석"
             width={28}
             height={28}
@@ -142,7 +142,7 @@ const ChatAnswer = () => {
 
             <div className="flex items-start gap-3">
               <Image
-                src="/wooseok.png"
+                src="/wooseok.webp"
                 alt="박우석"
                 width={28}
                 height={28}
@@ -152,7 +152,7 @@ const ChatAnswer = () => {
                 <div className="w-[130px] bg-gray-100 dark:bg-[#2e2e2e] text-black font-semibold dark:text-white p-2 mb-2 rounded-xl relative">
                   Ai 박우석 지원자
                 </div>
-                <div className="bg-gray-100 dark:bg-[#2e2e2e] text-black dark:text-white p-1.5 max-w-[630px] rounded-xl whitespace-break-spaces relative">
+                <div className="bg-gray-100 dark:bg-[#2e2e2e] text-black dark:text-white p-1.5 max-w-[630px] w-fit rounded-xl whitespace-break-spaces relative">
                   {chat.answer === "⏳ 답변 생성 중..." ? (
                     <span className="inline-flex items-center">
                       <LoadingDots />
@@ -165,6 +165,7 @@ const ChatAnswer = () => {
                     <button
                       onClick={() => setIsModalOpen(true)}
                       className="absolute -bottom-8 w-full right-3 py-2 font-semibold text-xs text-red-500 hover:underline"
+                      aria-label="피드백 작성 버튼"
                     >
                       답변은 만족 스러우신가요? ✍️ 평가하러 가기
                     </button>
@@ -177,7 +178,7 @@ const ChatAnswer = () => {
         ))}
       </div>
 
-      <div className="fixed bottom-0 right-7 w-full dark:bg-[#111111] z-50">
+      <div className="fixed bottom-0 right-[60px] w-full dark:bg-[#111111] z-50">
         <div className="max-w-[800px] mx-auto px-4">
           <ChattingBox />
         </div>

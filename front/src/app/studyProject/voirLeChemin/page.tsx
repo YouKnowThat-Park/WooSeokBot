@@ -15,7 +15,7 @@ const page = () => {
       <div className="w-[970px] h-full mt-[100px]  mb-[10px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg">
         <ProjectHero
           title="Voir Le Chemin"
-          imageSrc="/vairlechemin.png"
+          imageSrc="/vairlechemin.webp"
           serviceUrl="https://newspeedproject.vercel.app/"
           githubUrl="https://github.com/hansolChoi29/newsfeed-project"
           description="여행 SNS"
@@ -58,7 +58,7 @@ const page = () => {
 
       <div>
         <Image
-          src="/voirfigma.png"
+          src="/voirfigma.webp"
           alt="호로스코프 와이어프레임"
           width={1000}
           height={500}
@@ -67,7 +67,7 @@ const page = () => {
 
       <div className="mt-10 mb-20">
         <Image
-          src="/voirERD.png"
+          src="/voirERD.webp"
           alt="호로스코프 ERD"
           width={1000}
           height={500}

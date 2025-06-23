@@ -4,8 +4,8 @@ export const Stage101Details: ProjectSection[] = [
   {
     title: "Sign In, Sign Up",
     images: [
-      { src: "/stage101auth.png", alt: "스테이지 로그인 이미지" },
-      { src: "/stage101auth2.png", alt: "스테이지 회원가입 이미지" },
+      { src: "/stage101auth.webp", alt: "스테이지 로그인 이미지" },
+      { src: "/stage101auth2.webp", alt: "스테이지 회원가입 이미지" },
     ],
     items: [
       {
@@ -31,8 +31,8 @@ RHF를 통해 입력 필드 단위로 상태를 관리해 불필요한 리렌더
   {
     title: "Review, Write a Review",
     images: [
-      { src: "/stage101review.png", alt: "스테이지 리뷰 모달 이미지" },
-      { src: "/stage101review2.png", alt: "스테이지 회원가입 이미지" },
+      { src: "/stage101review.webp", alt: "스테이지 리뷰 모달 이미지" },
+      { src: "/stage101review2.webp", alt: "스테이지 회원가입 이미지" },
     ],
     items: [
       {
@@ -67,7 +67,7 @@ UI의 시각적 통일성과 오프라인 연계 가능성을 고려한 경험�
     title: "Seat Reservation",
     images: [
       {
-        src: "/stage101seatreservation.png",
+        src: "/stage101seatreservation.webp",
         alt: "스테이지 리뷰 모달 이미지",
       },
     ],
@@ -87,8 +87,8 @@ UI의 시각적 통일성과 오프라인 연계 가능성을 고려한 경험�
   {
     title: "Payments",
     images: [
-      { src: "/stage101payments.png", alt: "결제 완료 이미지 1" },
-      { src: "/stage101payments2.png", alt: "결제 완료 이미지 2" },
+      { src: "/stage101payments.webp", alt: "결제 완료 이미지 1" },
+      { src: "/stage101payments2.webp", alt: "결제 완료 이미지 2" },
     ],
     items: [
       {
@@ -105,7 +105,7 @@ QR 코드로 제공되며, 스캔 시 서버에서 UUID로 결제 내역을 조�
   },
   {
     title: "Shop",
-    images: [{ src: "/stage101shop.png", alt: "스테이지 쇼핑 이미지" }],
+    images: [{ src: "/stage101shop.webp", alt: "스테이지 쇼핑 이미지" }],
     items: [
       {
         title: "상품 수량 조절 입력 UX 개선 (React State & Input Validation)",
@@ -121,7 +121,7 @@ Zustand 상태관리와 자연스러운 UX 흐름으로 인증 유도.`,
   },
   {
     title: "Cart",
-    images: [{ src: "/stage101cart.png", alt: "장바구니 이미지" }],
+    images: [{ src: "/stage101cart.webp", alt: "장바구니 이미지" }],
     items: [
       {
         title: "React Query 기반 데이터 캐싱 및 무효화",

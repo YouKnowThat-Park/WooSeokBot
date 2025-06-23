@@ -16,7 +16,7 @@ const LangChainCrewAi = () => {
 
       <div className="flex justify-center mb-6">
         <Image
-          src="/aichatbotCrewAiuserflow.png"
+          src="/aichatbotCrewAiuserflow.webp"
           alt="AI 챗봇 유저 플로우"
           width={500}
           height={300}

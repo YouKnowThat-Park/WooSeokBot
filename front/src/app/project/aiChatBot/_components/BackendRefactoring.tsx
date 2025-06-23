@@ -55,7 +55,7 @@ const BackendRefactoring = () => {
               ※ 개선된 LLM 기반 백엔드 흐름 예시
             </p>
             <Image
-              src="/aichatbotbackend.png"
+              src="/aichatbotbackend.webp"
               alt="LLM 기반 백엔드 개선 구조"
               width={400}
               height={300}

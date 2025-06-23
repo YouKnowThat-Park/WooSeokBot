@@ -33,7 +33,7 @@ const ProjectDetails = ({
               {section.title}
             </h3>
 
-            {/* Images */}
+            {/* 이미지 */}
             {section.images && (
               <div className="flex flex-wrap justify-center gap-4 mb-6">
                 {section.images.map((image, idx) => (
@@ -49,7 +49,22 @@ const ProjectDetails = ({
               </div>
             )}
 
-            {/* Items */}
+            {/* 비디오 */}
+            {section.video && (
+              <div className="flex justify-center mb-6">
+                <video
+                  src={section.video.src}
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  poster={section.video.poster}
+                  className="w-full max-w-3xl rounded-md shadow-lg"
+                />
+              </div>
+            )}
+
+            {/* 설명 */}
             <ul className="space-y-5">
               {section.items.map((item, itemIndex) => (
                 <li key={itemIndex} className="text-left">

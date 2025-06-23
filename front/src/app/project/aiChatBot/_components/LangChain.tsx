@@ -6,7 +6,7 @@ const LangChain = () => {
     <div className="mb-6 mx-10 rounded-md border border-neutral-300 bg-white dark:bg-[#1a1a1a] dark:border-neutral-700 px-8 py-6">
       <div className="flex flex-col justify-center items-center mt-10 mb-5">
         <Image
-          src="/aichatbotstar.png"
+          src="/aichatbotstar.webp"
           alt="LangChain 구조 별점"
           width={700}
           height={300}

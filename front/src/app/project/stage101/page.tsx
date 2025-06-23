@@ -23,7 +23,7 @@ const Stage101 = () => {
       {/* 재사용 컴포넌트 */}
       <ProjectHero
         title="STAGE_101"
-        imageSrc="/stage101.png"
+        imageSrc="/stage101.webp"
         serviceUrl="https://stage-101.vercel.app"
         githubUrl="https://github.com/YouKnowThat-Park/STAGE_101"
         description="소극장 예약 페이지"
@@ -70,9 +70,9 @@ const Stage101 = () => {
         {/* 재사용 컴포넌트 */}
         <UserFlowSection
           images={[
-            { src: "/stage101user1.png", alt: "유저 플로우 왼쪽", width: 300 },
+            { src: "/stage101user1.webp", alt: "유저 플로우 왼쪽", width: 300 },
             {
-              src: "/stage101user2.png",
+              src: "/stage101user2.webp",
               alt: "유저 플로우 오른쪽",
               width: 400,
             },

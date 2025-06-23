@@ -108,6 +108,7 @@ const ThemeToggle = ({
               onChatbotClose?.();
             }}
             className="absolute left-0 text-gray-500 hover:text-black dark:hover:text-white transition"
+            aria-label="뒤로 가기"
           >
             <IoIosArrowRoundBack className="w-6 h-6" />
           </button>
@@ -122,6 +123,7 @@ const ThemeToggle = ({
             "relative w-[3.5em] h-[2em] left-[400px] rounded-full transition-colors duration-300",
             isDark ? "bg-[#303136]" : "bg-[#f4f4f5]"
           )}
+          aria-label="다크모드, 라이트 모드"
         >
           <span
             className={clsx(
@@ -141,7 +143,7 @@ const ThemeToggle = ({
                   {chat.query}
                 </div>
                 <Image
-                  src="/wooseok.png"
+                  src="/wooseok.webp"
                   alt="질문 이미지"
                   width={30}
                   height={30}
@@ -149,7 +151,7 @@ const ThemeToggle = ({
               </div>
               <div className="flex justify-start items-start gap-2">
                 <Image
-                  src="/wooseok.png"
+                  src="/wooseok.webp"
                   alt="답변 이미지"
                   width={30}
                   height={30}
@@ -174,6 +176,7 @@ const ThemeToggle = ({
             type="submit"
             disabled={isAsking}
             className="w-[80px] h-[40px] text-sm rounded-md bg-black text-white hover:bg-gray-800 disabled:opacity-50"
+            aria-label="채팅 입력 버튼"
           >
             {isAsking ? "전송 중..." : "입력"}
           </button>
@@ -197,7 +200,7 @@ const ThemeToggle = ({
           <span className={clsx(isDark ? "text-white" : "text-black")}>
             <KoreanTimeMinute />
           </span>
-          <button>
+          <button aria-label="... 더보기 버튼">
             <GrMore />
           </button>
         </div>
@@ -242,6 +245,7 @@ const ThemeToggle = ({
 
         <div className="flex gap-3 mt-2">
           <button
+            aria-label="챗봇 버튼"
             onClick={() => {
               if (!enableChatbot) return;
 
@@ -273,6 +277,7 @@ const ThemeToggle = ({
           <button
             onClick={() => router.push("/")}
             className="w-[105px] h-11 rounded-full bg-[#f3f3f3] text-black text-sm font-bold shadow hover:bg-white transition"
+            aria-label="HOME 가기 버튼"
           >
             HOME
           </button>

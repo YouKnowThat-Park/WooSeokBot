@@ -13,7 +13,7 @@ const page = () => {
       <div className="w-[970px] h-full mt-[100px]  mb-[10px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg">
         <ProjectHero
           title="LoL Project"
-          imageSrc="/lol.png"
+          imageSrc="/lol.webp"
           serviceUrl="https://lol-project-livid.vercel.app/"
           githubUrl="https://github.com/YouKnowThat-Park/lol-project"
           description="롤 정보 플랫폼"
@@ -61,7 +61,7 @@ const page = () => {
 
       <div>
         <Image
-          src="/lolchampion.png"
+          src="/lolchampion.webp"
           alt="챔피언 상세 페이지"
           width={1000}
           height={500}
@@ -70,7 +70,7 @@ const page = () => {
 
       <div className="mt-10 mb-20">
         <Image
-          src="/lolitem.png"
+          src="/lolitem.webp"
           alt="호로스코프 ERD"
           width={1000}
           height={500}

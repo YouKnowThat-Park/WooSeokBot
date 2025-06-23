@@ -9,42 +9,42 @@ const stackItems = [
   {
     title: "Front-End",
     icons: [
-      "/react.png",
-      "/next.png",
-      "/html5.png",
-      "/javascript.png",
-      "/vscode.png",
-      "/typescript.png",
+      "/react.webp",
+      "/next.webp",
+      "/html5.webp",
+      "/javascript.webp",
+      "/vscode.webp",
+      "/typescript.webp",
     ],
   },
   {
     title: "Back-End",
-    icons: ["/django.png", "/supabase.png"],
+    icons: ["/django.webp", "/supabase.webp"],
   },
   {
     title: "Lib",
-    icons: ["/zustand.png", "/tanstack_query.png", "/recoil.png"],
+    icons: ["/zustand.webp", "/tanstack_query.webp", "/recoil.webp"],
   },
   {
     title: "Style",
-    icons: ["/tailwind.png", "/css3.png", "/styled_components.png"],
+    icons: ["/tailwind.webp", "/css3.webp", "/styled_components.webp"],
   },
   {
     title: "DB, Deployment",
-    icons: ["/postgresql.png", "/supabase.png", "/vercel.png"],
+    icons: ["/postgresql.webp", "/supabase.webp", "/vercel.webp"],
   },
   {
     title: "External Services",
-    icons: ["/kakao_sdk.png", "/toss_payments.png", "/google_sdk.png"],
+    icons: ["/kakao_sdk.webp", "/toss_payments.webp", "/google_sdk.webp"],
   },
   {
     title: "Collaboration & Tools",
     icons: [
-      "/git.png",
-      "/github.png",
-      "/slack.png",
-      "/figma.png",
-      "/notion.png",
+      "/git.webp",
+      "/github.webp",
+      "/slack.webp",
+      "/figma.webp",
+      "/notion.webp",
     ],
   },
 ];
@@ -87,12 +87,14 @@ const InfiniteTechSlider = () => {
       <button
         onClick={() => handleSlide("left")}
         className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-gray-200 dark:bg-black/60 px-2 py-1 rounded "
+        aria-label="기술스택 왼쪽으로 넘기기"
       >
         ←
       </button>
       <button
         onClick={() => handleSlide("right")}
         className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-gray-200 dark:bg-black/60  px-2 py-1 rounded"
+        aria-label="기술스택 오른쪽으로 넘기기"
       >
         →
       </button>
@@ -119,7 +121,7 @@ const InfiniteTechSlider = () => {
                   const name = src
                     .split("/")
                     .pop()
-                    ?.replace(".png", "")
+                    ?.replace(".webp", "")
                     .replace(".svg", "")
                     .toUpperCase();
 

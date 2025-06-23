@@ -5,6 +5,17 @@ export type ProjectItem = {
 
 export type ProjectSection = {
   title: string;
-  images?: { src: string; alt: string }[];
-  items: ProjectItem[];
+  items: {
+    title: string;
+    content: string;
+  }[];
+  images?: {
+    src: string;
+    alt: string;
+  }[];
+  video?: {
+    src: string;
+    type?: "mp4" | "webm";
+    poster?: string;
+  };
 };
