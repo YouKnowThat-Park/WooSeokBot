@@ -37,6 +37,7 @@ const ChattingBox = () => {
         <button
           type="submit"
           className="w-8 h-8 mt-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200"
+          aria-label="검색하기 버튼"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

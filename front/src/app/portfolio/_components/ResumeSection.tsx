@@ -118,12 +118,14 @@ const ResumeSection = () => {
       {/* 스크롤 버튼 */}
       <button
         onClick={scrollLeft}
+        aria-label="슬라이드 왼쪽으로 넘기기"
         className="absolute left-2 top-[50%] transform -translate-y-1/2 z-30 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-gray-600 rounded-full w-8 h-8 flex items-center justify-center shadow-md"
       >
         ←
       </button>
       <button
         onClick={scrollRight}
+        aria-label="슬라이드 오른쪽으로 넘기기"
         className="absolute right-2 top-[50%] transform -translate-y-1/2 z-30 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-gray-600 rounded-full w-8 h-8 flex items-center justify-center shadow-md"
       >
         →

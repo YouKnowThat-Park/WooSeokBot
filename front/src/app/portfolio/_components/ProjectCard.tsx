@@ -31,6 +31,7 @@ const ProjectCard = ({
     <button
       onClick={handleClick}
       className="min-w-[350px] max-w-[350px] snap-start flex-shrink-0 border p-2 rounded-lg bg-white shadow hover:scale-[1.02] transition-transform dark:bg-[#3a3a3a]"
+      aria-label="해당 프로젝트로 이동하기 버튼"
     >
       <div className="w-full h-[200px] overflow-hidden rounded-md border">
         <Image

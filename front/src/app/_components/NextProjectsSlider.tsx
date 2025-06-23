@@ -22,13 +22,15 @@ const NextProjectsSlider = ({ excludeId }: NextProjectsSliderProps) => {
         <div className="relative">
           <button
             onClick={() => scrollByDirection("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-300/70 px-2 py-1 rounded-full shadow"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-300/70 px-2 py-1 rounded-full shadow "
+            aria-label="슬라이드 왼쪽으로 넘기기"
           >
             ←
           </button>
           <button
             onClick={() => scrollByDirection("right")}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gray-300/70 px-2 py-1 rounded-full shadow"
+            aria-label="슬라이드 오른쪽으로 넘기기"
           >
             →
           </button>

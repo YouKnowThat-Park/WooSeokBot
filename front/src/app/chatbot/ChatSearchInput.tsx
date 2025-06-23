@@ -138,6 +138,7 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
         <button
           type="submit"
           className="text-lg text-black dark:text-white underline hover:opacity-70 whitespace-nowrap"
+          aria-label="검색하기 버튼"
         >
           Search
         </button>

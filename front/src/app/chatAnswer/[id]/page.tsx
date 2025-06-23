@@ -165,6 +165,7 @@ const ChatAnswer = () => {
                     <button
                       onClick={() => setIsModalOpen(true)}
                       className="absolute -bottom-8 w-full right-3 py-2 font-semibold text-xs text-red-500 hover:underline"
+                      aria-label="피드백 작성 버튼"
                     >
                       답변은 만족 스러우신가요? ✍️ 평가하러 가기
                     </button>

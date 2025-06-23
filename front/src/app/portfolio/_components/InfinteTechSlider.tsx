@@ -87,12 +87,14 @@ const InfiniteTechSlider = () => {
       <button
         onClick={() => handleSlide("left")}
         className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-gray-200 dark:bg-black/60 px-2 py-1 rounded "
+        aria-label="기술스택 왼쪽으로 넘기기"
       >
         ←
       </button>
       <button
         onClick={() => handleSlide("right")}
         className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-gray-200 dark:bg-black/60  px-2 py-1 rounded"
+        aria-label="기술스택 오른쪽으로 넘기기"
       >
         →
       </button>

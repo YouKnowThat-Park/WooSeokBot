@@ -118,6 +118,7 @@ const TechProjectsModal = () => {
       <div className="bg-white dark:bg-[#1b1b1b] p-6 rounded shadow-lg max-w-md w-full relative text-center dark:text-white">
         <button
           className="absolute top-2 right-2 text-gray-500 hover:text-black dark:hover:text-white"
+          aria-label="해당 기술스택이 사용된 프로젝트로 이동"
           onClick={() =>
             setSelectedTech({
               isOpen: false,
