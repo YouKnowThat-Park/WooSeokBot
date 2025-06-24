@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import Draggable from "react-draggable";
 import { usePathname, useRouter } from "next/navigation";
@@ -9,6 +9,7 @@ import KoreanTimeMinute from "./KoreanTimeMinute";
 import { GrMore } from "react-icons/gr";
 import Image from "next/image";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import useAutoScroll from "@/hooks/useAutoScroll";
 
 type QA = {
   query: string;
@@ -41,6 +42,9 @@ const ThemeToggle = ({
   const [isAsking, setIsAsking] = useState(false);
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const bottomRef = useRef<HTMLDivElement | null>(null);
+  useAutoScroll([chats], bottomRef);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -135,40 +139,47 @@ const ThemeToggle = ({
           />
         </button>
 
-        <div className="flex-1 overflow-y-auto space-y-4 pr-2 text-sm text-black dark:text-white">
-          {chats.map((chat, idx) => (
-            <div key={idx} className="space-y-3">
-              <div className="flex justify-end items-start gap-2">
-                <div className="max-w-[70%] bg-blue-100 dark:bg-blue-700 text-sm p-3 whitespace-pre-wrap rounded-xl text-black dark:text-white">
-                  {chat.query}
+        <div className="flex flex-col h-full" style={{ flex: 1, minHeight: 0 }}>
+          <div
+            className="flex-1 overflow-y-auto pr-2 space-y-4 text-sm text-black dark:text-white"
+            ref={bottomRef}
+          >
+            {chats.map((chat, idx) => (
+              <div key={idx} className="space-y-3">
+                <div className="flex justify-end items-start gap-2">
+                  <div className="max-w-[70%] bg-blue-100 dark:bg-blue-700 text-sm p-3 whitespace-pre-wrap rounded-xl text-black dark:text-white">
+                    {chat.query}
+                  </div>
+                  <Image
+                    src="/wooseok.webp"
+                    alt="질문 이미지"
+                    width={30}
+                    height={30}
+                  />
                 </div>
-                <Image
-                  src="/wooseok.webp"
-                  alt="질문 이미지"
-                  width={30}
-                  height={30}
-                />
-              </div>
-              <div className="flex justify-start items-start gap-2">
-                <Image
-                  src="/wooseok.webp"
-                  alt="답변 이미지"
-                  width={30}
-                  height={30}
-                />
-                <div className="max-w-[70%] bg-gray-100 dark:bg-gray-800 text-sm p-3 whitespace-pre-wrap rounded-xl text-black dark:text-white">
-                  {chat.answer}
+                <div className="flex justify-start items-start gap-2">
+                  <Image
+                    src="/wooseok.webp"
+                    alt="답변 이미지"
+                    width={30}
+                    height={30}
+                  />
+                  <div className="max-w-[70%] bg-gray-100 dark:bg-gray-800 text-sm p-3 whitespace-pre-wrap rounded-xl text-black dark:text-white">
+                    {chat.answer}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+            {/* ✅ 스크롤 타겟 */}
 
+            <div />
+          </div>
+        </div>
         <form onSubmit={handleSubmit} className="mt-4 flex items-start gap-2">
           <input
             type="text"
             placeholder="궁금한 걸 입력하세요"
-            className="flex-1 border rounded-md px-3 py-2 text-sm h-[40px]"
+            className="flex-1 border rounded-md px-3 py-2 text-sm h-[40px] dark:text-white"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
@@ -255,8 +266,8 @@ const ThemeToggle = ({
 
               const direction = rect && rect.left < middle ? "left" : "right";
 
-              setDirection(direction); // 내부 상태 설정
-              onChatbotClick?.(direction); // 부모에 방향 전달
+              setDirection(direction);
+              onChatbotClick?.(direction);
               setExpanded(true);
             }}
             disabled={!enableChatbot}
