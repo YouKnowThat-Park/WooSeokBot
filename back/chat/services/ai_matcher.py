@@ -4,6 +4,7 @@ from .conversation import get_recent_conversation, get_last_user_question
 from .description_service import get_description_by_title
 from .prompt_loader import load_prompt
 from chat.utils import slug_to_base, format_list_for_prompt
+from openai import OpenAIError
 
 
 def extract_matching_project_by_slug(slug: str, slug_projects: list[dict]) -> dict | None:
@@ -58,40 +59,41 @@ def is_requesting_last_question(user_query: str) -> bool:
 
 
 def generate_ai_answer(user_query: str, data: dict, token: str, slug: str | None = None) -> str:
+    try:
+        if is_requesting_last_question(user_query):
+            return get_last_user_question(token)
 
-    if is_requesting_last_question(user_query):
-        return get_last_user_question(token)
+        slug_projects = data.get("slug_projects", [])
+        matched_project = extract_matching_project_by_slug(slug or "", slug_projects) if slug else None
 
-    slug_projects = data.get("slug_projects", [])
+        if matched_project:
+            selected_title = matched_project["title"]
+            selected_desc = matched_project.get("description", "").strip() or "내용 없음"
+        else:
+            selected_title = match_best_profile_title(user_query, data)
+            selected_desc = get_description_by_title(data, selected_title) or "내용 없음"
 
-    # 🎯 slug가 직접 전달된 경우 → 해당 프로젝트에 고정
-    matched_project = extract_matching_project_by_slug(slug or "", slug_projects) if slug else None
-
-    if matched_project:
-        selected_title = matched_project["title"]
-        selected_desc = matched_project.get("description", "").strip() or "내용 없음"
-        system = load_prompt("system_portfolio_chat.txt").format(
-            selected_title=selected_title,
-            selected_description=selected_desc
-        )
-    else:
-        # 🌐 일반 질문 처리 fallback
-        selected_title = match_best_profile_title(user_query, data)
-        selected_desc = get_description_by_title(data, selected_title) or "내용 없음"
         system = load_prompt("system_portfolio_chat.txt").format(
             selected_title=selected_title,
             selected_description=selected_desc
         )
 
-    resp = OpenAI(api_key=settings.OPENAI_API_KEY).chat.completions.create(
-        model="gpt-4.1-nano",
-        messages=[
-            {"role": "system", "content": system},
-            *get_recent_conversation(token),
-            {"role": "user", "content": user_query}
-        ],
-        temperature=0.0,
-        max_tokens=1000,
-        top_p=0.9
-    )
-    return resp.choices[0].message.content.strip()
+        resp = OpenAI(api_key=settings.OPENAI_API_KEY).chat.completions.create(
+            model="gpt-4.1-nano",
+            messages=[
+                {"role": "system", "content": system},
+                *get_recent_conversation(token),
+                {"role": "user", "content": user_query}
+            ],
+            temperature=0.0,
+            max_tokens=1000,
+            top_p=0.9
+        )
+
+        return resp.choices[0].message.content.strip()
+
+    except OpenAIError as e:
+        raise RuntimeError("AI 응답 생성 중 문제가 발생했습니다.") from e
+
+    except Exception as e:
+        raise RuntimeError("알 수 없는 에러가 발생했습니다.") from e
