@@ -73,7 +73,17 @@ def chat_ask(request):
         "slug_projects": list(slugs.values("slug", "title", "description")),
     }
 
-    answer = generate_ai_answer(query, data, token)
+    try:
+        answer = generate_ai_answer(query, data, token)
+    except RuntimeError as e:
+        chat.response = "[오류] 챗봇 응답 생성 실패"
+        chat.save(update_fields=["response"])
+        return Response({
+            "status" : "error",
+            "message" : str(e),
+            "query" : query,
+            "answer": None
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     # 3) 응답 업데이트
     chat.response = answer

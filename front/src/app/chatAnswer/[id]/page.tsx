@@ -49,7 +49,17 @@ const ChatAnswer = () => {
           )
         );
       } catch {
-        // 오류 무시
+        setChats((prev) =>
+          prev.map((item) =>
+            item.query === initialQuery
+              ? {
+                  ...item,
+                  answer:
+                    "😴 박우석 지원자가 잠시 눈을 붙이고 있어요. 깨우는 중입니다...",
+                }
+              : item
+          )
+        );
       }
     };
 
