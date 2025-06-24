@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import FeedbackModal from "./_components/FeedbackModal";
-import ChattingBox from "@/app/chatbot/ChattingBox";
 import LoadingDots from "./_components/LoadingDots";
+import ChattingBox from "./_components/ChattingBox";
 
 type QA = {
   query: string;

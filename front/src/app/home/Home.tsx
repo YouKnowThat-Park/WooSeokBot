@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import ChatSearchInput from "../chatbot/ChatSearchInput";
+import ChatSearchInput from "../chatAnswer/[id]/_components/ChatSearchInput";
 import PortfolioPage from "../portfolio/PortfolioPage";
 
 const Home = () => {
