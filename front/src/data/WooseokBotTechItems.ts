@@ -37,11 +37,6 @@ export const WooseokBotTechItems = [
   },
   {
     category: "Library",
-    tech: "Yup",
-    reason: "스키마 기반 validation으로 안정성 확보",
-  },
-  {
-    category: "Library",
     tech: "Framer-Motion",
     reason: "자유로운 애니메이션 구현 및 전환 제어",
   },
