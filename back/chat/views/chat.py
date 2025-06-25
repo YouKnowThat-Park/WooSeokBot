@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.request import Request
 from rest_framework import status
 from django.utils import timezone
 from django_ratelimit.decorators import ratelimit
@@ -109,7 +110,7 @@ def get_chat(request, chat_id):
 
 @api_view(['POST', "OPTIONS"])
 @ratelimit(key='ip', rate='12/m', block=True)
-def chat_ask_by_slug(request, slug: str):
+def chat_ask_by_slug(request: Request, slug: str) -> Response:
     query = request.data.get("query")
     if not query:
         return Response({"error": "query is required"}, status=status.HTTP_400_BAD_REQUEST)
