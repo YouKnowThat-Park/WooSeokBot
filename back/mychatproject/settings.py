@@ -1,34 +1,25 @@
 from pathlib import Path
-from decouple import config 
+from decouple import config
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 🚨 기존 노출된 SECRET_KEY는 재발급 받아서 .env 파일에 분리 완료 🚨
+SECRET_KEY = config("SECRET_KEY")
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i!7)09&z1=1di$a!*=_ow(kix_p7#o!sobnofz051=(7mwo2pb'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False  # 🚨 반드시 False로 설정
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'wooseokbot.onrender.com',     # ← Render 내부 도메인
-    'wooseokbot.com',              # ← 실 도메인
-    'www.wooseokbot.com',          # ← 서브도메인 대응용
+    'wooseokbot.onrender.com',
+    'wooseokbot.com',
+    'www.wooseokbot.com',
 ]
 
-# ✅ CORS 추가
-CORS_ALLOW_ALL_ORIGINS = True
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Application definition
+# ✅ CORS 설정
 INSTALLED_APPS = [
-    'corsheaders',  # ✅ CORS 등록 (가장 위여도 OK)
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +31,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # ✅ 반드시 가장 위에
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ✅ 정적파일 미들웨어
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,6 +41,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# ✅ CORS Origin 제한 (배포용)
+CORS_ALLOWED_ORIGINS = [
+    "https://wooseokbot.com",
+    "https://www.wooseokbot.com",
+]
+
+# ✅ CORS 설정 (옵션)
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'mychatproject.urls'
 
@@ -77,7 +78,7 @@ DATABASES = {
         'PASSWORD': config("DB_PASSWORD"),
         'HOST': config("DB_HOST"),
         'PORT': config("DB_PORT"),
-       'OPTIONS': {
+        'OPTIONS': {
             'sslmode': 'require',
         },
     }
@@ -103,7 +104,10 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = 'static/'
+# ✅ 정적 파일 설정 (Render 배포용)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
