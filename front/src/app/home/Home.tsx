@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import ChatSearchInput from "../chatAnswer/[id]/_components/ChatSearchInput";
 import PortfolioPage from "../portfolio/PortfolioPage";
+import getBaseUrl from "@/utils/getBaseUrl";
 
 const Home = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const Home = () => {
 
     // 👉 2) 바로 비동기로 POST
     try {
-      const res = await fetch("http://localhost:8000/api/chat/", {
+      const res = await fetch(`http://${getBaseUrl()}/api/chat/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),

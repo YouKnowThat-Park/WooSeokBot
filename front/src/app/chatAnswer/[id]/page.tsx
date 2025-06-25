@@ -6,6 +6,7 @@ import Image from "next/image";
 import FeedbackModal from "./_components/FeedbackModal";
 import LoadingDots from "./_components/LoadingDots";
 import ChattingBox from "./_components/ChattingBox";
+import getBaseUrl from "@/utils/getBaseUrl";
 
 type QA = {
   query: string;
@@ -35,7 +36,7 @@ const ChatAnswer = () => {
   useEffect(() => {
     const fetchAnswer = async () => {
       try {
-        const res = await fetch(`http://localhost:8000/api/chat/${chatId}/`);
+        const res = await fetch(`${getBaseUrl()}/api/chat/${chatId}/`);
         const data = await res.json();
 
         setToken(data.token);
@@ -93,7 +94,7 @@ const ChatAnswer = () => {
       ]);
 
       try {
-        const res = await fetch("http://localhost:8000/api/chat/ask/", {
+        const res = await fetch(`${getBaseUrl()}/api/chat/ask/`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ query: newQuery, token: currentToken }),
