@@ -10,6 +10,7 @@ import { GrMore } from "react-icons/gr";
 import Image from "next/image";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import useAutoScroll from "@/hooks/useAutoScroll";
+import getBaseUrl from "@/utils/getBaseUrl";
 
 type QA = {
   query: string;
@@ -68,7 +69,7 @@ const ThemeToggle = ({
 
     setIsAsking(true);
     try {
-      const res = await fetch(`http://localhost:8000/api/chat/ask/${slug}/`, {
+      const res = await fetch(`${getBaseUrl()}/api/chat/ask/${slug}/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: input }),

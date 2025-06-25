@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import Image from "next/image";
+import getBaseUrl from "@/utils/getBaseUrl";
 
 type Props = {
   onClose: () => void;
@@ -21,7 +22,7 @@ const FeedbackModal = ({ onClose }: Props) => {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/api/chat/feedback/", {
+      const res = await fetch(`${getBaseUrl()}/api/chat/feedback/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
