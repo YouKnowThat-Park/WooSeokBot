@@ -1,5 +1,6 @@
 from pathlib import Path
 from decouple import config 
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,6 +17,8 @@ ALLOWED_HOSTS = []
 # ✅ CORS 추가
 CORS_ALLOW_ALL_ORIGINS = True
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Application definition
 INSTALLED_APPS = [
