@@ -1,3 +1,4 @@
+// app/chatAnswer/[id]/page.tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -25,14 +26,14 @@ const ChatAnswer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [token, setToken] = useState<string | null>(null);
 
-  // ✅ 처음 질문 있을 경우, 바로 보여주기
+  // 처음 질문 렌더
   useEffect(() => {
     if (initialQuery) {
       setChats([{ query: initialQuery, answer: "⏳ 답변 생성 중..." }]);
     }
   }, [initialQuery]);
 
-  // ✅ 답변 받아오기
+  // 최초 GET
   useEffect(() => {
     const fetchAnswer = async () => {
       try {
@@ -67,13 +68,14 @@ const ChatAnswer = () => {
     if (chatId && initialQuery) fetchAnswer();
   }, [chatId, initialQuery]);
 
+  // 스크롤
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chats]);
 
+  // 후속 질문
   useEffect(() => {
     if (!token) return;
-
     tokenRef.current = token;
 
     (
@@ -99,7 +101,6 @@ const ChatAnswer = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ query: newQuery, token: currentToken }),
         });
-
         const data = await res.json();
         setChats((prev) =>
           prev.map((item, idx) =>
@@ -123,6 +124,7 @@ const ChatAnswer = () => {
   return (
     <div className="w-[800px] ml-[115px] flex flex-col dark:bg-[#111111] py-10 px-4">
       <div className="flex flex-col gap-6 mb-[150px]">
+        {/* AI 인트로 */}
         <div className="flex items-start gap-3">
           <Image
             src="/wooseok.webp"
@@ -136,8 +138,10 @@ const ChatAnswer = () => {
           </div>
         </div>
 
+        {/* Q&A */}
         {chats.map((chat, idx) => (
           <div key={idx} className="space-y-3">
+            {/* 사용자 질문 */}
             <div className="flex items-start gap-3 flex-row-reverse max-w-[85%]">
               <Image
                 src="/interviewer.webp"
@@ -151,6 +155,7 @@ const ChatAnswer = () => {
               </div>
             </div>
 
+            {/* AI 답변 */}
             <div className="flex items-start gap-3">
               <Image
                 src="/wooseok.webp"
@@ -189,6 +194,7 @@ const ChatAnswer = () => {
         ))}
       </div>
 
+      {/* 채팅 입력 박스 */}
       <div className="fixed bottom-0 right-[60px] w-full dark:bg-[#111111] z-50">
         <div className="max-w-[800px] mx-auto px-4">
           <ChattingBox />

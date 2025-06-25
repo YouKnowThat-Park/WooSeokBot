@@ -1,4 +1,4 @@
-// Home.tsx
+// app/home/Home.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -7,37 +7,43 @@ import ChatSearchInput from "../chatAnswer/[id]/_components/ChatSearchInput";
 import PortfolioPage from "../portfolio/PortfolioPage";
 import getBaseUrl from "@/utils/getBaseUrl";
 
-const Home = () => {
+const Home: React.FC = () => {
   const router = useRouter();
   const [showSearch, setShowSearch] = useState(true);
 
   const handleSearch = async (query: string) => {
-    // 👉 1) 먼저 router.push로 이동
+    // 1) 프론트 라우팅 (로딩 페이지)
     router.push(`/chatAnswer/temp?q=${encodeURIComponent(query)}`);
 
-    // 👉 2) 바로 비동기로 POST
+    // 2) 실제 API 호출 직전 URL 찍어보기
+    const base = getBaseUrl();
+    console.log("🚀 [Home] NODE_ENV:", process.env.NODE_ENV);
+    console.log("🚀 [Home] getBaseUrl() →", base);
+    console.log("🚀 [Home] Fetching:", `${base}/api/chat/`);
+
+    // 3) POST 요청
     try {
-      const res = await fetch(`${getBaseUrl()}/api/chat/`, {
+      const res = await fetch(`${base}/api/chat/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
       });
 
       if (!res.ok) {
-        const error = await res.text();
-        console.error("❌ GPT 오류:", error);
+        const text = await res.text();
+        console.error("❌ GPT 오류:", text);
         return;
       }
 
       const { chatId } = await res.json();
-
-      // ✅ chatId 나오면 다시 교체
+      // 4) 결과로 받은 chatId 로 URL 교체
       router.replace(`/chatAnswer/${chatId}?q=${encodeURIComponent(query)}`);
-    } catch (error) {
-      console.error("❌ 네트워크 오류:", error);
+    } catch (err) {
+      console.error("❌ 네트워크 오류:", err);
     }
   };
 
+  // 스크롤 내릴 때 검색창 숨기기
   useEffect(() => {
     const handleScroll = () => {
       setShowSearch(window.scrollY <= 300);
@@ -53,7 +59,7 @@ const Home = () => {
         <PortfolioPage />
       </div>
 
-      {/* 검색창 (오직 홈에서) */}
+      {/* 홈에서만 보이는 검색창 */}
       {showSearch && (
         <div className="fixed w-[700px] top-[400px] ml-32 z-30">
           <ChatSearchInput onSearch={handleSearch} />
