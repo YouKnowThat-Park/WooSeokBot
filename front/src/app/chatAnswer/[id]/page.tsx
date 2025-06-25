@@ -1,4 +1,4 @@
-// app/chatAnswer/[id]/page.tsx  (또는 ChatAnswer.tsx)
+// app/chatAnswer/[id]/page.tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -14,17 +14,7 @@ type QA = {
   answer: string;
 };
 
-// 최상단에서 한 번 환경변수 확인
-console.log(
-  "🔧 [ChatAnswer] NODE_ENV:",
-  process.env.NODE_ENV,
-  "DEV:",
-  process.env.NEXT_PUBLIC_API_BASE_DEV,
-  "PROD:",
-  process.env.NEXT_PUBLIC_API_BASE_PROD
-);
-
-const ChatAnswer: React.FC = () => {
+const ChatAnswer = () => {
   const { id } = useParams();
   const chatId = Array.isArray(id) ? id[0] : id;
   const searchParams = useSearchParams();
@@ -36,25 +26,19 @@ const ChatAnswer: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [token, setToken] = useState<string | null>(null);
 
-  // 처음 질문 있을 경우 바로 렌더링
+  // 처음 질문 렌더
   useEffect(() => {
     if (initialQuery) {
       setChats([{ query: initialQuery, answer: "⏳ 답변 생성 중..." }]);
     }
   }, [initialQuery]);
 
-  // 최초 답변 GET
+  // 최초 GET
   useEffect(() => {
     const fetchAnswer = async () => {
-      const base = getBaseUrl();
-      console.log("🚀 [ChatAnswer] GET URL:", `${base}/api/chat/${chatId}/`);
-
       try {
-        const res = await fetch(`${base}/api/chat/${chatId}/`);
-        console.log("🚀 [ChatAnswer] GET status:", res.status);
-
+        const res = await fetch(`${getBaseUrl()}/api/chat/${chatId}/`);
         const data = await res.json();
-        console.log("🚀 [ChatAnswer] GET response:", data);
 
         setToken(data.token);
         tokenRef.current = data.token;
@@ -66,9 +50,7 @@ const ChatAnswer: React.FC = () => {
               : item
           )
         );
-      } catch (err) {
-        console.error("❌ [ChatAnswer] GET 네트워크 오류:", err);
-        // 실패 시 메시지 대체
+      } catch {
         setChats((prev) =>
           prev.map((item) =>
             item.query === initialQuery
@@ -83,22 +65,24 @@ const ChatAnswer: React.FC = () => {
       }
     };
 
-    if (chatId && initialQuery) {
-      fetchAnswer();
-    }
+    if (chatId && initialQuery) fetchAnswer();
   }, [chatId, initialQuery]);
 
-  // 채팅 추가될 때마다 스크롤
+  // 스크롤
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chats]);
 
-  // 후속 질문 POST
+  // 후속 질문
   useEffect(() => {
     if (!token) return;
     tokenRef.current = token;
 
-    (window as any).__handleFollowUp = async (newQuery: string) => {
+    (
+      window as typeof window & {
+        __handleFollowUp?: (query: string) => void;
+      }
+    ).__handleFollowUp = async (newQuery: string) => {
       const currentToken = tokenRef.current;
       if (!currentToken) {
         alert("❌ 토큰이 유실되었습니다. 새로고침 해주세요.");
@@ -111,32 +95,19 @@ const ChatAnswer: React.FC = () => {
         { query: newQuery, answer: "⏳ 답변 생성 중..." },
       ]);
 
-      const base = getBaseUrl();
-      const askUrl = `${base}/api/chat/ask/`;
-      console.log("🚀 [ChatAnswer] POST ask URL:", askUrl);
-      console.log("🚀 [ChatAnswer] POST ask body:", {
-        query: newQuery,
-        token: currentToken,
-      });
-
       try {
-        const res = await fetch(askUrl, {
+        const res = await fetch(`${getBaseUrl()}/api/chat/ask/`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ query: newQuery, token: currentToken }),
         });
-        console.log("🚀 [ChatAnswer] POST ask status:", res.status);
-
         const data = await res.json();
-        console.log("🚀 [ChatAnswer] POST ask response:", data);
-
         setChats((prev) =>
           prev.map((item, idx) =>
             idx === newIndex ? { ...item, answer: data.answer } : item
           )
         );
-      } catch (err) {
-        console.error("❌ [ChatAnswer] POST ask 네트워크 오류:", err);
+      } catch {
         setChats((prev) =>
           prev.map((item, idx) =>
             idx === newIndex ? { ...item, answer: "❌ 답변 생성 실패" } : item
@@ -167,7 +138,7 @@ const ChatAnswer: React.FC = () => {
           </div>
         </div>
 
-        {/* 실제 Q&A */}
+        {/* Q&A */}
         {chats.map((chat, idx) => (
           <div key={idx} className="space-y-3">
             {/* 사용자 질문 */}
@@ -206,7 +177,6 @@ const ChatAnswer: React.FC = () => {
                     chat.answer
                   )}
 
-                  {/* 마지막 답변 뒤에만 피드백 버튼 */}
                   {idx === chats.length - 1 && !chat.answer.includes("⏳") && (
                     <button
                       onClick={() => setIsModalOpen(true)}
