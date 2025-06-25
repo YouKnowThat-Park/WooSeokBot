@@ -32,11 +32,6 @@ export const WooseokBotTechItems = [
   },
   {
     category: "Library",
-    tech: "React-Query",
-    reason: "비동기 데이터 처리, 캐싱, 리페치 등 안정적인 API 연동",
-  },
-  {
-    category: "Library",
     tech: "Framer-Motion",
     reason: "자유로운 애니메이션 구현 및 전환 제어",
   },
