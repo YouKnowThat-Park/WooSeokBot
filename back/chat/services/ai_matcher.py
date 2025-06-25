@@ -55,8 +55,9 @@ def is_requesting_last_question(user_query: str) -> bool:
         temperature=0,
         max_tokens=2
     )
-    return resp.choices[0].message.content.strip().upper() == "YES"
-
+    result = resp.choices[0].message.content.strip().upper()
+    print(f"[DEBUG] Query: {user_query} → Response: {result}")  # 혹은 logger 사용
+    return result == "YES"
 
 def generate_ai_answer(user_query: str, data: dict, token: str, slug: str | None = None) -> str:
     try:

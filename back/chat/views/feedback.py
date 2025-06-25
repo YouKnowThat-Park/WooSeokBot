@@ -4,7 +4,7 @@ from rest_framework import status
 from ..models import ChatFeedback
 from ..serializers import ChatFeedbackSerializer
 
-@api_view(['POST'])
+@api_view(['POST', "OPTIONS"])
 def submit_feedback(request):
     serializer = ChatFeedbackSerializer(data=request.data)
     if serializer.is_valid():
