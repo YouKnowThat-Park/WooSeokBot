@@ -12,7 +12,13 @@ SECRET_KEY = 'django-insecure-i!7)09&z1=1di$a!*=_ow(kix_p7#o!sobnofz051=(7mwo2pb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'wooseokbot.onrender.com',     # ← Render 내부 도메인
+    'wooseokbot.com',              # ← 실 도메인
+    'www.wooseokbot.com',          # ← 서브도메인 대응용
+]
 
 # ✅ CORS 추가
 CORS_ALLOW_ALL_ORIGINS = True
