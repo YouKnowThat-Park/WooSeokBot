@@ -11,7 +11,7 @@ from ..services.ai_matcher import generate_ai_answer
 
 
 @ratelimit(key='ip', rate='12/m', block=True)
-@api_view(['POST'])
+@api_view(['POST', "OPTIONS"])
 def create_chat(request):
     query = request.data.get("query")
     if not query:
@@ -51,7 +51,7 @@ def create_chat(request):
     }, status=status.HTTP_201_CREATED)
 
 @ratelimit(key='ip', rate='12/m', block=True)
-@api_view(['POST'])
+@api_view(['POST', "OPTIONS"])
 def chat_ask(request):
     query = request.data.get("query")
     token = request.data.get("token")
@@ -92,7 +92,7 @@ def chat_ask(request):
     return Response({"query": query, "answer": answer}, status=status.HTTP_200_OK)
 
 
-@api_view(['GET'])
+@api_view(['GET', "OPTIONS"])
 def get_chat(request, chat_id):
     try:
         chat = ChatSession.objects.get(id=chat_id)
@@ -107,7 +107,7 @@ def get_chat(request, chat_id):
 
 
 
-@api_view(['POST'])
+@api_view(['POST', "OPTIONS"])
 @ratelimit(key='ip', rate='12/m', block=True)
 def chat_ask_by_slug(request, slug: str):
     query = request.data.get("query")
