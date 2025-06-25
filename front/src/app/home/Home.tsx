@@ -17,7 +17,7 @@ const Home = () => {
 
     // 👉 2) 바로 비동기로 POST
     try {
-      const res = await fetch(`http://${getBaseUrl()}/api/chat/`, {
+      const res = await fetch(`${getBaseUrl()}/api/chat/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
