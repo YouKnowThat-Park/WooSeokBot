@@ -10,6 +10,7 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    'wooseokbot-backend.onrender.com',
     'wooseokbot.onrender.com',
     'wooseokbot.com',
     'www.wooseokbot.com',
@@ -29,11 +30,11 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',       # CORS 처리
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # 정적파일 서빙용
+    'corsheaders.middleware.CorsMiddleware',       # 첫번째
+    'django.middleware.common.CommonMiddleware', # 두번째
+    'whitenoise.middleware.WhiteNoiseMiddleware',  
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
