@@ -4,10 +4,8 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# 🚨 기존 노출된 SECRET_KEY는 재발급 받아서 .env 파일에 분리 완료 🚨
 SECRET_KEY = config("SECRET_KEY")
-
-DEBUG = False  # 🚨 반드시 False로 설정
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -17,7 +15,7 @@ ALLOWED_HOSTS = [
     'www.wooseokbot.com',
 ]
 
-# ✅ CORS 설정
+# Application definition
 INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.admin',
@@ -31,8 +29,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ✅ 정적파일 미들웨어
-    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # 정적파일 서빙용
+    'corsheaders.middleware.CorsMiddleware',       # CORS 처리
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -41,15 +39,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-# ✅ CORS Origin 제한 (배포용)
-CORS_ALLOWED_ORIGINS = [
-    "https://wooseokbot.com",
-    "https://www.wooseokbot.com",
-]
-
-# ✅ CORS 설정 (옵션)
-CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'mychatproject.urls'
 
@@ -60,6 +49,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -70,6 +60,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mychatproject.wsgi.application'
 
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -84,6 +75,7 @@ DATABASES = {
     }
 }
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -99,16 +91,32 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# ✅ 정적 파일 설정 (Render 배포용)
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# OpenAI API Key
 OPENAI_API_KEY = config("OPENAI_API_KEY")
+
+# CORS 설정 (DEBUG 여부에 따라 다르게)
+if DEBUG:
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:3000",
+    ]
+else:
+    CORS_ALLOWED_ORIGINS = [
+        "https://wooseokbot.com",
+        "https://www.wooseokbot.com",
+    ]
+
+CORS_ALLOW_CREDENTIALS = True
