@@ -19,19 +19,27 @@ def extract_matching_project_by_slug(slug: str, slug_projects: list[dict]) -> di
 def match_best_profile_title(user_query: str, data: dict) -> str:
     q = user_query.lower()
 
-    # ✅ 슬러그(project) 이름이 명시된 경우 먼저 매칭
+    # 슬러그(project) 이름이 명시된 경우 먼저 매칭
     for item in data.get("slug_projects", []):
         slug = item.get("slug", "").lower()
         if slug and (slug in q or slug_to_base(slug) in q):
+            print("[DEBUG] 슬러그 직접 매칭됨:", slug, "→", item["title"])
             return item["title"]
 
-    # ✅ 기본 타이틀 설정 (무조건 박우석 정보부터)
-    titles = ["박우석 정보"] + [i["title"] for i in data.get("slug_projects", [])]
+    #  기본 타이틀 설정 (무조건 박우석 정보부터)
+    profile_titles = [i["title"] for i in data.get("profiles", [])]
+    titles = ["박우석 정보"] + [i["title"] for i in data.get("profiles", [])] + [i["title"] for i in data.get("slug_projects", [])]
+    print("[DEBUG] GPT 타이틀 후보 목록:", titles)
 
-    # ✅ 프롬프트 불러와서 GPT에게 매칭 요청
+    formatted = format_list_for_prompt(titles)
+    print("[DEBUG] format_list_for_prompt 결과:\n", formatted)
+
+    # 프롬프트 불러와서 GPT에게 매칭 요청
     system = load_prompt("system_match_slug.txt").format(
-        title_list=format_list_for_prompt(titles)
+        title_list=formatted
     )
+    print("[DEBUG] system prompt 내용:\n", system)
+
     resp = OpenAI(api_key=settings.OPENAI_API_KEY).chat.completions.create(
         model="gpt-4.1-nano",
         messages=[
@@ -41,7 +49,11 @@ def match_best_profile_title(user_query: str, data: dict) -> str:
         temperature=0,
         max_tokens=50
     )
-    return resp.choices[0].message.content.strip()
+
+    result = resp.choices[0].message.content.strip()
+    print("[DEBUG] GPT 응답 결과:", repr(result))
+
+    return result
 
 
 def is_requesting_last_question(user_query: str) -> bool:
@@ -77,6 +89,7 @@ def generate_ai_answer(user_query: str, data: dict, token: str, slug: str | None
         system = load_prompt("system_portfolio_chat.txt").format(
             selected_title=selected_title,
             selected_description=selected_desc
+            
         )
 
         resp = OpenAI(api_key=settings.OPENAI_API_KEY).chat.completions.create(
