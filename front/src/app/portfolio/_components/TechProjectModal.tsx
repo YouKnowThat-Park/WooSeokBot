@@ -82,6 +82,7 @@ const techToProjects: Record<string, string[]> = {
     "pokemon",
     "dogo",
   ],
+  RENDER: ["WooseokBot"],
 };
 
 const combinedProjects = [...projects, ...studyProjects];

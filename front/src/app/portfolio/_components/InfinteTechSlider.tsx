@@ -31,7 +31,12 @@ const stackItems = [
   },
   {
     title: "DB, Deployment",
-    icons: ["/postgresql.webp", "/supabase.webp", "/vercel.webp"],
+    icons: [
+      "/postgresql.webp",
+      "/supabase.webp",
+      "/vercel.webp",
+      "/render.webp",
+    ],
   },
   {
     title: "External Services",
