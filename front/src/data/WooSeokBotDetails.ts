@@ -253,7 +253,7 @@ export const WooSeokBotDetails: ProjectSection[] = [
     title: "배포",
     items: [
       {
-        title: "Front → Vercel Back → Render",
+        title: "Front → Vercel // Back → Render",
         content:
           "Next.js는 Vercel에서 개발된 프레임워크로, Vercel에 최적화되어 있어 무중단 배포, 자동 빌드, 환경변수 관리 등이 매우 간편합니다. 백엔드인 Django는 Render에서도 공식적으로 잘 지원되며, 간단한 설정만으로도 빠르게 배포할 수 있습니다. GitHub 연동이 쉬워 프론트엔드와 백엔드를 분리하여 배포하기에 매우 효율적인 조합입니다.",
       },
