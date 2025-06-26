@@ -100,7 +100,7 @@ def generate_ai_answer(user_query: str, data: dict, token: str, slug: str | None
                 {"role": "user", "content": user_query}
             ],
             temperature=0.0,
-            max_tokens=3000,
+            max_tokens=5000,
             top_p=0.9
         )
 
