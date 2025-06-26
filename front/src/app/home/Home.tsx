@@ -1,4 +1,3 @@
-// app/home/Home.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -15,11 +14,7 @@ const Home: React.FC = () => {
     // 1) 프론트 라우팅 (로딩 페이지)
     router.push(`/chatAnswer/temp?q=${encodeURIComponent(query)}`);
 
-    // 2) 실제 API 호출 직전 URL 찍어보기
     const base = getBaseUrl();
-    console.log("🚀 [Home] NODE_ENV:", process.env.NODE_ENV);
-    console.log("🚀 [Home] getBaseUrl() →", base);
-    console.log("🚀 [Home] Fetching:", `${base}/api/chat/`);
 
     // 3) POST 요청
     try {
