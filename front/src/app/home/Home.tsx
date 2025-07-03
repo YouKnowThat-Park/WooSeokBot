@@ -50,7 +50,7 @@ const Home: React.FC = () => {
   return (
     <div className="relative min-h-screen mr-[-450px] dark:bg-[#111]">
       {/* 메인 콘텐츠 */}
-      <div className="relative z-40 mt-[850px]">
+      <div className="relative z-40 mt-[830px]">
         <PortfolioPage />
       </div>
 
