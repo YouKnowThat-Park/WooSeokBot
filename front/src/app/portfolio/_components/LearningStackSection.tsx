@@ -9,7 +9,7 @@ const LearningStackSection = () => {
           배우고 있는 기술 스택
         </h3>
 
-        <div className=" rounded-md cursor-pointer transition mt-3 h-full">
+        <div className=" rounded-md cursor-pointer transition mt-3 h-fit">
           <a
             href="https://github.com/YouKnowThat-Park/StudyProject"
             target="_blank"
