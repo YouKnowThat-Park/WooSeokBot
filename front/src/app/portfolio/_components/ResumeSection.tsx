@@ -88,8 +88,13 @@ const rawItems: Omit<TimelineItem, "position">[] = [
   },
   {
     title: "🤝 WooSeok Bot",
-    subtitle: "Next.js, Recoil, Django, TypeScript",
+    subtitle: "Next.js, Recoil, Django, TypeScript, PostgreSQL",
     description: "2025.05.22 ~ 25.06.25",
+  },
+  {
+    title: "✍️ Full Stack Project",
+    subtitle: "Next.js, Django, PostgreSQL",
+    description: "2025.07.05 ~ ",
   },
 ];
 
