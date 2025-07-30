@@ -37,7 +37,9 @@ const LearningStackSection = () => {
       </div>
 
       <div className="bg-white w-full h-[200px] dark:bg-[#111111] border">
-        <h3 className="flex justify-center mt-5">배우고 싶은 기술 스택</h3>
+        <h3 className="flex justify-center mt-5 font-semibold">
+          배우고 싶은 기술 스택
+        </h3>
         <div className="flex">
           <Image
             src="/react-native.webp"
