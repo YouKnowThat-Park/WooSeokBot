@@ -119,6 +119,24 @@ It cannot answer anything outside this project's scope.
 (Since there's a lot of usage limit left, please ask many questions. plz...😭)
 ```
 
+#### Interaction chatting
+
+```
+To me, keyword-based bots aren’t real chatbots.
+
+What is a "chat"? It’s a conversation between people over a digital network. A conversation.  
+But if a system refuses to respond just because your input doesn’t match a predefined keyword — that’s not a conversation. That’s a command system.
+
+Human conversations aren’t clean or perfect. We make typos. We miss spaces. We mix up words. And yet, we still understand each other.  
+So why should a chatbot require everything to be exactly right?
+
+Keyword-based interaction is rigid, shallow, and not conversational. That’s why I don’t consider it a real chatbot.
+
+Instead, I’ve built an interaction-first chatbot — one that understands language, not just keywords.  
+It uses LLMs to analyze and interpret user input in context.  
+This is what a real chat experience should feel like.
+```
+
 ##
 
 ### remote control
@@ -154,23 +172,23 @@ You get to chat exactly where it feels most comfortable — because the chat fol
 Now that’s user-centered design.
 ```
 
-#### Interaction chatting
 
-```
-To me, keyword-based bots aren’t real chatbots.
-
-What is a "chat"? It’s a conversation between people over a digital network. A conversation.  
-But if a system refuses to respond just because your input doesn’t match a predefined keyword — that’s not a conversation. That’s a command system.
-
-Human conversations aren’t clean or perfect. We make typos. We miss spaces. We mix up words. And yet, we still understand each other.  
-So why should a chatbot require everything to be exactly right?
-
-Keyword-based interaction is rigid, shallow, and not conversational. That’s why I don’t consider it a real chatbot.
-
-Instead, I’ve built an interaction-first chatbot — one that understands language, not just keywords.  
-It uses LLMs to analyze and interpret user input in context.  
-This is what a real chat experience should feel like.
-```
 
 ## Retrace
+```
+Back during React Bootcamp 7, people used to call me the “idea bank.”  
+And maybe that’s exactly why I couldn’t stand the idea of building a typical, cookie-cutter portfolio.
 
+I wanted something different — something that actually said something about me.
+
+That’s how this chatbot project began.
+
+Since it’s my own chatbot, I had to feed it my own data.  
+I had to ask myself: what kind of questions might people ask about me?  
+And what kind of person would I be in those answers?
+
+Somewhere along the way, I started to reflect on who I really am.  
+What started as a tech project turned into something more personal.  
+By building a bot that introduces me to others, I ended up reintroducing myself — to me.☺️
+
+```
