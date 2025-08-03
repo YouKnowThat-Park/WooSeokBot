@@ -2,6 +2,7 @@
 Wooseok Bot is a portfolio-powered AI chatbot built using Next.js, Django, and GPT-4.1-nano  
 It introduces developer Wooseok Park and his work by holding natural, LLM-driven conversations.  
 This project combines modern frontend UX with AI to create a unique, personalized portfolio experience.
+
 [![Wooseokbot Demo](https://github.com/user-attachments/assets/1a9791f3-85ff-4d73-9d7a-6858b1d5e7b8)](https://wooseokbot.com)
 <p align="center"><em>Click the image to visit the official website.</em></p>
 
@@ -101,3 +102,57 @@ front/
 ├── type/ # TypeScript type definitions
 └── utils/ # Utility functions and helpers
 ```
+
+## Project
+### Chatting
+The range of questions the chatbot can answer changes depending on where it's being accessed.
+
+#### Main Chatbot
+```
+This chatbot has access to all information about Wooseok Park and everything he has worked on so far.  
+(Since there's a lot of usage limit left, please ask many questions. plz...😭)
+```
+#### Scoped Project Chatbot
+```
+This chatbot only responds to questions related to the project you're currently viewing (like "wooseokbot").  
+It cannot answer anything outside this project's scope.
+(Since there's a lot of usage limit left, please ask many questions. plz...😭)
+```
+
+##
+
+### remote control
+Feels like true user experience, doesn’t it?
+
+#### remote control draggable
+```
+The remote can be moved freely, so you can place it anywhere that’s comfortable for reading the information.
+
+```
+
+#### Chat window position
+
+<div style="display: flex; gap: 16px; justify-content: center; align-items: flex-start; flex-wrap: wrap;">
+  <img
+    src="https://github.com/user-attachments/assets/976441bd-c02d-4756-93dc-d61ab6d17c8c"
+    alt="image-1"
+    style="width: 45%; height: auto;"
+  />
+  -
+  <img
+    src="https://github.com/user-attachments/assets/121a8cdf-0fc2-43ad-ab38-1bbde1aed548"
+    alt="image-2"
+    style="width: 45%; height: auto;"
+  />
+</div>
+
+<br/><br/>
+
+```
+Unlike fixed-position chat interfaces, this one opens **right where you place the remote**.  
+You get to chat exactly where it feels most comfortable — because the chat follows your control.  
+Now *that’s* user-centered design.
+```
+
+
+
