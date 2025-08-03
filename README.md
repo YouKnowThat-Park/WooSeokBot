@@ -149,10 +149,28 @@ The remote can be moved freely, so you can place it anywhere that’s comfortabl
 <br/><br/>
 
 ```
-Unlike fixed-position chat interfaces, this one opens **right where you place the remote**.  
+Unlike fixed-position chat interfaces, this one opens right where you place the remote.  
 You get to chat exactly where it feels most comfortable — because the chat follows your control.  
-Now *that’s* user-centered design.
+Now that’s user-centered design.
 ```
 
+#### Interaction chatting
 
+```
+To me, keyword-based bots aren’t real chatbots.
+
+What is a "chat"? It’s a conversation between people over a digital network. A conversation.  
+But if a system refuses to respond just because your input doesn’t match a predefined keyword — that’s not a conversation. That’s a command system.
+
+Human conversations aren’t clean or perfect. We make typos. We miss spaces. We mix up words. And yet, we still understand each other.  
+So why should a chatbot require everything to be exactly right?
+
+Keyword-based interaction is rigid, shallow, and not conversational. That’s why I don’t consider it a real chatbot.
+
+Instead, I’ve built an interaction-first chatbot — one that understands language, not just keywords.  
+It uses LLMs to analyze and interpret user input in context.  
+This is what a real chat experience should feel like.
+```
+
+## Retrace
 
