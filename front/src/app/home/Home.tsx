@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import ChatSearchInput from "../chatAnswer/[id]/_components/ChatSearchInput";
 import PortfolioPage from "../portfolio/PortfolioPage";
 import getBaseUrl from "@/utils/getBaseUrl";
+import { motion } from "framer-motion";
 
 const Home: React.FC = () => {
   const router = useRouter();
@@ -41,16 +42,31 @@ const Home: React.FC = () => {
   // 스크롤 내릴 때 검색창 숨기기
   useEffect(() => {
     const handleScroll = () => {
-      setShowSearch(window.scrollY <= 300);
+      setShowSearch(window.scrollY <= 200);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="relative min-h-screen mr-[-450px] dark:bg-[#111]">
+    <div className="relative min-h-screen mr-[-450px] dark:bg-[#111] ">
       {/* 메인 콘텐츠 */}
       <div className="relative z-40 mt-[830px]">
+        {showSearch && (
+          <motion.div
+            className="w-[100px] h-[30px] absolute top-[-50px] right-0 text-sm text-gray-300 font-semibold"
+            initial={{ y: 0 }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{
+              duration: 1.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            Scroll 👇🏻
+          </motion.div>
+        )}
+
         <PortfolioPage />
       </div>
 
