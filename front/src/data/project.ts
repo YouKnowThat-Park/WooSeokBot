@@ -84,12 +84,21 @@ export const studyProjects = [
     link: "/studyProject/todoList",
   },
   {
-    id: "pokemon",
+    id: "Pokemon",
     title: "pokemon",
     description: "Personal Project",
     role: "Front",
     date: "2024.11.06 ~ 2024.11.14",
     image: "/pokemon.webp",
     link: "/studyProject/pokemon",
+  },
+  {
+    id: "fullstack",
+    title: "Fullstack",
+    description: "Fullstack Project",
+    role: "Fullstack",
+    date: "2025.07.05 ~ 진행 중 ",
+    image: "/study.png",
+    link: "/studyProject/fullstack",
   },
 ];
