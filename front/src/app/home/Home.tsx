@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 const Home: React.FC = () => {
   const router = useRouter();
   const [showSearch, setShowSearch] = useState(true);
+  const [showScroll, setShowScroll] = useState(true);
 
   const handleSearch = async (query: string) => {
     // 1) 프론트 라우팅 (로딩 페이지)
@@ -42,19 +43,27 @@ const Home: React.FC = () => {
   // 스크롤 내릴 때 검색창 숨기기
   useEffect(() => {
     const handleScroll = () => {
-      setShowSearch(window.scrollY <= 200);
+      setShowSearch(window.scrollY <= 300);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleScrollIndicator = () => {
+      setShowScroll(window.scrollY <= 10);
+    };
+    window.addEventListener("scroll", handleScrollIndicator);
+    return () => window.removeEventListener("scroll", handleScrollIndicator);
+  }, []);
+
   return (
     <div className="relative min-h-screen mr-[-450px] dark:bg-[#111] ">
       {/* 메인 콘텐츠 */}
-      <div className="relative z-40 mt-[830px]">
-        {showSearch && (
+      <div className="relative z-40 ">
+        {showScroll && (
           <motion.div
-            className="w-[100px] h-[30px] absolute top-[-50px] right-0 text-sm text-gray-300 font-semibold"
+            className="w-[100px] h-[30px] absolute top-[-140px] right-0 text-sm text-gray-300 font-semibold"
             initial={{ y: 0 }}
             animate={{ y: [0, -10, 0] }}
             transition={{
@@ -66,13 +75,12 @@ const Home: React.FC = () => {
             Scroll 👇🏻
           </motion.div>
         )}
-
         <PortfolioPage />
       </div>
 
       {/* 홈에서만 보이는 검색창 */}
       {showSearch && (
-        <div className="fixed w-[700px] top-[400px] ml-32 z-30">
+        <div className="fixed w-[700px] top-[350px] ml-32 z-30">
           <ChatSearchInput onSearch={handleSearch} />
         </div>
       )}
