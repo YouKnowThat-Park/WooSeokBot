@@ -84,7 +84,7 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
             transform: botAttacks ? "translateX(-20px)" : "translateX(0px)",
           }}
         >
-          <h2 className="text-[100px] font-black text-gray-900 dark:text-[#F4F5F4] flex">
+          <h2 className="text-[140px] font-black  dark:text-[#F4F5F4] flex">
             {"WooSeo".split("").map((char, idx) => (
               <span
                 key={idx}
@@ -111,8 +111,8 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
 
           <span
             className={`
-              text-[100px] font-black ml-4
-              text-gray-900 dark:text-[#F4F5F4]
+              text-[140px] font-black ml-4
+              dark:text-[#F4F5F4]
               transition-all duration-100
               ${
                 botAttacks
@@ -127,21 +127,23 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
         </div>
       </div>
 
-      <div className="border-b border-gray-400 flex items-center gap-4 pb-2 z-30">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="우석이에게 궁금한 것을 물어봐주세요."
-          className="flex-grow text-center w-[700px] outline-none text-lg bg-transparent placeholder-gray-500 dark:placeholder-gray-400 text-black dark:text-[#F4F5F4]"
-        />
-        <button
-          type="submit"
-          className="text-lg text-black dark:text-white underline hover:opacity-70 whitespace-nowrap"
-          aria-label="검색하기 버튼"
-        >
-          Search
-        </button>
+      <div className="flex items-center justify-center mt-40 z-30">
+        <div className="flex w-full max-w-xl bg-white dark:bg-[#1F1F1F] rounded-full shadow-md px-4 py-2 border border-gray-300 dark:border-gray-600">
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="우석이에게 궁금한 것을 물어봐주세요."
+            className="flex-grow bg-transparent outline-none text-lg placeholder-gray-500 dark:placeholder-gray-400 text-black dark:text-[#F4F5F4] px-4"
+          />
+          <button
+            type="submit"
+            aria-label="검색하기 버튼"
+            className="flex items-center justify-center text-white bg-gradient-to-r from-pink-500 to-orange-400 hover:opacity-80 px-5 py-2 rounded-full transition-all duration-200"
+          >
+            🔍
+          </button>
+        </div>
       </div>
     </form>
   );
