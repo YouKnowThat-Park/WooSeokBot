@@ -92,4 +92,13 @@ export const studyProjects = [
     image: "/pokemon.webp",
     link: "/studyProject/pokemon",
   },
+  {
+    id: "fullstack",
+    title: "fullstack",
+    description: "Fullstack Project",
+    role: "fullstack",
+    date: "2025.11.06 ~ 2024.11.14",
+    image: "/study.png",
+    link: "/studyProject/fullstack",
+  },
 ];
