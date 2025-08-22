@@ -27,22 +27,22 @@ const rawItems: Omit<TimelineItem, "position">[] = [
   },
   {
     title: "🏅 Medal Table",
-    subtitle: "React, Vite.js, React Hook, CSS",
+    subtitle: "React, Vite, React Hook, CSS",
     description: "2024.10.29 ~ 24.11.01",
   },
   {
     title: "🧌 Pokemon",
-    subtitle: "React, React Router, styled-components, Vite.js",
+    subtitle: "React, React Router, styled-components, Vite",
     description: "2024.11.06 ~ 24.11.14",
   },
   {
     title: "🚶‍♂️‍➡️ Voir le chemin",
-    subtitle: "React, Vite.js, ContextAPI, Supabase, React Query",
+    subtitle: "React, Vite, ContextAPI, Supabase, React Query",
     description: "2024.11.15 ~ 24.11.21",
   },
   {
     title: "🤔 MBTI Test",
-    subtitle: "React, Vite.js, styled-components, Axios, Tailwind CSS",
+    subtitle: "React, Vite, styled-components, Axios, Tailwind CSS",
     description: "2024.11.22 ~ 24.11.28",
   },
   {
@@ -119,19 +119,19 @@ const ResumeSection = () => {
   }, []);
 
   return (
-    <div className="relative mx-auto bg-white dark:bg-[#111111] dark:text-[#fbfbfb] pb-14">
+    <div className="relative mx-auto bg-gradient-to-b from-white to-gray-50 dark:from-[#0c0c0c] dark:to-[#111111] dark:text-[#fbfbfb] py-20 px-4">
       {/* 스크롤 버튼 */}
       <button
         onClick={scrollLeft}
         aria-label="슬라이드 왼쪽으로 넘기기"
-        className="absolute left-2 top-[50%] transform -translate-y-1/2 z-30 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-gray-600 rounded-full w-8 h-8 flex items-center justify-center shadow-md"
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-gray-700 rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:scale-105 hover:bg-gray-100 dark:hover:bg-[#2a2a2a] transition"
       >
         ←
       </button>
       <button
         onClick={scrollRight}
         aria-label="슬라이드 오른쪽으로 넘기기"
-        className="absolute right-2 top-[50%] transform -translate-y-1/2 z-30 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-gray-600 rounded-full w-8 h-8 flex items-center justify-center shadow-md"
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-gray-700 rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:scale-105 hover:bg-gray-100 dark:hover:bg-[#2a2a2a] transition"
       >
         →
       </button>
@@ -143,7 +143,7 @@ const ResumeSection = () => {
       >
         <div className="relative z-10 h-[400px] flex snap-x snap-mandatory w-max pr-8">
           {/* 중심선 */}
-          <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gray-300 dark:bg-gray-600 -translate-y-1/2 z-0" />
+          <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 -translate-y-1/2 z-0" />
 
           {timelineItems.map((item, idx) => (
             <div
@@ -152,9 +152,11 @@ const ResumeSection = () => {
             >
               {/* 위쪽 아이템 */}
               {item.position === "top" && (
-                <div className="absolute bottom-[230px] text-center w-[250px]">
-                  <p className="text-[16px] font-semibold">{item.title}</p>
-                  <p className="mt-1 text-sm dark:text-gray-300">
+                <div className="absolute bottom-[230px] text-center w-[250px] p-4 rounded-xl bg-white/60 dark:bg-[#1a1a1a]/60 backdrop-blur-sm shadow-md">
+                  <p className="text-base font-semibold text-black dark:text-white">
+                    {item.title}
+                  </p>
+                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
                     {item.subtitle}
                   </p>
                   <p className="text-sm mt-1 text-gray-500 dark:text-gray-400">
@@ -164,16 +166,20 @@ const ResumeSection = () => {
               )}
 
               {/* 중앙 점 */}
-              <div className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-black dark:bg-white rounded-full border-4 border-white dark:border-[#111111] z-10" />
+              <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-black dark:bg-white rounded-full border-4 border-white dark:border-[#111111] z-10" />
 
               {/* 아래쪽 아이템 */}
               {item.position === "bottom" && (
-                <div className="absolute bottom-[95px] text-center w-[250px]">
+                <div className="absolute bottom-[60px] text-center w-[250px] p-4 rounded-xl bg-white/60 dark:bg-[#1a1a1a]/60 backdrop-blur-sm shadow-md">
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     {item.description}
                   </p>
-                  <p className="text-sm dark:text-gray-300">{item.subtitle}</p>
-                  <p className="text-[16px] font-semibold mt-1">{item.title}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {item.subtitle}
+                  </p>
+                  <p className="text-base font-semibold text-black dark:text-white mt-1">
+                    {item.title}
+                  </p>
                 </div>
               )}
             </div>
@@ -182,7 +188,7 @@ const ResumeSection = () => {
       </div>
 
       {/* 안내 텍스트 */}
-      <p className="text-sm text-gray-400 text-center mt-3">
+      <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-6">
         👉 좌우 버튼 또는 스크롤로 타임라인을 이동해보세요
       </p>
     </div>

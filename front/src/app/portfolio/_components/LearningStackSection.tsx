@@ -3,59 +3,61 @@ import React from "react";
 
 const LearningStackSection = () => {
   return (
-    <div className="flex gap-2 mx-auto  dark:text-[#F4F5F4] ">
-      <div className="bg-white w-full h-[200px] dark:bg-[#111111] border relative">
-        <h3 className="flex justify-center mt-5 font-semibold">
+    <div className="flex flex-col md:flex-row gap-6 mx-auto max-w-5xl py-10 px-4 dark:text-[#F4F5F4]">
+      {/* 배우고 있는 기술 스택 */}
+      <div className="bg-white dark:bg-[#111111] border dark:border-gray-700 rounded-xl shadow-md w-full p-6 relative">
+        <h3 className="text-lg font-bold text-center mb-4">
           배우고 있는 기술 스택
         </h3>
 
-        <div className=" rounded-md cursor-pointer transition mt-3 h-fit">
-          <a
-            href="https://github.com/YouKnowThat-Park/StudyProject"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex gap-4 items-start p-2"
-          >
-            <Image
-              src="/django.webp"
-              alt="장고 아이콘"
-              width={70}
-              height={70}
-            />
-            <div className="flex flex-col">
-              <span className="mt-2">
-                : Full Stack 개발자가 되기 위한 Django 백엔드 공부
-              </span>
-            </div>
-          </a>
+        <a
+          href="https://github.com/YouKnowThat-Park/StudyProject"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-[#1b1b1b] rounded-md transition p-3"
+        >
+          <Image
+            src="/django.webp"
+            alt="Django 아이콘"
+            width={50}
+            height={50}
+          />
+          <p className="text-sm leading-relaxed">
+            Full Stack 개발자가 되기 위한 Django 백엔드 공부
+          </p>
+        </a>
 
-          {/* 오른쪽 하단 텍스트 위치 고정 */}
-          <span className="absolute bottom-2 right-3 text-[10px] text-gray-500">
-            해당 카드를 클릭하면 진행 상황을 확인할 수 있습니다.
-          </span>
-        </div>
+        <span className="absolute bottom-3 right-4 text-[10px] text-gray-500 dark:text-gray-400">
+          해당 카드를 클릭하면 진행 상황을 확인할 수 있습니다.
+        </span>
       </div>
 
-      <div className="bg-white w-full h-[200px] dark:bg-[#111111] border">
-        <h3 className="flex justify-center mt-5 font-semibold">
+      {/* 배우고 싶은 기술 스택 */}
+      <div className="bg-white dark:bg-[#111111] border dark:border-gray-700 rounded-xl shadow-md w-full p-6">
+        <h3 className="text-lg font-bold text-center mb-4">
           배우고 싶은 기술 스택
         </h3>
-        <div className="flex">
+
+        <div className="flex items-center gap-4 mb-4">
           <Image
             src="/react-native.webp"
-            alt="리엑트 네이티브 아이콘"
-            width={70}
-            height={70}
+            alt="React Native 아이콘"
+            width={50}
+            height={50}
           />
-          <span className="mt-5">
-            : Web,반응형 뿐만 아니라 Application 확장
-          </span>
+          <p className="text-sm ">Web, 반응형 뿐만 아니라 Application 확장</p>
         </div>
-        <div className="flex">
-          <Image src="/flutter.webp" alt="ai 아이콘" width={70} height={80} />
-          <span className="mt-5">
-            : React Native 외 다른 App 프레임워크 확장
-          </span>
+
+        <div className="flex items-center gap-4">
+          <Image
+            src="/flutter.webp"
+            alt="Flutter 아이콘"
+            width={50}
+            height={50}
+          />
+          <p className="text-sm leading-relaxed">
+            React Native 외 다른 App 프레임워크 확장
+          </p>
         </div>
       </div>
     </div>
