@@ -14,7 +14,7 @@ import NextStudyProjectsSlider from "../_components/NextStudyProjectSlider";
 const PortfolioPage = () => {
   return (
     <>
-      <div className="w-[970px] h-auto mb-[200px] mt-[1000px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden border dark:bg-[#111111] dark:border-white">
+      <div className="w-[970px] h-auto mb-[200px] mt-[1000px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden border  dark:bg-[#111111]  dark:border-white">
         <AboutMe />
 
         <div className="w-full  mt-20 mb-20 dark:text-white">
