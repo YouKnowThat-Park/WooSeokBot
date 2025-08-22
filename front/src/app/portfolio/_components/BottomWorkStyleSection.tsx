@@ -22,7 +22,7 @@ const workStyles = [
 
 const BottomWorkStyleSection = () => {
   return (
-    <section className="w-full mx-auto py-16 px-6 mx-auto bg-white dark:bg-[#111111] text-black dark:text-white">
+    <section className="w-full py-16 px-6 mx-auto bg-white dark:bg-[#111111] text-black dark:text-white">
       <h2 className="text-center text-[22px] font-bold mb-14">새로운 기술</h2>
 
       <div className="flex justify-center items-center relative h-[400px] max-w-[1100px] mx-auto">

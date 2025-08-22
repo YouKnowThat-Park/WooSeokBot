@@ -2,7 +2,7 @@
 import { useEffect, RefObject } from "react";
 
 const useAutoScroll = (
-  deps: ReadonlyArray<unknown>,
+  chats: unknown[],
   scrollableRef: RefObject<HTMLElement>
 ): void => {
   useEffect(() => {
@@ -10,7 +10,7 @@ const useAutoScroll = (
     if (!container) return;
 
     container.scrollTop = container.scrollHeight;
-  }, deps);
+  }, [chats, scrollableRef]);
 };
 
 export default useAutoScroll;
