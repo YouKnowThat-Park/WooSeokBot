@@ -27,8 +27,8 @@ const AboutMe = () => {
         </div>
 
         <blockquote className="text-lg italic font-medium text-gray-800 dark:text-gray-300 border-l-4 border-blue-500 pl-4">
-          "The world is open to me. A world that welcomes challenges more than
-          frustration is open to me."
+          &quot;The world is open to me. A world that welcomes challenges more
+          than frustration is open to me. &quot;
         </blockquote>
 
         <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
