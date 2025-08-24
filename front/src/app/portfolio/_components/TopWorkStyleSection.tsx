@@ -97,7 +97,6 @@ const TopWorkStyleSection = () => {
                       {style.question}
                     </div>
                   </div>
-
                   <div className="flex items-start gap-3">
                     <Image
                       src="/wooseok.webp"
@@ -110,6 +109,9 @@ const TopWorkStyleSection = () => {
                       {style.answer}
                     </div>
                   </div>
+                  <p className="text-[11px] font-medium text-gray-400 dark:text-gray-500 absolute right-5 bottom-3 animate-pulse select-none">
+                    Click
+                  </p>
                 </>
               </div>
             );
