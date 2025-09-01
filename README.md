@@ -34,6 +34,10 @@ Combining the concept of a portfolio with AI, I created **Wooseok Bot** — an A
 ![GPT-4.1-nano](https://img.shields.io/badge/GPT--4.1--nano-412991?style=for-the-badge&logo=openai&logoColor=white)
 ![Domain: Gabia](https://img.shields.io/badge/Domain-Gabia-0A1F60?style=for-the-badge&logo=internetarchive&logoColor=white)
 
+#### Build & Package Management
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+
+
 ## Team
 This project was planned, designed, and developed entirely by **Wooseok Park** as a full-stack developer.
 
