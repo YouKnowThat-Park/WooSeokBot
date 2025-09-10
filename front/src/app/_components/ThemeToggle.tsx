@@ -207,7 +207,10 @@ const ThemeToggle = ({
     >
       {miniMode ? (
         <div className="fixed top-[470px] right-[100px] w-32 h-16 bg-white bg-transparent dark:bg-[#3A3A3A] rounded-[40px] shadow-xl flex items-center justify-center transition-colors duration-700 z-[9999]">
-          <div onClick={() => SetMiniMode(false)}>
+          <div
+            className="flex gap-2 justify-center items-center mt-3"
+            onClick={() => SetMiniMode(false)}
+          >
             <GrMore />
             <span
               className={clsx("text-sm", isDark ? "text-white" : "text-black")}
