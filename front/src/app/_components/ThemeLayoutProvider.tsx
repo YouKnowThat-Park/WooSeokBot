@@ -1,6 +1,6 @@
 "use client";
 
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../chatbot/ThemeToggle";
 import { useEffect, useState, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 

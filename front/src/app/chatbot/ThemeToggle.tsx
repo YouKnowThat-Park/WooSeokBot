@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import Draggable from "react-draggable";
 import { usePathname, useRouter } from "next/navigation";
-import KoreanTimeMinute from "./KoreanTimeMinute";
+import KoreanTimeMinute from "../_components/KoreanTimeMinute";
 import { GrMore } from "react-icons/gr";
 import Image from "next/image";
 import { IoIosArrowRoundBack } from "react-icons/io";
