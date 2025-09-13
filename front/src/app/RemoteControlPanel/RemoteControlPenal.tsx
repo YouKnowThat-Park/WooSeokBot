@@ -12,6 +12,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import useAutoScroll from "@/hooks/useAutoScroll";
 import getBaseUrl from "@/utils/getBaseUrl";
 import ThemeToggle from "./_components/ThemeToggle";
+import MiniMode from "./_components/MiniMode";
 // import useDarkMode from "@/hooks/useDarkMode";
 
 type QA = {
@@ -211,19 +212,20 @@ const RemoteControlPenal = ({
       }}
     >
       {miniMode ? (
-        <div className="fixed top-[470px] right-[100px] w-32 h-16 bg-white bg-transparent dark:bg-[#3A3A3A] rounded-[40px] shadow-xl flex items-center justify-center transition-colors duration-700 z-[9999]">
-          <div
-            className="flex gap-2 justify-center items-center mt-3"
-            onClick={() => SetMiniMode(false)}
-          >
-            <GrMore />
-            <span
-              className={clsx("text-sm", isDark ? "text-white" : "text-black")}
-            >
-              <KoreanTimeMinute />
-            </span>
-          </div>
-        </div>
+        // <div className="fixed top-[470px] right-[100px] w-32 h-16 bg-white bg-transparent dark:bg-[#3A3A3A] rounded-[40px] shadow-xl flex items-center justify-center transition-colors duration-700 z-[9999]">
+        //   <div
+        //     className="flex gap-2 justify-center items-center mt-3"
+        //     onClick={() => SetMiniMode(false)}
+        //   >
+        //     <GrMore />
+        //     <span
+        //       className={clsx("text-sm", isDark ? "text-white" : "text-black")}
+        //     >
+        //       <KoreanTimeMinute />
+        //     </span>
+        //   </div>
+        // </div>
+        <MiniMode onExpand={() => SetMiniMode(false)} />
       ) : (
         <div
           id="chatbot-toggle"
