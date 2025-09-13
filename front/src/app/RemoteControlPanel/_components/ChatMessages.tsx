@@ -1,7 +1,7 @@
 import useAutoScroll from "@/hooks/useAutoScroll";
+import { QA } from "@/type/QA-type";
 import Image from "next/image";
 import React, { useRef } from "react";
-import { QA } from "../RemoteControlPenal";
 
 export interface ChatMessagesProps {
   chats: QA[];

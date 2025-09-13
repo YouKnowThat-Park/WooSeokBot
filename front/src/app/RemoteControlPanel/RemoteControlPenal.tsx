@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Draggable from "react-draggable";
 import { usePathname } from "next/navigation";
-import getBaseUrl from "@/utils/getBaseUrl";
 import { ChatbotControllerProps } from "@/type/ChatbotControler-type";
 import ExpandedThemeToggle from "./_components/ExpandedThemeToggle";
 import MiniMode from "./_components/MiniMode";
@@ -14,11 +13,7 @@ import ChatbotNavigationButtons from "./_components/ChatbotNavigationButtons";
 import ExpandedHeader from "./_components/ExpandedHeader";
 import ChatMessages from "./_components/ChatMessages";
 import ChatInput from "./_components/ChatInput";
-
-export interface QA {
-  query: string;
-  answer: string;
-}
+import { useSlugChatSubmit } from "@/hooks/useSlugChatSubmit";
 
 const projectNameMap: Record<string, string> = {
   dogo: "DoGo",
@@ -33,10 +28,6 @@ const RemoteControlPenal = ({
   enableChatbot = false,
 }: ChatbotControllerProps) => {
   const [mounted, setMounted] = useState(false);
-  const [expanded, setExpanded] = useState(false);
-  const [input, setInput] = useState("");
-  const [chats, setChats] = useState<QA[]>([]);
-  const [isAsking, setIsAsking] = useState(false);
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [miniMode, SetMiniMode] = useState(false);
@@ -45,6 +36,9 @@ const RemoteControlPenal = ({
   const slug = pathname.split("/").pop() || "";
   const displayProjectName = projectNameMap[slug] || slug;
 
+  const { input, setInput, chats, isAsking, handleSubmit } =
+    useSlugChatSubmit(slug);
+  const [expanded, setExpanded] = useState(false);
   useEffect(() => setMounted(true), []);
   useEffect(() => {
     if (!enableChatbot && expanded) {
@@ -53,39 +47,6 @@ const RemoteControlPenal = ({
   }, [pathname, enableChatbot, expanded]);
 
   if (!mounted) return null;
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    setIsAsking(true);
-    try {
-      const res = await fetch(`${getBaseUrl()}/api/chat/ask/${slug}/`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: input }),
-      });
-
-      if (!res.ok) {
-        const err = await res.text();
-        console.error(`후속 질문 실패: ${err}`);
-        return;
-      }
-
-      const data = await res.json();
-      const newQA: QA = {
-        query: data.query ?? input,
-        answer: data.answer,
-      };
-
-      setChats((prev) => [...prev, newQA]);
-      setInput("");
-    } catch {
-      alert("❌ 네트워크 오류");
-    } finally {
-      setIsAsking(false);
-    }
-  };
 
   if (expanded) {
     return (
@@ -107,58 +68,11 @@ const RemoteControlPenal = ({
         <ExpandedThemeToggle />
 
         <div className="flex flex-col h-full" style={{ flex: 1, minHeight: 0 }}>
-          {/* <div
-            className="flex-1 overflow-y-auto pr-2 space-y-4 text-sm text-black dark:text-white"
-            ref={bottomRef}
-          >
-            {chats.map((chat, idx) => (
-              <div key={idx} className="space-y-3">
-                <div className="flex justify-end items-start gap-2">
-                  <div className="max-w-[70%] bg-blue-100 dark:bg-blue-700 text-sm p-3 whitespace-pre-wrap rounded-xl text-black dark:text-white">
-                    {chat.query}
-                  </div>
-                  <Image
-                    src="/wooseok.webp"
-                    alt="질문 이미지"
-                    width={30}
-                    height={30}
-                  />
-                </div>
-                <div className="flex justify-start items-start gap-2">
-                  <Image
-                    src="/wooseok.webp"
-                    alt="답변 이미지"
-                    width={30}
-                    height={30}
-                  />
-                  <div className="max-w-[70%] bg-gray-100 dark:bg-gray-800 text-sm p-3 whitespace-pre-wrap rounded-xl text-black dark:text-white">
-                    {chat.answer}
-                  </div>
-                </div>
-              </div>
-            ))}
-
-            <div />
-          </div> */}
+          {/* Expanded 상태 챗봇 답변 UI */}
           <ChatMessages chats={chats} />
         </div>
-        {/* <form onSubmit={handleSubmit} className="mt-4 flex items-start gap-2">
-          <input
-            type="text"
-            placeholder="궁금한 걸 입력하세요"
-            className="flex-1 border rounded-md px-3 py-2 text-sm h-[40px] dark:text-white"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <button
-            type="submit"
-            disabled={isAsking}
-            className="w-[80px] h-[40px] text-sm rounded-md bg-black text-white hover:bg-gray-800 disabled:opacity-50"
-            aria-label="채팅 입력 버튼"
-          >
-            {isAsking ? "전송 중..." : "입력"}
-          </button>
-        </form> */}
+
+        {/* Expanded 상태 챗봇 입력창 */}
         <ChatInput
           handleSubmit={handleSubmit}
           input={input}
