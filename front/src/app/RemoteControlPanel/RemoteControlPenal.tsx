@@ -1,12 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Draggable from "react-draggable";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
-import { IoIosArrowRoundBack } from "react-icons/io";
-import useAutoScroll from "@/hooks/useAutoScroll";
 import getBaseUrl from "@/utils/getBaseUrl";
 import { ChatbotControllerProps } from "@/type/ChatbotControler-type";
 import ExpandedThemeToggle from "./_components/ExpandedThemeToggle";
@@ -15,11 +12,13 @@ import ChatbotHeader from "./_components/ChatbotHeader";
 import ThemeToggle from "./_components/ThemeToggle";
 import ChatbotNavigationButtons from "./_components/ChatbotNavigationButtons";
 import ExpandedHeader from "./_components/ExpandedHeader";
+import ChatMessages from "./_components/ChatMessages";
+import ChatInput from "./_components/ChatInput";
 
-type QA = {
+export interface QA {
   query: string;
   answer: string;
-};
+}
 
 const projectNameMap: Record<string, string> = {
   dogo: "DoGo",
@@ -41,9 +40,6 @@ const RemoteControlPenal = ({
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [miniMode, SetMiniMode] = useState(false);
-
-  const bottomRef = useRef<HTMLDivElement | null>(null);
-  useAutoScroll([chats], bottomRef);
 
   const pathname = usePathname();
   const slug = pathname.split("/").pop() || "";
@@ -99,23 +95,6 @@ const RemoteControlPenal = ({
           direction === "right" ? "right-[100px]" : "left-[100px]"
         )}
       >
-        {/* <div className="relative mb-4 h-8 flex items-center justify-center">
-          <button
-            onClick={() => {
-              setExpanded(false);
-              setPosition({ x: 0, y: 0 });
-              setDirection("right");
-              onChatbotClose?.();
-            }}
-            className="absolute left-0 text-gray-500 hover:text-black dark:hover:text-white transition"
-            aria-label="뒤로 가기"
-          >
-            <IoIosArrowRoundBack className="w-6 h-6" />
-          </button>
-          <h2 className="text-xl font-bold text-black dark:text-white">
-            {displayProjectName} 전용 챗봇
-          </h2>
-        </div> */}
         <ExpandedHeader
           setExpanded={setExpanded}
           setPosition={setPosition}
@@ -128,7 +107,7 @@ const RemoteControlPenal = ({
         <ExpandedThemeToggle />
 
         <div className="flex flex-col h-full" style={{ flex: 1, minHeight: 0 }}>
-          <div
+          {/* <div
             className="flex-1 overflow-y-auto pr-2 space-y-4 text-sm text-black dark:text-white"
             ref={bottomRef}
           >
@@ -158,12 +137,12 @@ const RemoteControlPenal = ({
                 </div>
               </div>
             ))}
-            {/* ✅ 스크롤 타겟 */}
 
             <div />
-          </div>
+          </div> */}
+          <ChatMessages chats={chats} />
         </div>
-        <form onSubmit={handleSubmit} className="mt-4 flex items-start gap-2">
+        {/* <form onSubmit={handleSubmit} className="mt-4 flex items-start gap-2">
           <input
             type="text"
             placeholder="궁금한 걸 입력하세요"
@@ -179,7 +158,13 @@ const RemoteControlPenal = ({
           >
             {isAsking ? "전송 중..." : "입력"}
           </button>
-        </form>
+        </form> */}
+        <ChatInput
+          handleSubmit={handleSubmit}
+          input={input}
+          setInput={setInput}
+          isAsking={isAsking}
+        />
       </div>
     );
   }
