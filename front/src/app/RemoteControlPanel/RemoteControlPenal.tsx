@@ -14,6 +14,7 @@ import MiniMode from "./_components/MiniMode";
 import ChatbotHeader from "./_components/ChatbotHeader";
 import ThemeToggle from "./_components/ThemeToggle";
 import ChatbotNavigationButtons from "./_components/ChatbotNavigationButtons";
+import ExpandedHeader from "./_components/ExpandedHeader";
 
 type QA = {
   query: string;
@@ -98,7 +99,7 @@ const RemoteControlPenal = ({
           direction === "right" ? "right-[100px]" : "left-[100px]"
         )}
       >
-        <div className="relative mb-4 h-8 flex items-center justify-center">
+        {/* <div className="relative mb-4 h-8 flex items-center justify-center">
           <button
             onClick={() => {
               setExpanded(false);
@@ -114,8 +115,16 @@ const RemoteControlPenal = ({
           <h2 className="text-xl font-bold text-black dark:text-white">
             {displayProjectName} 전용 챗봇
           </h2>
-        </div>
+        </div> */}
+        <ExpandedHeader
+          setExpanded={setExpanded}
+          setPosition={setPosition}
+          setDirection={setDirection}
+          onChatbotClose={onChatbotClose}
+          displayProjectName={displayProjectName}
+        />
 
+        {/* ExPanded 상태일때 다크모드 */}
         <ExpandedThemeToggle />
 
         <div className="flex flex-col h-full" style={{ flex: 1, minHeight: 0 }}>

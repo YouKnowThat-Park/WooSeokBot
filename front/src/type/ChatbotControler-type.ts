@@ -7,3 +7,11 @@ export type ChatbotControllerProps = {
   setDirection?: (direction: ChatbotDirection) => void;
   setExpanded?: (expanded: boolean) => void;
 };
+
+export interface ExpandedHeaderProps {
+  setExpanded: React.Dispatch<React.SetStateAction<boolean>>;
+  setPosition: React.Dispatch<React.SetStateAction<{ x: number; y: number }>>;
+  setDirection: React.Dispatch<React.SetStateAction<ChatbotDirection>>;
+  onChatbotClose?: () => void;
+  displayProjectName: string;
+}
