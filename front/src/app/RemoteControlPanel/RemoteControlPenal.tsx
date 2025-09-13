@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "next-themes";
+// import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import Draggable from "react-draggable";
@@ -11,6 +11,8 @@ import Image from "next/image";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import useAutoScroll from "@/hooks/useAutoScroll";
 import getBaseUrl from "@/utils/getBaseUrl";
+import ThemeToggle from "./_components/ThemeToggle";
+// import useDarkMode from "@/hooks/useDarkMode";
 
 type QA = {
   query: string;
@@ -35,7 +37,7 @@ const RemoteControlPenal = ({
   onChatbotClose,
   enableChatbot = false,
 }: ThemeToggleProps) => {
-  const { theme, setTheme } = useTheme();
+  // const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [input, setInput] = useState("");
@@ -44,6 +46,7 @@ const RemoteControlPenal = ({
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [miniMode, SetMiniMode] = useState(false);
+  // const { setTheme, isDark, theme } = useDarkMode();
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
   useAutoScroll([chats], bottomRef);
@@ -62,7 +65,7 @@ const RemoteControlPenal = ({
 
   if (!mounted) return null;
 
-  const isDark = theme === "dark";
+  // const isDark = theme === "dark";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -123,7 +126,9 @@ const RemoteControlPenal = ({
           </h2>
         </div>
 
-        <button
+        <ThemeToggle />
+
+        {/* <button
           onClick={() => setTheme(isDark ? "light" : "dark")}
           className={clsx(
             "relative w-[3.5em] h-[2em] left-[400px] rounded-full transition-colors duration-300",
@@ -139,7 +144,7 @@ const RemoteControlPenal = ({
                 : "left-[0.3em] bg-gradient-to-br from-[#ff0080] to-[#ff8c00]"
             )}
           />
-        </button>
+        </button> */}
 
         <div className="flex flex-col h-full" style={{ flex: 1, minHeight: 0 }}>
           <div

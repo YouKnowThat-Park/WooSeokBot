@@ -1,6 +1,6 @@
 "use client";
 
-import ThemeToggle from "../RemoteControlPanel/ThemeToggle";
+import ThemeToggle from "../RemoteControlPanel/RemoteControlPenal";
 import { useEffect, useState, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
