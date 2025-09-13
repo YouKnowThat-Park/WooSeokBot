@@ -30,7 +30,7 @@ const projectNameMap: Record<string, string> = {
   aiChatBot: "AiChatBot",
 };
 
-const ThemeToggle = ({
+const RemoteControlPenal = ({
   onChatbotClick,
   onChatbotClose,
   enableChatbot = false,
@@ -319,4 +319,4 @@ const ThemeToggle = ({
   );
 };
 
-export default ThemeToggle;
+export default RemoteControlPenal;
