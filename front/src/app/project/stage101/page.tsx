@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PerformanceSection from "../_components/Performance";
 import ProjectHero from "../../_components/ProjectHero";
 import ProjectRetrospective from "../_components/ProjectRetrospective";
@@ -16,8 +16,14 @@ import ProjectDetails from "../_components/ProjectDetails";
 import { Stage101Details } from "@/data/stage101Details";
 import { StageTeam } from "@/data/StageTeamRoles";
 import ProjectGoals from "../../_components/ProjectGoals";
+import Stage101Modal from "./_components/Stage101Modal";
 
 const Stage101 = () => {
+  const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    setModal(true);
+  }, []);
   return (
     <div className="w-[970px] h-full mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg">
       {/* 재사용 컴포넌트 */}
@@ -106,6 +112,7 @@ const Stage101 = () => {
 
       {/* 재사용 컴포넌트 */}
       <NextProjectsSlider excludeId="Stage101" />
+      {modal && <Stage101Modal onClose={() => setModal(false)} />}
     </div>
   );
 };
