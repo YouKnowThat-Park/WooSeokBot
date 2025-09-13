@@ -16,6 +16,7 @@ import { ChatbotControllerProps } from "@/type/ChatbotControler-type";
 import ChatbotNavigationButtons from "./_components/ChatbotNavigationButtons";
 import ExpandedThemeToggle from "./_components/ExpandedThemeToggle";
 import ThemeToggle from "./_components/ThemeToggle";
+import ChatbotHeader from "./_components/ChatbotHeader";
 
 type QA = {
   query: string;
@@ -226,7 +227,7 @@ const RemoteControlPenal = ({
           id="chatbot-toggle"
           className="fixed top-[470px] right-[100px] w-72 h-[380px] bg-white bg-transparent dark:bg-[#3A3A3A] rounded-[40px] shadow-xl flex flex-col items-center justify-start py-4 transition-colors duration-700 z-[9999]"
         >
-          <div className="w-full px-6 text-sm opacity-40 flex justify-between items-center">
+          {/* <div className="w-full px-6 text-sm opacity-40 flex justify-between items-center">
             <span className={clsx(isDark ? "text-white" : "text-black")}>
               <KoreanTimeMinute />
             </span>
@@ -236,8 +237,8 @@ const RemoteControlPenal = ({
             >
               <GrMore />
             </button>
-          </div>
-
+          </div> */}
+          <ChatbotHeader SetMiniMode={SetMiniMode} />
           {/* <div
             className={clsx(
               "relative w-32 h-32 rounded-full mx-auto mt-4 transition-all duration-700",
