@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Draggable from "react-draggable";
 import { usePathname } from "next/navigation";
@@ -14,6 +13,7 @@ import ExpandedHeader from "./_components/ExpandedHeader";
 import ChatMessages from "./_components/ChatMessages";
 import ChatInput from "./_components/ChatInput";
 import { useSlugChatSubmit } from "@/hooks/useSlugChatSubmit";
+import { useRemoteControlState } from "@/hooks/useRemoteControlState";
 
 const projectNameMap: Record<string, string> = {
   dogo: "DoGo",
@@ -22,15 +22,22 @@ const projectNameMap: Record<string, string> = {
   aiChatBot: "AiChatBot",
 };
 
-const RemoteControlPenal = ({
+const RemoteControlPanel = ({
   onChatbotClick,
   onChatbotClose,
   enableChatbot = false,
 }: ChatbotControllerProps) => {
-  const [mounted, setMounted] = useState(false);
-  const [direction, setDirection] = useState<"left" | "right">("right");
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [miniMode, SetMiniMode] = useState(false);
+  const {
+    mounted,
+    direction,
+    setDirection,
+    position,
+    setPosition,
+    miniMode,
+    SetMiniMode,
+    expanded,
+    setExpanded,
+  } = useRemoteControlState(enableChatbot);
 
   const pathname = usePathname();
   const slug = pathname.split("/").pop() || "";
@@ -38,13 +45,6 @@ const RemoteControlPenal = ({
 
   const { input, setInput, chats, isAsking, handleSubmit } =
     useSlugChatSubmit(slug);
-  const [expanded, setExpanded] = useState(false);
-  useEffect(() => setMounted(true), []);
-  useEffect(() => {
-    if (!enableChatbot && expanded) {
-      setExpanded(false);
-    }
-  }, [pathname, enableChatbot, expanded]);
 
   if (!mounted) return null;
 
@@ -117,4 +117,4 @@ const RemoteControlPenal = ({
   );
 };
 
-export default RemoteControlPenal;
+export default RemoteControlPanel;

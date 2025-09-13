@@ -1,6 +1,6 @@
 "use client";
 
-import RemoteControlPenal from "../RemoteControlPanel/RemoteControlPenal";
+import RemoteControlPenal from "../RemoteControlPanel/RemoteControlPanel";
 import { useEffect, useState, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
