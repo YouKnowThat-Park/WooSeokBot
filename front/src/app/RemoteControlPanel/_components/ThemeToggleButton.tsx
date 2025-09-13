@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import useDarkMode from "@/hooks/useDarkMode";
 
-const ThemeToggle = () => {
+const ThemeToggleButton = () => {
   const { toggle, isDark } = useDarkMode();
 
   return (
@@ -28,4 +28,4 @@ const ThemeToggle = () => {
   );
 };
 
-export default ThemeToggle;
+export default ThemeToggleButton;
