@@ -1,6 +1,6 @@
 "use client";
 
-import ThemeToggle from "../RemoteControlPanel/RemoteControlPenal";
+import RemoteControlPenal from "../RemoteControlPanel/RemoteControlPenal";
 import { useEffect, useState, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
@@ -31,7 +31,7 @@ export default function ThemeLayoutProvider({
   return (
     <div className="flex relative">
       {/* fixed 위치의 챗봇 토글 (레이아웃 이동에 영향 없음) */}
-      <ThemeToggle
+      <RemoteControlPenal
         enableChatbot={showChatbot}
         onChatbotClick={(dir) => {
           setSide(dir);

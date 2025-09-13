@@ -3,20 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import Draggable from "react-draggable";
-import { usePathname, useRouter } from "next/navigation";
-import KoreanTimeMinute from "../_components/KoreanTimeMinute";
-import { GrMore } from "react-icons/gr";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import useAutoScroll from "@/hooks/useAutoScroll";
 import getBaseUrl from "@/utils/getBaseUrl";
-import MiniMode from "./_components/MiniMode";
-import useDarkMode from "@/hooks/useDarkMode";
 import { ChatbotControllerProps } from "@/type/ChatbotControler-type";
-import ChatbotNavigationButtons from "./_components/ChatbotNavigationButtons";
 import ExpandedThemeToggle from "./_components/ExpandedThemeToggle";
-import ThemeToggle from "./_components/ThemeToggle";
+import MiniMode from "./_components/MiniMode";
 import ChatbotHeader from "./_components/ChatbotHeader";
+import ThemeToggle from "./_components/ThemeToggle";
+import ChatbotNavigationButtons from "./_components/ChatbotNavigationButtons";
 
 type QA = {
   query: string;
@@ -35,7 +32,6 @@ const RemoteControlPenal = ({
   onChatbotClose,
   enableChatbot = false,
 }: ChatbotControllerProps) => {
-  // const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [input, setInput] = useState("");
@@ -44,7 +40,6 @@ const RemoteControlPenal = ({
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [miniMode, SetMiniMode] = useState(false);
-  const { setTheme, isDark, theme } = useDarkMode();
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
   useAutoScroll([chats], bottomRef);
@@ -61,8 +56,6 @@ const RemoteControlPenal = ({
   }, [pathname, enableChatbot, expanded]);
 
   if (!mounted) return null;
-
-  // const isDark = theme === "dark";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -124,24 +117,6 @@ const RemoteControlPenal = ({
         </div>
 
         <ExpandedThemeToggle />
-
-        {/* <button
-          onClick={() => setTheme(isDark ? "light" : "dark")}
-          className={clsx(
-            "relative w-[3.5em] h-[2em] left-[400px] rounded-full transition-colors duration-300",
-            isDark ? "bg-[#303136]" : "bg-[#f4f4f5]"
-          )}
-          aria-label="다크모드, 라이트 모드"
-        >
-          <span
-            className={clsx(
-              "absolute top-1/2 transform -translate-y-1/2 w-[1.4em] h-[1.4em] rounded-full transition-all duration-300",
-              isDark
-                ? "left-[calc(100%-1.7em)] bg-[#303136] shadow-[inset_-3px_-2px_5px_-2px_#8983f7,inset_-10px_-4px_0_0_#a3dafb]"
-                : "left-[0.3em] bg-gradient-to-br from-[#ff0080] to-[#ff8c00]"
-            )}
-          />
-        </button> */}
 
         <div className="flex flex-col h-full" style={{ flex: 1, minHeight: 0 }}>
           <div
@@ -208,115 +183,20 @@ const RemoteControlPenal = ({
       }}
     >
       {miniMode ? (
-        // <div className="fixed top-[470px] right-[100px] w-32 h-16 bg-white bg-transparent dark:bg-[#3A3A3A] rounded-[40px] shadow-xl flex items-center justify-center transition-colors duration-700 z-[9999]">
-        //   <div
-        //     className="flex gap-2 justify-center items-center mt-3"
-        //     onClick={() => SetMiniMode(false)}
-        //   >
-        //     <GrMore />
-        //     <span
-        //       className={clsx("text-sm", isDark ? "text-white" : "text-black")}
-        //     >
-        //       <KoreanTimeMinute />
-        //     </span>
-        //   </div>
-        // </div>
+        /* 미니모드 상태 로직 */
         <MiniMode onExpand={() => SetMiniMode(false)} />
       ) : (
         <div
           id="chatbot-toggle"
           className="fixed top-[470px] right-[100px] w-72 h-[380px] bg-white bg-transparent dark:bg-[#3A3A3A] rounded-[40px] shadow-xl flex flex-col items-center justify-start py-4 transition-colors duration-700 z-[9999]"
         >
-          {/* <div className="w-full px-6 text-sm opacity-40 flex justify-between items-center">
-            <span className={clsx(isDark ? "text-white" : "text-black")}>
-              <KoreanTimeMinute />
-            </span>
-            <button
-              aria-label="... 판업 작아지는 버튼"
-              onClick={() => SetMiniMode(true)}
-            >
-              <GrMore />
-            </button>
-          </div> */}
+          {/* 리모컨 상단에 있는 미니모드와 시간 */}
           <ChatbotHeader SetMiniMode={SetMiniMode} />
-          {/* <div
-            className={clsx(
-              "relative w-32 h-32 rounded-full mx-auto mt-4 transition-all duration-700",
-              isDark
-                ? "bg-gradient-to-br from-[#8983F7] to-[#A3DAFB]"
-                : "bg-gradient-to-br from-[#FF0080] to-[#FF8C00]"
-            )}
-          >
-            <div
-              className={clsx(
-                "absolute right-0 w-24 h-24 rounded-full transition-transform origin-top-right duration-700",
-                isDark ? "scale-100 bg-[#3A3A3A]" : "scale-0 bg-white"
-              )}
-            />
-          </div>
 
-          <label
-            onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="relative w-[220px] h-11 bg-black/10 dark:bg-white/20 rounded-full mt-8 mb-2 cursor-pointer transition-all duration-300"
-          >
-            <div
-              className={clsx(
-                "absolute top-0 left-0 w-1/2 h-full rounded-full shadow-md transition-transform duration-300",
-                isDark
-                  ? "translate-x-full bg-[#34323D]"
-                  : "translate-x-0 bg-white"
-              )}
-            />
-            <div className="absolute top-[25%] left-[17.5%] w-[65%] flex justify-between text-[90%] font-bold select-none">
-              <p className={clsx(isDark ? "text-white/50" : "text-black")}>
-                Light
-              </p>
-              <p className={clsx(isDark ? "text-white" : "text-black/50")}>
-                Dark
-              </p>
-            </div>
-          </label> */}
+          {/* 리모컨 다크모드 UI 및 버튼 */}
           <ThemeToggle />
 
-          {/* <div className="flex gap-3 mt-2">
-            <button
-              aria-label="챗봇 버튼"
-              onClick={() => {
-                if (!enableChatbot) return;
-
-                const el = document.getElementById("chatbot-toggle");
-                const middle = window.innerWidth / 2;
-                const rect = el?.getBoundingClientRect();
-
-                const direction = rect && rect.left < middle ? "left" : "right";
-
-                setDirection(direction);
-                onChatbotClick?.(direction);
-                setExpanded(true);
-              }}
-              disabled={!enableChatbot}
-              className={clsx(
-                "relative group w-[105px] h-11 rounded-full text-sm font-bold shadow transition",
-                enableChatbot
-                  ? "bg-[#f3f3f3] text-black hover:bg-white"
-                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
-              )}
-            >
-              CHATBOT
-              {!enableChatbot && (
-                <span className="absolute left-1/2 -top-7 -translate-x-1/2 whitespace-nowrap rounded bg-black px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  Project에서만 사용 가능
-                </span>
-              )}
-            </button>
-            <button
-              onClick={() => router.push("/")}
-              className="w-[105px] h-11 rounded-full bg-[#f3f3f3] text-black text-sm font-bold shadow hover:bg-white transition"
-              aria-label="HOME 가기 버튼"
-            >
-              HOME
-            </button>
-          </div> */}
+          {/* 리모컨 하단 Chatbot , Home 버튼 */}
           <ChatbotNavigationButtons
             enableChatbot={enableChatbot}
             setExpanded={setExpanded}

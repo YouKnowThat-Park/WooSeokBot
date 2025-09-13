@@ -24,9 +24,9 @@ const ChatbotNavigationButtons = ({
             const rect = el?.getBoundingClientRect();
             const direction = rect && rect.left < middle ? "left" : "right";
 
-            setDirection(direction);
+            setDirection?.(direction);
             onChatbotClick?.(direction);
-            setExpanded(true);
+            setExpanded?.(true);
           }}
           disabled={!enableChatbot}
           className={clsx(
