@@ -1,6 +1,5 @@
 "use client";
 
-// import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import Draggable from "react-draggable";
@@ -11,22 +10,17 @@ import Image from "next/image";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import useAutoScroll from "@/hooks/useAutoScroll";
 import getBaseUrl from "@/utils/getBaseUrl";
-import ThemeToggle from "./_components/ThemeToggle";
 import MiniMode from "./_components/MiniMode";
 import useDarkMode from "@/hooks/useDarkMode";
 import { ChatbotControllerProps } from "@/type/ChatbotControler-type";
 import ChatbotNavigationButtons from "./_components/ChatbotNavigationButtons";
+import ExpandedThemeToggle from "./_components/ExpandedThemeToggle";
+import ThemeToggle from "./_components/ThemeToggle";
 
 type QA = {
   query: string;
   answer: string;
 };
-
-// type ChatbotControllerProps = {
-//   onChatbotClick?: (direction: "left" | "right") => void;
-//   onChatbotClose?: () => void;
-//   enableChatbot?: boolean;
-// };
 
 const projectNameMap: Record<string, string> = {
   dogo: "DoGo",
@@ -50,7 +44,6 @@ const RemoteControlPenal = ({
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [miniMode, SetMiniMode] = useState(false);
   const { setTheme, isDark, theme } = useDarkMode();
-  const router = useRouter();
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
   useAutoScroll([chats], bottomRef);
@@ -129,7 +122,7 @@ const RemoteControlPenal = ({
           </h2>
         </div>
 
-        <ThemeToggle />
+        <ExpandedThemeToggle />
 
         {/* <button
           onClick={() => setTheme(isDark ? "light" : "dark")}
@@ -238,14 +231,14 @@ const RemoteControlPenal = ({
               <KoreanTimeMinute />
             </span>
             <button
-              aria-label="... 더보기 버튼"
+              aria-label="... 판업 작아지는 버튼"
               onClick={() => SetMiniMode(true)}
             >
               <GrMore />
             </button>
           </div>
 
-          <div
+          {/* <div
             className={clsx(
               "relative w-32 h-32 rounded-full mx-auto mt-4 transition-all duration-700",
               isDark
@@ -281,7 +274,8 @@ const RemoteControlPenal = ({
                 Dark
               </p>
             </div>
-          </label>
+          </label> */}
+          <ThemeToggle />
 
           {/* <div className="flex gap-3 mt-2">
             <button
