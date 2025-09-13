@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import useDarkMode from "@/hooks/useDarkMode";
 
-const SlugProjectThemeToggle = () => {
+const ExpandedThemeToggle = () => {
   const { toggle, isDark } = useDarkMode();
 
   return (
@@ -28,4 +28,4 @@ const SlugProjectThemeToggle = () => {
   );
 };
 
-export default SlugProjectThemeToggle;
+export default ExpandedThemeToggle;
