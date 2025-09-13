@@ -13,18 +13,20 @@ import useAutoScroll from "@/hooks/useAutoScroll";
 import getBaseUrl from "@/utils/getBaseUrl";
 import ThemeToggle from "./_components/ThemeToggle";
 import MiniMode from "./_components/MiniMode";
-// import useDarkMode from "@/hooks/useDarkMode";
+import useDarkMode from "@/hooks/useDarkMode";
+import { ChatbotControllerProps } from "@/type/ChatbotControler-type";
+import ChatbotNavigationButtons from "./_components/ChatbotNavigationButtons";
 
 type QA = {
   query: string;
   answer: string;
 };
 
-type ThemeToggleProps = {
-  onChatbotClick?: (direction: "left" | "right") => void;
-  onChatbotClose?: () => void;
-  enableChatbot?: boolean;
-};
+// type ChatbotControllerProps = {
+//   onChatbotClick?: (direction: "left" | "right") => void;
+//   onChatbotClose?: () => void;
+//   enableChatbot?: boolean;
+// };
 
 const projectNameMap: Record<string, string> = {
   dogo: "DoGo",
@@ -37,7 +39,7 @@ const RemoteControlPenal = ({
   onChatbotClick,
   onChatbotClose,
   enableChatbot = false,
-}: ThemeToggleProps) => {
+}: ChatbotControllerProps) => {
   // const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -47,12 +49,12 @@ const RemoteControlPenal = ({
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [miniMode, SetMiniMode] = useState(false);
-  // const { setTheme, isDark, theme } = useDarkMode();
+  const { setTheme, isDark, theme } = useDarkMode();
+  const router = useRouter();
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
   useAutoScroll([chats], bottomRef);
 
-  const router = useRouter();
   const pathname = usePathname();
   const slug = pathname.split("/").pop() || "";
   const displayProjectName = projectNameMap[slug] || slug;
@@ -281,7 +283,7 @@ const RemoteControlPenal = ({
             </div>
           </label>
 
-          <div className="flex gap-3 mt-2">
+          {/* <div className="flex gap-3 mt-2">
             <button
               aria-label="챗봇 버튼"
               onClick={() => {
@@ -319,7 +321,13 @@ const RemoteControlPenal = ({
             >
               HOME
             </button>
-          </div>
+          </div> */}
+          <ChatbotNavigationButtons
+            enableChatbot={enableChatbot}
+            setExpanded={setExpanded}
+            setDirection={setDirection}
+            onChatbotClick={onChatbotClick}
+          />
         </div>
       )}
     </Draggable>
