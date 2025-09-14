@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import KoreanTimeMinute from "@/app/_components/KoreanTimeMinute";
 import useDarkMode from "@/hooks/useDarkMode";
-import { GrMore } from "react-icons/gr";
+import { FiMinus } from "react-icons/fi";
 
 export interface SetMiniModeProps {
   SetMiniMode: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,8 +19,9 @@ const ChatbotHeader = ({ SetMiniMode }: SetMiniModeProps) => {
         <button
           aria-label="... 판업 작아지는 버튼"
           onClick={() => SetMiniMode(true)}
+          className={clsx(isDark ? "text-white" : "text-black")}
         >
-          <GrMore />
+          <FiMinus />
         </button>
       </div>
     </>

@@ -12,7 +12,12 @@ const MiniMode = ({ onExpand }: MiniModeProps) => {
   const { isDark, toggle } = useDarkMode();
   return (
     <>
-      <div className="fixed top-6 right-[50px] w-[180px] h-[50px] bg-white bg-transparent dark:bg-[#3A3A3A] border rounded-md shadow-xl duration-700 z-[9999]">
+      <div
+        className={clsx(
+          "fixed top-6 right-[50px] w-[180px] h-[50px] border rounded-md shadow-xl duration-700 z-[9999]",
+          isDark ? "bg-[#3A3A3A] text-white" : "bg-white text-black"
+        )}
+      >
         <div className="flex justify-center items-center gap-2">
           <div className="flex justify-between p-2" onClick={onExpand}>
             <p className="cursor-pointer">
