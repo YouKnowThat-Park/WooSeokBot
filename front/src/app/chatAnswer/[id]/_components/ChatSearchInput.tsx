@@ -4,10 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-
-interface SearchProps {
-  onSearch?: (query: string) => void;
-}
+import { SearchProps } from "@/type/Search-type";
 
 const ChatSearchInput = ({ onSearch }: SearchProps) => {
   const [query, setQuery] = useState("");
