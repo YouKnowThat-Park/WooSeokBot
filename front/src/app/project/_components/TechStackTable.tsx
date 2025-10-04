@@ -1,18 +1,10 @@
 "use client";
 
+import {
+  TechItem,
+  TechStackTableProps,
+} from "@/type/project/ProjectTechStack-type";
 import React from "react";
-
-type TechItem = {
-  category: string;
-  tech: string;
-  reason: string;
-};
-
-type Props = {
-  title: string;
-  description?: string;
-  items: TechItem[];
-};
 
 const groupByCategory = (items: TechItem[]) => {
   const grouped: Record<string, TechItem[]> = {};
@@ -23,7 +15,7 @@ const groupByCategory = (items: TechItem[]) => {
   return grouped;
 };
 
-const TechStackTable = ({ title, description, items }: Props) => {
+const TechStackTable = ({ title, description, items }: TechStackTableProps) => {
   const grouped = groupByCategory(items);
 
   return (

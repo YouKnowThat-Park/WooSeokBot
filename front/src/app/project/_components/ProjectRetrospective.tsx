@@ -1,12 +1,7 @@
-// components/RetrospectiveTemplate.tsx
+import { Retrospective } from "@/type/project/ProjectRetrospective-type";
 import React from "react";
 
-type Props = {
-  learned: string;
-  regret: string;
-};
-
-const ProjectRetrospective = ({ learned, regret }: Props) => {
+const ProjectRetrospective = ({ learned, regret }: Retrospective) => {
   return (
     <div className="w-full h-full mt-10">
       <h2 className="text-[25px] font-semibold text-left px-6 dark:text-[#3ecf8e] mb-6">

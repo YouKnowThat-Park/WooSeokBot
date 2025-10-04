@@ -1,4 +1,4 @@
-import { ProjectSection } from "@/type/ProjerctSection-type";
+import { ProjectSection } from "@/type/project/ProjectSection-type";
 
 export const WooSeokBotDetails: ProjectSection[] = [
   {

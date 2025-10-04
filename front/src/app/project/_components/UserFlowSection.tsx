@@ -1,9 +1,5 @@
+import { UserFlowSectionProps } from "@/type/project/ProjectUserFlow-type";
 import Image from "next/image";
-
-type UserFlowSectionProps = {
-  title?: string;
-  images: { src: string; alt: string; width: number }[];
-};
 
 const UserFlowSection = ({
   title = "🚶‍♂️‍➡️유저 플로우",
