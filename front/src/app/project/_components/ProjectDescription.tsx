@@ -1,9 +1,5 @@
+import { ProjectDescriptionSectionProps } from "@/type/project/DescriptSection-type";
 import React from "react";
-
-interface ProjectDescriptionSectionProps {
-  title: string;
-  paragraphs: string[];
-}
 
 const ProjectDescription = ({
   title,

@@ -3,10 +3,7 @@ import React from "react";
 import { FiSquare } from "react-icons/fi";
 import clsx from "clsx";
 import useDarkMode from "@/hooks/useDarkMode";
-
-export interface MiniModeProps {
-  onExpand: () => void;
-}
+import { MiniModeProps } from "@/type/RemoteControlPanel/MiniMode-type";
 
 const MiniMode = ({ onExpand }: MiniModeProps) => {
   const { isDark, toggle } = useDarkMode();

@@ -1,17 +1,8 @@
 "use client";
 
-import { ProjectSection } from "@/type/ProjerctSection-type";
+import { ProjectDetailsSectionProps } from "@/type/project/Details-type";
 import Image from "next/image";
 import React from "react";
-
-type ProjectDetailsSectionProps = {
-  title: string;
-  sections: ProjectSection[];
-  imageSize?: {
-    width: number;
-    height: number;
-  };
-};
 
 const ProjectDetails = ({
   title,

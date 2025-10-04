@@ -1,4 +1,4 @@
-import { ProjectSection } from "@/type/ProjerctSection-type";
+import { ProjectSection } from "@/type/project/Section-type";
 
 export const DoGoDetails: ProjectSection[] = [
   {

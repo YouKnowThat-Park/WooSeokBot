@@ -1,14 +1,5 @@
+import { PerformanceSectionProps } from "@/type/project/Performance-type";
 import React from "react";
-
-type PerformanceItem = {
-  title: string;
-  points: string[];
-};
-
-interface PerformanceSectionProps {
-  title: string;
-  performanceItems: PerformanceItem[];
-}
 
 const Performance = ({ title, performanceItems }: PerformanceSectionProps) => {
   return (

@@ -1,11 +1,7 @@
 import useAutoScroll from "@/hooks/useAutoScroll";
-import { QA } from "@/type/QA-type";
+import { ChatMessagesProps } from "@/type/RemoteControlPanel/Messages-type";
 import Image from "next/image";
 import React, { useRef } from "react";
-
-export interface ChatMessagesProps {
-  chats: QA[];
-}
 
 const ChatMessages = ({ chats }: ChatMessagesProps) => {
   const bottomRef = useRef<HTMLDivElement | null>(null);
