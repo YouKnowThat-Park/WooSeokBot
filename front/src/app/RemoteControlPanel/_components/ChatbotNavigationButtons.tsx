@@ -1,4 +1,4 @@
-import { ChatbotControllerProps } from "@/type/ChatbotControler-type";
+import { ChatbotControllerProps } from "@/type/RemoteControlPanel/Controler-type";
 import React from "react";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";

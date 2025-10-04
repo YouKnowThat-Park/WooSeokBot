@@ -1,4 +1,4 @@
-import { UserFlowSectionProps } from "@/type/project/ProjectUserFlow-type";
+import { UserFlowSectionProps } from "@/type/project/UserFlow-type";
 import Image from "next/image";
 
 const UserFlowSection = ({

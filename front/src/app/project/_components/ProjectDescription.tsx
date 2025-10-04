@@ -1,4 +1,4 @@
-import { ProjectDescriptionSectionProps } from "@/type/project/ProjectDescriptSection-type";
+import { ProjectDescriptionSectionProps } from "@/type/project/DescriptSection-type";
 import React from "react";
 
 const ProjectDescription = ({

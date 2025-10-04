@@ -1,4 +1,4 @@
-import { Retrospective } from "@/type/project/ProjectRetrospective-type";
+import { Retrospective } from "@/type/project/Retrospective-type";
 import React from "react";
 
 const ProjectRetrospective = ({ learned, regret }: Retrospective) => {

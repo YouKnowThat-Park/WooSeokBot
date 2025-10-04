@@ -1,4 +1,4 @@
-import { PerformanceSectionProps } from "@/type/project/ProjectPerformance-type";
+import { PerformanceSectionProps } from "@/type/project/Performance-type";
 import React from "react";
 
 const Performance = ({ title, performanceItems }: PerformanceSectionProps) => {

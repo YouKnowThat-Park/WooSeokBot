@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  TechItem,
-  TechStackTableProps,
-} from "@/type/project/ProjectTechStack-type";
+import { TechItem, TechStackTableProps } from "@/type/project/TechStack-type";
 import React from "react";
 
 const groupByCategory = (items: TechItem[]) => {

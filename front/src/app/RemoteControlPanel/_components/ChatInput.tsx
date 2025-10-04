@@ -1,11 +1,5 @@
+import { ChatInputProps } from "@/type/RemoteControlPanel/Input-type";
 import React from "react";
-
-export interface ChatInputProps {
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  input: string;
-  setInput: React.Dispatch<React.SetStateAction<string>>;
-  isAsking: boolean;
-}
 
 const ChatInput = ({
   handleSubmit,

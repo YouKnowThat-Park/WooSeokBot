@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectDetailsSectionProps } from "@/type/project/ProjectDetails-type";
+import { ProjectDetailsSectionProps } from "@/type/project/Details-type";
 import Image from "next/image";
 import React from "react";
 

@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import Draggable from "react-draggable";
 import { usePathname } from "next/navigation";
-import { ChatbotControllerProps } from "@/type/ChatbotControler-type";
+import { ChatbotControllerProps } from "@/type/RemoteControlPanel/Controler-type";
 import ExpandedThemeToggle from "./_components/ExpandedThemeToggle";
 import MiniMode from "./_components/MiniMode";
 import ChatbotHeader from "./_components/ChatbotHeader";

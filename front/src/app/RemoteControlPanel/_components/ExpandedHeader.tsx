@@ -1,4 +1,4 @@
-import { ExpandedHeaderProps } from "@/type/ChatbotControler-type";
+import { ExpandedHeaderProps } from "@/type/RemoteControlPanel/Controler-type";
 import React from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 

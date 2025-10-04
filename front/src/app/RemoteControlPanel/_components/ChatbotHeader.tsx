@@ -3,10 +3,7 @@ import clsx from "clsx";
 import KoreanTimeMinute from "@/app/_components/KoreanTimeMinute";
 import useDarkMode from "@/hooks/useDarkMode";
 import { FiMinus } from "react-icons/fi";
-
-export interface SetMiniModeProps {
-  SetMiniMode: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { SetMiniModeProps } from "@/type/RemoteControlPanel/SetMiniMode-type";
 
 const ChatbotHeader = ({ SetMiniMode }: SetMiniModeProps) => {
   const { isDark } = useDarkMode();
