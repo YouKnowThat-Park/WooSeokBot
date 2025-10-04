@@ -1,9 +1,9 @@
-export type ProjectItem = {
+export interface ProjectItem {
   title: string;
   content: string;
-};
+}
 
-export type ProjectSection = {
+export interface ProjectSection {
   title: string;
   items: {
     title: string;
@@ -18,4 +18,4 @@ export type ProjectSection = {
     type?: "mp4" | "webm";
     poster?: string;
   };
-};
+}
