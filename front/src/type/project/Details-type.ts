@@ -1,4 +1,4 @@
-import { ProjectSection } from "./ProjectSection-type";
+import { ProjectSection } from "./Section-type";
 
 export interface ProjectDetailsSectionProps {
   title: string;
