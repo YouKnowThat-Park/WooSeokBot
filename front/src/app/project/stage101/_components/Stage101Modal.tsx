@@ -23,15 +23,19 @@ const Stage101Modal = ({ onClose }: ModalProps) => {
         <div className="flex flex-col gap-2 text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
           <span className="text-lg">1. 백엔드 및 DB 변경</span>
           <span>
-            - 기존 BaaS 플랫폼인 Supabase를 Python Django & PostgreSQL로 변경
+            - 기존 BaaS 플랫폼인 Supabase를 Python FastAPI & PostgreSQL로 변경
           </span>
           <span className="text-lg">2. 결제 완료 페이지 SSR로 변경</span>
-          <span>
-            - 기존 CSR에 미들웨어, URL, 세션스토리지 기반의 보안 체계를 SSR로
-            변경해서 서버에서 처리하게 보안 강화
-          </span>
+          <span>- 극장 예약 완료 페이지 CSR에 → SSR로 변경</span>
+          <span>- Shop(굿즈 아이템) 결제 완료 페이지 CSR → SSR로 변경</span>
           <span className="text-lg">3. 디자인 수정</span>
           <span>- 조금 더 고급 스럽게 디자인 수정 예정</span>
+          <span className="text-lg">4. 특정 사용자 리뷰 및 관람 내역</span>
+          <span>
+            - 특정 사용자의 리뷰 및 관람 내역을 모두 확인할 수 있는 페이지 또는
+            모달 생성
+          </span>
+          <span className="test-lg">5. 함수 및 변수명 직관적으로 변경</span>
         </div>
 
         <div className="mt-4 text-right">
