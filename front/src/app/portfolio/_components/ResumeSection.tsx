@@ -94,7 +94,12 @@ const rawItems: Omit<TimelineItem, "position">[] = [
   {
     title: "✍️ Full Stack Project",
     subtitle: "Next.js, Django, PostgreSQL",
-    description: "2025.07.05 ~ ",
+    description: "2025.07.05 ~ 중지 ",
+  },
+  {
+    title: " ♻️ Stage101 Refactoring",
+    subtitle: "Next.js, FastAPI, PostgreSQL, TypeScript, AWS",
+    description: "2025.10.31 ~ 2025.11.24",
   },
 ];
 

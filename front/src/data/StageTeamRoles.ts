@@ -4,7 +4,11 @@ export const StageTeam = [
     name: "박우석",
     task: "전체 페이지 설계 UI/UX 흐름 구현",
   },
-  { role: "🧑‍💻 백엔드", name: "박우석", task: "Supabase Schema 구성, SQL 작성" },
+  {
+    role: "🧑‍💻 백엔드",
+    name: "박우석",
+    task: "FastAPI 기반 사용자 인증, 결제 및 예약 시스템 구현",
+  },
   {
     role: "🎨 디자이너",
     name: "박우석",

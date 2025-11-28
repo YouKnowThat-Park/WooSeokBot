@@ -19,7 +19,7 @@ const stackItems = [
   },
   {
     title: "Back-End",
-    icons: ["/django.webp", "/supabase.webp"],
+    icons: ["/django.webp", "/supabase.webp", "/fastapi.webp"],
   },
   {
     title: "Lib",
@@ -36,6 +36,9 @@ const stackItems = [
       "/supabase.webp",
       "/vercel.webp",
       "/render.webp",
+      "/awss3.webp",
+      "/awsec2.webp",
+      "/awsrds.webp",
     ],
   },
   {

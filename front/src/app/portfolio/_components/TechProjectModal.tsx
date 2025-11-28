@@ -83,6 +83,10 @@ const techToProjects: Record<string, string[]> = {
     "dogo",
   ],
   RENDER: ["WooseokBot"],
+  AWSS3: ["stage101"],
+  AWSRDS: ["stage101"],
+  AWSEC2: ["stage101"],
+  FASTAPI: ["stage101"],
 };
 
 const combinedProjects = [...projects, ...studyProjects];
@@ -108,6 +112,8 @@ const TechProjectsModal = () => {
   const handleProjectClick = (projectName: string) => {
     const normalizedName = projectName.toLowerCase().replace(/\s+/g, "");
     const project = projectMap[normalizedName];
+    console.log("🧩 프로젝트:", projectName, "🖼️ 경로:", project?.image);
+
     if (!project) return;
 
     setSelectedTech({ isOpen: false, name: undefined, imageUrl: undefined });

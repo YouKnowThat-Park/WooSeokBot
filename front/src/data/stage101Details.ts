@@ -74,13 +74,13 @@ UI의 시각적 통일성과 오프라인 연계 가능성을 고려한 경험�
     items: [
       {
         title: "30분간 임시 예약",
-        content: `좌석을 고르면 Supabase SQL을 사용해 30분 동안 임시 예약이 DB에 저장됩니다.
-최종 결제가 이뤄지지 않으면 30분 후에 DB에 임시 예약이 삭제 되어 해당 좌석이 예약 가능 상태로 바뀝니다.`,
+        content: `좌석을 고르면 FastAPI 기반의 백엔드에서 30분 동안 유효한 임시 예약 정보가 DB에 저장됩니다.
+결제가 완료되지 않으면, 30~35분 사이에 자동으로 예약 정보가 삭제되어 해당 좌석은 다시 예약 가능 상태로 전환됩니다.`,
       },
       {
-        title: "Supabase RealTime",
-        content: `Supabase RealTime 기능을 활용해, 특정 좌석이 예약이 되면 모든 사용자에게 해당 좌석은 예약이 되어있는 상태로 바뀌게 됩니다.
-이로 인해 사용자 혼선을 줄이고 좌석 선택 → 결제 흐름의 안정성과 신뢰도를 높였습니다.`,
+        title: "FastAPI + WebSocket 실시간 반영",
+        content: `FastAPI와 WebSocket을 활용해, 특정 좌석이 예약되면 모든 사용자에게 실시간으로 해당 좌석이 비활성화된 상태로 표시됩니다.
+이로 인해 사용자 혼선을 줄이고, 좌석 선택부터 결제까지의 흐름에 안정성과 신뢰도를 높였습니다.`,
       },
     ],
   },
@@ -92,9 +92,9 @@ UI의 시각적 통일성과 오프라인 연계 가능성을 고려한 경험�
     ],
     items: [
       {
-        title: "결제 완료 페이지",
-        content: `결제 성공 여부는 클라이언트에서 fetch 요청을 통해 서버에 확인하며,
-민감한 결제 정보를 세션 기반 접근 제어 및 popstate 이벤트 리스너로 보호합니다.`,
+        title: "결제 완료 페이지 - SSR",
+        content: `결제 성공 여부는 서버 측 렌더링(SSR)으로 처리하여, 민감한 결제 데이터를 클라이언트에서 조작할 수 없도록 보호합니다.
+SSR을 통해 사용자가 직접 URL에 접근하거나 새로고침해도 항상 서버에서 검증된 결제 결과를 안전하게 보여줄 수 있습니다.`,
       },
       {
         title: "QR 코드 및 UUID 기반 결제 정보 처리",
@@ -105,7 +105,10 @@ QR 코드로 제공되며, 스캔 시 서버에서 UUID로 결제 내역을 조�
   },
   {
     title: "Shop",
-    images: [{ src: "/stage101shop.webp", alt: "스테이지 쇼핑 이미지" }],
+    images: [
+      { src: "/stage101shop.webp", alt: "스테이지 쇼핑 이미지" },
+      { src: "/stage101cart.webp", alt: "장바구니 이미지" },
+    ],
     items: [
       {
         title: "상품 수량 조절 입력 UX 개선 (React State & Input Validation)",
@@ -121,7 +124,10 @@ Zustand 상태관리와 자연스러운 UX 흐름으로 인증 유도.`,
   },
   {
     title: "Cart",
-    images: [{ src: "/stage101cart.webp", alt: "장바구니 이미지" }],
+    images: [
+      { src: "/stage101payments2.webp", alt: "결제 완료 이미지 2" },
+      { src: "/carthistory.webp", alt: "굿즈 결제 내역" },
+    ],
     items: [
       {
         title: "React Query 기반 데이터 캐싱 및 무효화",
@@ -138,6 +144,32 @@ Zustand 상태관리와 자연스러운 UX 흐름으로 인증 유도.`,
       {
         title: "결제 완료 페이지의 UX 최적화",
         content: `결제 후 UUID 안내 및 10초 후 자동 리디렉션으로 자연스러운 UX 흐름 제공.`,
+      },
+    ],
+  },
+  {
+    title: "AWS 인프라 구성 및 배포",
+    items: [
+      {
+        title: "S3",
+        content: `유저 프로필 및 공연 포스터 이미지 저장소로 사용. FastAPI에서 presigned URL 기반 업로드 처리.`,
+      },
+      {
+        title: "RDS (PostgreSQL)",
+        content: `주요 비즈니스 데이터를 RDS PostgreSQL에 저장하고 SQLAlchemy ORM으로 트랜잭션을 안정적으로 관리.`,
+      },
+      {
+        title: "EC2",
+        content: `프론트(Next.js)와 백엔드(FastAPI)를 각각 EC2에 배포하고, 성능 개선을 위해 t3.medium 사양으로 업그레이드.`,
+      },
+      {
+        title: "ALB",
+        content: `SSL Termination 및 경로 기반 라우팅 구성('/api/*' → FastAPI, 나머지 → Next.js). SSR 도메인 재호출로 인한 504 Timeout 문제 해결.`,
+      },
+      {
+        title: "Route53",
+        content: `가비아에서 도메인을 구매한 뒤 Route53으로 DNS를 이전하여 ALB와 매핑했습니다. 
+가비아가 동일한 TLD 기준으로 AWS보다 훨씬 저렴한 비용(약 500원대)으로 도메인을 제공하여 초기 인프라 비용을 효과적으로 절감할 수 있었습니다.`,
       },
     ],
   },
