@@ -4,9 +4,11 @@ import React from "react";
 
 const workStyles = [
   {
-    title: "풀스택을 향한 확장, Django",
-    description:
-      "프론트엔드로 시작했지만 백엔드까지 다룰 수 있는 개발자가 되기 위해 Django를 배우고 있습니다. 실제로 이 플랫폼 'Wooseok Bot'에도 Django가 적용되어 있으며, 이를 통해 서버 사이드 구조와 데이터 흐름을 익히고 있습니다.",
+    title: "풀스택을 향한 확장: Django → FastAPI",
+    description: `Django로 서버 사이드 기초를 다진 뒤,
+Stage101 리팩터링에서 Supabase 구조를 FastAPI + PostgreSQL로 직접 재구축하며
+API 설계부터 데이터 모델링, 배포 환경까지 전 과정에 참여했습니다.
+프론트뿐 아니라 백엔드 전반을 이해하고 구현할 수 있는 역량을 갖추게 된 경험이었습니다.`,
   },
   {
     title: "상태 관리의 폭을 넓히다, Recoil",

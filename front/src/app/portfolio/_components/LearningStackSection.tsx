@@ -23,8 +23,22 @@ const LearningStackSection = () => {
             height={50}
           />
           <p className="text-sm leading-relaxed">
-            Full Stack 개발자가 되기 위한 Django 백엔드 공부
+            FullStack 개발자가 되기 위한 Django 공부
           </p>
+        </a>
+        <a
+          href="https://github.com/YouKnowThat-Park/STAGE_101"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-[#1b1b1b] rounded-md transition p-3"
+        >
+          <Image
+            src="/fastapi.webp"
+            alt="FastAPI 아이콘"
+            width={50}
+            height={50}
+          />
+          <p className="text-sm leading-relaxed">Django 외 다른 Backend 공부</p>
         </a>
 
         <span className="absolute bottom-3 right-4 text-[10px] text-gray-500 dark:text-gray-400">

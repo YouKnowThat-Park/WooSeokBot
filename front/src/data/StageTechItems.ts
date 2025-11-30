@@ -16,8 +16,14 @@ export const StageTechItems = [
   },
   {
     category: "Back-end",
-    tech: "Supabase",
-    reason: "Firebase보다 SQL 기반 구조로 명확하고 Next.js와 호환성 높음",
+    tech: "FastAPI",
+    reason: "기존에 써봤던 Django보다 가볍고 트렌디한 백엔드 경험",
+  },
+  {
+    category: "DB",
+    tech: "PostgreSQL",
+    reason:
+      "복잡한 사용자 대화 및 로그 데이터를 구조화하여 안정적으로 관리하기 위함",
   },
   {
     category: "Library",
@@ -59,5 +65,10 @@ export const StageTechItems = [
     category: "Styling",
     tech: "Tailwind CSS",
     reason: "빠른 개발과 유지보수, 스타일드 컴포넌트보다 간결",
+  },
+  {
+    category: "Deployment",
+    tech: "AWS EC2, RDS, S3",
+    reason: "유연한 배포 환경과 확장 가능한 인프라를 구축",
   },
 ];
