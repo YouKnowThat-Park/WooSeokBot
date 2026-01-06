@@ -11,36 +11,20 @@ const LearningStackSection = () => {
         </h3>
 
         <a
-          href="https://github.com/YouKnowThat-Park/StudyProject"
+          href="https://youkn0wthat.tistory.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-[#1b1b1b] rounded-md transition p-3"
         >
           <Image
-            src="/django.webp"
-            alt="Django 아이콘"
+            src="/workimage.webp"
+            alt="공부하는 모습 아이콘"
             width={50}
             height={50}
+            className="border border-black/30 rounded-full -scale-x-100"
           />
-          <p className="text-sm leading-relaxed">
-            FullStack 개발자가 되기 위한 Django 공부
-          </p>
+          <p className="text-sm leading-relaxed">프론트엔드 이론 공부</p>
         </a>
-        <a
-          href="https://github.com/YouKnowThat-Park/STAGE_101"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-[#1b1b1b] rounded-md transition p-3"
-        >
-          <Image
-            src="/fastapi.webp"
-            alt="FastAPI 아이콘"
-            width={50}
-            height={50}
-          />
-          <p className="text-sm leading-relaxed">Django 외 다른 Backend 공부</p>
-        </a>
-
         <span className="absolute bottom-3 right-4 text-[10px] text-gray-500 dark:text-gray-400">
           해당 카드를 클릭하면 진행 상황을 확인할 수 있습니다.
         </span>
