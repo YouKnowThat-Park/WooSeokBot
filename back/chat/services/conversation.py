@@ -13,10 +13,15 @@ def get_recent_conversation(token: str, limit: int = 5) -> list[dict]:
     return messages
 
 def get_last_user_question(token: str) -> str:
-    """
-    DB에서 가장 최근 user query 한 건만 꺼내 돌려줌
-    """
-    recent = ChatSession.objects.filter(token=token).order_by('-created_at')[:1]
-    if not recent:
-        return "아직 이전에 하신 질문이 없습니다."
-    return f"직전에 하신 질문은 다음과 같습니다:\n\n“{recent[0].query}”"
+    chats = list(
+        ChatSession.objects
+        .filter(token=token)
+        .order_by('-created_at')
+    )
+
+    # chats[0] = 방금 질문
+    # chats[1] = 이전 질문
+    if len(chats) < 2:
+        return "이전에 하신 질문이 없습니다."
+
+    return f"직전에 하신 질문은 다음과 같습니다:\n\n“{chats[1].query}”"
