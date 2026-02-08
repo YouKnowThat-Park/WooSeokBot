@@ -2,7 +2,7 @@ import { ProjectSection } from "@/type/project/Section-type";
 
 export const Stage101Details: ProjectSection[] = [
   {
-    title: "Sign In, Sign Up",
+    title: "Sign In, Sign Up / Server Action",
     images: [
       { src: "/stage101auth.webp", alt: "스테이지 로그인 이미지" },
       { src: "/stage101auth2.webp", alt: "스테이지 회원가입 이미지" },
@@ -29,7 +29,30 @@ RHF를 통해 입력 필드 단위로 상태를 관리해 불필요한 리렌더
     ],
   },
   {
-    title: "Review, Write a Review",
+    title: "Home / Server Component",
+    images: [{ src: "/stage-home.webp", alt: "스테이지 로그인 이미지" }],
+    items: [
+      {
+        title: "Server Component",
+        content: `Home는 서비스의 첫 진입점이라 SEO/초기 로딩이 가장 중요했습니다.
+Next.js Server Component로 주요 콘텐츠를 서버에서 미리 렌더링해 검색엔진 노출과 초기 페인트 속도를 개선했고,
+클라이언트 번들 크기를 줄여 상호작용 가능 시점 까지의 체감 성능을 안정화했습니다.`,
+      },
+      {
+        title: "Graph lib / CSR",
+        content: `그래프 구현을 위해 Chart.js, ApexCharts, Recharts를 실제로 적용해 비교했고, 화면 목적에 따라 최적 선택이 달라진다는 차이를 느꼈습니다.
+ApexCharts는 도넛(KPI) 표현과 테마/legend/tooltip 완성도가 높아 TopReservation에 사용했으며, SSR 미지원이라 dynamic import(ssr:false)로 처리했습니다.
+Chart.js는 축/라벨/툴팁 제어가 강점이라 TopReview 막대 차트에 적용했고(축 라벨은 축약, 툴팁은 풀네임), Recharts는 React UI 결합과 반응형 구성이 쉬워 굿즈 랭킹 모달에서 차트+리스트/링크를 함께 구성했습니다.`,
+      },
+      {
+        title: "Now Showing / SSR",
+        content: `Now Showing은 SEO/초기 노출이 중요한 영역이라 서버에서 데이터를 선패칭해 initialData로 주입했습니다.
+이후 캐러셀 애니메이션, 스켈레톤 전환, 예매 클릭 등 상호작용은 CSR로 처리했습니다.`,
+      },
+    ],
+  },
+  {
+    title: "Review, Write a Review / Client Component",
     images: [
       { src: "/stage101review.webp", alt: "스테이지 리뷰 모달 이미지" },
       { src: "/stage101review2.webp", alt: "스테이지 회원가입 이미지" },
@@ -85,31 +108,35 @@ UI의 시각적 통일성과 오프라인 연계 가능성을 고려한 경험�
     ],
   },
   {
-    title: "Payments",
+    title: "Payments / Server Component",
     images: [
       { src: "/stage101payments.webp", alt: "결제 완료 이미지 1" },
-      { src: "/stage101payments2.webp", alt: "결제 완료 이미지 2" },
+      { src: "/stage_goods_payment.webp", alt: "결제 완료 이미지 2" },
     ],
     items: [
       {
-        title: "결제 완료 페이지 - SSR",
-        content: `결제 성공 여부는 서버 측 렌더링(SSR)으로 처리하여, 민감한 결제 데이터를 클라이언트에서 조작할 수 없도록 보호합니다.
-SSR을 통해 사용자가 직접 URL에 접근하거나 새로고침해도 항상 서버에서 검증된 결제 결과를 안전하게 보여줄 수 있습니다.`,
+        title: "결제 완료 페이지 - Server Component(SSR) + 인증 쿠키 전달",
+        content: `Next.js Server Component에서 headers()로 인증 쿠키를 받아 API 요청에 그대로 전달해, 결제 내역이 '내 계정 소유'인 경우에만 조회되도록 처리했습니다.
+단건 결제 히스토리(id)로 payment_key를 확보한 뒤, 동일 payment_key의 전체 구매 항목을 다시 조회해 주문 요약/목록을 서버에서 확정 렌더링합니다.
+조회 실패/비정상 접근은 notFound()로 차단해 잘못된 URL 접근이나 위변조 시도를 최소화했습니다.`,
       },
       {
-        title: "QR 코드 및 UUID 기반 결제 정보 처리",
-        content: `사용자가 결제를 완료하면 해당 결제 정보를 고유한 UUID로 변환하고, 이를 포함한 URL이 생성됩니다.
-QR 코드로 제공되며, 스캔 시 서버에서 UUID로 결제 내역을 조회할 수 있어 위·변조 방지 및 간편한 인증 처리에 효과적입니다.`,
+        title: "결제 중복 방지 + 예약/좌석 조회 + QR 세션 연동(입장 인증)",
+        content: `결제 완료 리다이렉트로 전달되는 searchParams(orderId, paymentKey, reservationId 등)를 서버에서 검증하고, 필수 값이 없으면 즉시 redirect('/') 처리합니다.
+이후 해당 예약(reservationId)에 대해 이미 'paid' 결제가 존재하는지 먼저 확인하고, 없을 때만 결제 레코드를 생성해 중복 생성을 방지했습니다(포인트 적립도 서버에서 계산).
+마지막으로 예약 정보에서 좌석을 조회하고, reservationId 기반 QR 세션을 불러와 입장용 QR을 제공하여 결제 완료 → 입장 인증까지 자연스럽게 이어지도록 구성했습니다.`,
       },
     ],
   },
   {
-    title: "Shop",
-    images: [
-      { src: "/stage101shop.webp", alt: "스테이지 쇼핑 이미지" },
-      { src: "/stage101cart.webp", alt: "장바구니 이미지" },
-    ],
+    title: "Shop / Server Component",
+    images: [{ src: "/stage-shop.webp", alt: "스테이지 쇼핑 이미지" }],
     items: [
+      {
+        title: "상품 리스트 SSR 렌더링 (Server Component + metadata)",
+        content: `상품 목록은 Server Component에서 선패칭(fetchShopsServer)해 초기 화면에 바로 렌더링했습니다.
+페이지 메타데이터(title/description)와 함께 노출되어 SEO/초기 로딩을 확보했고, 로딩 구간은 loading.tsx 스켈레톤으로 UX를 보완했습니다.`,
+      },
       {
         title: "상품 수량 조절 입력 UX 개선 (React State & Input Validation)",
         content: `수량 조절을 위한 버튼과 직접 입력 기능을 useState와 조합하여 구현하고,
@@ -117,36 +144,13 @@ QR 코드로 제공되며, 스캔 시 서버에서 UUID로 결제 내역을 조�
       },
       {
         title: "비회원 장바구니 접근 제어 (Zustand + 모달 연동)",
-        content: `userId 유무로 로그인 여부 확인 후, 비로그인 시 LoginModal 표시.
-Zustand 상태관리와 자연스러운 UX 흐름으로 인증 유도.`,
+        content: `userId 유무로 로그인 여부를 확인하고, 비로그인 상태에서는 LoginModal을 띄워 인증을 유도했습니다.
+바로 로그인 페이지로 리다이렉트하지 않은 이유는, 사용자가 상품 정보를 탐색·비교하는 흐름을 끊지 않고 현재 컨텍스트에서 '로그인 필요'를 안내하기 위해서입니다.
+Zustand로 로그인/모달 상태를 관리해 자연스럽게 전환되도록 구성했습니다.`,
       },
     ],
   },
-  {
-    title: "Cart",
-    images: [
-      { src: "/stage101payments2.webp", alt: "결제 완료 이미지 2" },
-      { src: "/carthistory.webp", alt: "굿즈 결제 내역" },
-    ],
-    items: [
-      {
-        title: "React Query 기반 데이터 캐싱 및 무효화",
-        content: `수량 변경이나 항목 삭제 시 invalidateQueries를 통해 최신 데이터를 즉시 반영하고 UI와 서버 정합성을 유지했습니다.`,
-      },
-      {
-        title: "Skeleton UI로 부드러운 로딩 경험 제공",
-        content: `로딩 중 Skeleton UI 제공으로 콘텐츠 구조를 미리 보여주고, 사용자 체감 속도 향상.`,
-      },
-      {
-        title: "서버 API 기반 결제 처리 및 UUID 식별",
-        content: `결제 완료 후 서버에서 UUID를 생성하여 주문을 식별하고, 해당 UUID 기반 URL로 리디렉션하여 보안성과 추적 가능성 확보.`,
-      },
-      {
-        title: "결제 완료 페이지의 UX 최적화",
-        content: `결제 후 UUID 안내 및 10초 후 자동 리디렉션으로 자연스러운 UX 흐름 제공.`,
-      },
-    ],
-  },
+
   {
     title: "AWS 인프라 구성 및 배포",
     items: [

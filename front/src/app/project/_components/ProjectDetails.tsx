@@ -26,16 +26,31 @@ const ProjectDetails = ({
 
             {/* 이미지 */}
             {section.images && (
-              <div className="flex flex-wrap justify-center gap-4 mb-6">
+              <div
+                className={[
+                  "gap-4 mb-6",
+                  section.images.length === 2
+                    ? "flex flex-nowrap justify-center items-start"
+                    : "flex flex-wrap justify-center",
+                ].join(" ")}
+              >
                 {section.images.map((image, idx) => (
-                  <Image
+                  <div
                     key={idx}
-                    src={image.src}
-                    alt={image.alt}
-                    width={imageSize?.width}
-                    height={imageSize?.height}
-                    className="rounded-md border dark:border-neutral-700"
-                  />
+                    className={
+                      section.images?.length === 2
+                        ? "w-full sm:w-[calc(50%-0.5rem)]" // sm 이상에서 반반
+                        : ""
+                    }
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={imageSize?.width}
+                      height={imageSize?.height}
+                      className="w-full h-auto rounded-md border dark:border-neutral-700"
+                    />
+                  </div>
                 ))}
               </div>
             )}
