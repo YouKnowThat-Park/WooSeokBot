@@ -18,7 +18,7 @@ import { DoGoTeam } from "@/data/DoGoTeamRoles";
 
 const DoGo = () => {
   return (
-    <div className="w-[970px] h-full mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg">
+    <div className="w-full min-w-0 max-w-[970px] mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-4 sm:px-2 lg:px-4 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg transition-all duration-300">
       {/* 재사용 컴포넌트 */}
       <ProjectHero
         title="DoGo"

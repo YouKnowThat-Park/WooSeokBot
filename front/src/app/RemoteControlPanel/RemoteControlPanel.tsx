@@ -52,8 +52,8 @@ const RemoteControlPanel = ({
     return (
       <div
         className={clsx(
-          "fixed top-12 w-[500px] h-[800px] bg-white dark:bg-[#222] rounded-3xl border p-6 flex flex-col transition-all duration-500 overflow-hidden z-[9999]",
-          direction === "right" ? "right-[100px]" : "left-[100px]"
+          "fixed top-12 w-[35vw] max-w-[500px] min-w-[320px] h-[90vh] max-h-[800px] bg-white dark:bg-[#222] rounded-3xl border p-6 flex flex-col transition-all duration-500 overflow-hidden z-[9999]",
+          direction === "right" ? "right-[4vw]" : "left-[4vw]",
         )}
       >
         <ExpandedHeader
