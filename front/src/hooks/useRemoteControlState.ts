@@ -1,31 +1,48 @@
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export const useRemoteControlState = (enableChatbot: boolean) => {
   const [mounted, setMounted] = useState(false);
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [miniMode, SetMiniMode] = useState(false);
+  const [miniMode, setMiniMode] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
-  const pathname = usePathname();
-
-  useEffect(() => setMounted(true), []);
   useEffect(() => {
-    if (!enableChatbot && expanded) {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isTabletOrBelow = window.innerWidth < 1024;
+
+      if (isTabletOrBelow) {
+        setMiniMode(true);
+        setExpanded(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!enableChatbot) {
       setExpanded(false);
     }
-  }, [pathname, enableChatbot, expanded]);
+  }, [enableChatbot]);
 
   return {
     mounted,
-    setMounted,
     direction,
     setDirection,
     position,
     setPosition,
     miniMode,
-    SetMiniMode,
+    SetMiniMode: setMiniMode,
     expanded,
     setExpanded,
   };

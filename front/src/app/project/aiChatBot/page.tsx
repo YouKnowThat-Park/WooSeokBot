@@ -15,7 +15,7 @@ import LLMChatbotPlanning from "./_components/LLMChatbotPlanning";
 
 const AiChatBot = () => {
   return (
-    <div className="w-[970px] h-full mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg [&>p]:py-2 text-center">
+    <div className="w-full min-w-0 max-w-[970px] mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-4 sm:px-2 lg:px-4 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg transition-all duration-300">
       <ProjectHero
         title="AiChatBot"
         imageSrc="/aichatbot.webp"

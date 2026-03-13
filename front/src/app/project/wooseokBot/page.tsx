@@ -18,7 +18,8 @@ import Performance from "../_components/Performance";
 
 const WooSeokBot = () => {
   return (
-    <div className="w-[970px] h-full mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-6 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg">
+    <div className="w-full min-w-0 max-w-[970px] mt-[100px] mb-[84px] bg-[#FBFBFB] rounded-tl-[45px] overflow-hidden px-4 sm:px-2 lg:px-4 border dark:border-black dark:bg-[#2e2e2e] dark:shadow-lg transition-all duration-300">
+      {" "}
       {/* 재사용 컴포넌트 */}
       <ProjectHero
         title="Wooseok Bot"
@@ -30,7 +31,6 @@ const WooSeokBot = () => {
         imageWidth={1000}
         imageHeight={200}
       />
-
       <div className="w-full h-full mt-10 border border-neutral-300 dark:text-[#fbfbfb]  dark:bg-[#2e2e2e] dark:border-neutral-700">
         <ProjectDescription
           title='"Your Interview Begins Here."'
@@ -86,24 +86,20 @@ const WooSeokBot = () => {
           items={WooseokBotTechItems}
         />
       </div>
-
       <Performance
         title="Performance"
         performanceItems={WooseokBotPerformance}
       />
-
       <ProjectDetails
         title="Project Details"
         sections={WooSeokBotDetails}
         imageSize={{ width: 400, height: 200 }}
       />
-
       {/* 재사용 컴포넌트 */}
       <ProjectRetrospective
         learned={`이번 프로젝트를 통해 백엔드와 AI 챗봇 개발에 대한 실질적인 경험을 쌓을 수 있었습니다. 단순히 기능 구현에 그치지 않고, 챗봇의 응답 흐름과 사용자 인터랙션을 설계하면서 서비스의 본질을 고민할 수 있었고, 특히 AI와 사용자 간의 자연스러운 소통을 위해 어떤 데이터를 어떻게 처리하고 학습시켜야 할지를 체득하는 계기가 되었습니다. WooSeok Bot은 제 정보를 기반으로 동작하는 챗봇이기 때문에, 개발 과정 내내 '나'라는 사람을 되돌아보고 표현하는 과정을 거칠 수밖에 없었습니다. 이는 단순히 기술적인 구현을 넘어 나 자신을 깊이 있게 마주하고 정리하는 과정이었고, 동시에 쉽지 않은 작업이었습니다. 덕분에 기술뿐만 아니라 나 자신에 대해서도 더 명확하게 이해할 수 있었던 값진 경험이었습니다.`}
         regret={`아쉬웠던 점은, 직접 AI 모델을 설계하거나 학습시켜보는 경험까지는 닿지 못했다는 것입니다. 이번 프로젝트에서는 OpenAI API를 활용한 RAG 기반 챗봇 구조를 구현했지만, 어디까지나 주어진 모델을 연결해 사용하는 수준이었습니다. 만약 딥러닝 기반의 모델을 직접 구성하고, 데이터셋을 수집해 학습시켜보는 경험까지 병행할 수 있었다면, 보다 근본적인 수준에서 AI 기술에 대한 이해를 넓힐 수 있었을 것이라 생각합니다. 다음에는 직접 모델을 훈련해보는 프로젝트에도 도전해보고 싶습니다.`}
       />
-
       {/* 재사용 컴포넌트 */}
       <NextProjectsSlider excludeId="WooseokBot" />
     </div>
