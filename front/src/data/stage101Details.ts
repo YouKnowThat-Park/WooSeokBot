@@ -168,7 +168,8 @@ Zustand로 로그인/모달 상태를 관리해 자연스럽게 전환되도록 
       },
       {
         title: "ALB",
-        content: `SSL Termination 및 경로 기반 라우팅 구성('/api/*' → FastAPI, 나머지 → Next.js). SSR 도메인 재호출로 인한 504 Timeout 문제 해결.`,
+        content: `AWS 인프라 구성 과정에서 Application Load Balancer와 ACM 인증서를 활용해 HTTPS 환경을 구축했습니다.
+ALB Listener 규칙을 통해 HTTP 요청을 HTTPS로 리다이렉트하도록 설정하여 보안 통신을 적용했습니다.`,
       },
       {
         title: "Route53",
