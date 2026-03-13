@@ -1,6 +1,6 @@
 "use client";
 
-import RemoteControlPenal from "../RemoteControlPanel/RemoteControlPanel";
+import RemoteControlPanel from "../RemoteControlPanel/RemoteControlPanel";
 import { useEffect, useState, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
@@ -9,8 +9,10 @@ export default function ThemeLayoutProvider({
 }: {
   children: ReactNode;
 }) {
-  const [offset, setOffset] = useState(0);
   const [side, setSide] = useState<"left" | "right">("right");
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
   const pathname = usePathname();
 
   const chatbotPages = [
@@ -19,38 +21,66 @@ export default function ThemeLayoutProvider({
     "/project/wooseokBot",
     "/project/aiChatBot",
   ];
+
   const showChatbot = chatbotPages.some((path) => pathname.startsWith(path));
 
-  // 경로가 바뀌면 오프셋 초기화
+  // 페이지 이동 시 초기화
   useEffect(() => {
     if (!showChatbot) {
-      setOffset(0);
+      setIsChatbotOpen(false);
     }
   }, [pathname, showChatbot]);
 
+  // viewport 감지
+  useEffect(() => {
+    const handleResize = () => {
+      const tablet = window.innerWidth < 1024;
+      setIsTablet(tablet);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // offset 계산 (state 필요 없음)
+  const offset = isChatbotOpen && !isTablet ? 400 : 0;
+
+  // content width 계산
+  const contentMaxWidth = isTablet
+    ? "100%"
+    : isChatbotOpen
+      ? "min(970px, calc(100vw - 400px))"
+      : "970px";
+
   return (
-    <div className="flex relative">
-      {/* fixed 위치의 챗봇 토글 (레이아웃 이동에 영향 없음) */}
-      <RemoteControlPenal
+    <div className="relative flex w-full">
+      <RemoteControlPanel
         enableChatbot={showChatbot}
         onChatbotClick={(dir) => {
           setSide(dir);
-          setOffset(400); // 챗봇 열린 방향의 반대쪽으로 200px 밀기
+          setIsChatbotOpen(true);
         }}
         onChatbotClose={() => {
-          setOffset(0); // 닫을 땐 원위치
+          setIsChatbotOpen(false);
         }}
       />
 
-      {/* margin-left 로 슬라이딩 적용, fixed 요소에 영향 없음 */}
       <div
-        className="flex-1 transition-all duration-300"
+        className="flex-1 min-w-0 transition-all duration-300"
         style={{
-          marginLeft: side === "right" ? `-${offset}px` : `${offset}px`,
+          marginLeft: side === "left" ? `${offset}px` : "0px",
+          marginRight: side === "right" ? `${offset}px` : "0px",
         }}
       >
-        <div className="w-full flex justify-center">
-          <div className="w-full max-w-[970px]">{children}</div>
+        <div className="flex w-full justify-center px-4 sm:px-6">
+          <div
+            className="w-full min-w-0 transition-all duration-300"
+            style={{ maxWidth: contentMaxWidth }}
+          >
+            {children}
+          </div>
         </div>
       </div>
     </div>
