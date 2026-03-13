@@ -1,4 +1,3 @@
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export const useRemoteControlState = (enableChatbot: boolean) => {
