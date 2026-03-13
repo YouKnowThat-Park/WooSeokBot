@@ -1,6 +1,12 @@
 import React from "react";
 
-const NoticeModal = ({ onClose }: { onClose: () => void }) => {
+const NoticeModal = ({
+  onClose,
+  onHideToday,
+}: {
+  onClose: () => void;
+  onHideToday: () => void;
+}) => {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4"
@@ -43,7 +49,13 @@ const NoticeModal = ({ onClose }: { onClose: () => void }) => {
         </div>
 
         {/* footer */}
-        <div className="flex justify-end gap-3 border-t px-6 py-4 dark:border-neutral-700">
+        <div className="flex justify-between gap-3 border-t px-6 py-4 dark:border-neutral-700">
+          <button
+            onClick={onHideToday}
+            className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400"
+          >
+            오늘 하루 보지 않기
+          </button>
           <div className="rounded-lg bg-[#082450] px-4 py-2 text-sm font-medium text-white hover:bg-[#061a3b]">
             박우석 드림.
           </div>
