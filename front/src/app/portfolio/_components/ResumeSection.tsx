@@ -97,9 +97,19 @@ const rawItems: Omit<TimelineItem, "position">[] = [
     description: "2025.07.05 ~ 중지 ",
   },
   {
-    title: " ♻️ Stage101 Refactoring",
-    subtitle: "Next.js, FastAPI, PostgreSQL, TypeScript, AWS",
+    title: " ♻️ Stage101 infra Refactoring",
+    subtitle: "Vercel, Supabase → AWS, PostgreSQL",
     description: "2025.10.31 ~ 2025.11.24",
+  },
+  {
+    title: " ♻️ Stage101 Design + Feature Refactoring",
+    subtitle: "Next.js, FastAPI, PostgreSQL, TypeScript, AWS",
+    description: "2026.01.02 ~ 2026.02.06",
+  },
+  {
+    title: " ⚽ SportShip",
+    subtitle: "Vue.js, Supabase, TypeScript, Vercel",
+    description: "2026.03.23 ~ ",
   },
 ];
 
