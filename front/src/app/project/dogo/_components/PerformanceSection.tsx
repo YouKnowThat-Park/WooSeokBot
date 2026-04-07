@@ -20,18 +20,6 @@ const PerformanceSection = () => {
           </li>
         </ul>
       </div>
-      <div className="ml-10">
-        <h3 className="text-[17px] font-semibold mb-2">
-          장바구니 선택 삭제 , 결제 시 Promise.all로 병렬 처리
-        </h3>
-        <ul className="list-disc dark:text-gray-300">
-          <li>
-            선택 삭제 기능은 Promise.all을 활용해 동시에 여러 항목을 병렬
-            처리하도록 구성 <br /> 순차 처리 대비 평균 b삭제 응답 시간이 약 50%
-            이상 단축
-          </li>
-        </ul>
-      </div>
 
       <div className="ml-10">
         <h3 className="text-[17px] font-semibold mb-2">

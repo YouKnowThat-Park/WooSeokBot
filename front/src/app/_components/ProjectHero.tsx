@@ -7,6 +7,7 @@ type ProjectHeroProps = {
   imageSrc: string;
   serviceUrl?: string;
   githubUrl?: string;
+  previewUrl?: string;
   description: string;
   devEnv: string;
   type: string;
@@ -19,6 +20,7 @@ const ProjectHero = ({
   imageSrc,
   serviceUrl,
   githubUrl,
+  previewUrl,
   description,
   devEnv,
   type,
@@ -70,6 +72,20 @@ const ProjectHero = ({
                 className="ml-1 border-b-2 border-black dark:border-[#fbfbfb] hover:text-[#0070f3]"
               >
                 {new URL(serviceUrl).hostname}
+              </a>
+            </p>
+          )}
+
+          {previewUrl && (
+            <p className="font-semibold">
+              Preview :
+              <a
+                href={previewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-1 border-b-2 border-black dark:border-[#fbfbfb] hover:text-[#0070f3]"
+              >
+                {new URL(previewUrl).hostname}
               </a>
             </p>
           )}
