@@ -73,15 +73,15 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full ml-5">
-      <div className="relative h-[140px] mb-10 flex justify-center items-center">
+    <form onSubmit={handleSubmit} className="w-full ml-5 max-[1279px]:ml-0">
+      <div className="relative h-[140px] mb-10 flex justify-center items-center max-[1279px]:mb-6 max-[1279px]:h-[88px] sm:max-[1279px]:mb-8 sm:max-[1279px]:h-[110px] md:max-[1279px]:mb-10 md:max-[1279px]:h-[140px]">
         <div
           className="relative flex items-center transition-all duration-700"
           style={{
             transform: botAttacks ? "translateX(-20px)" : "translateX(0px)",
           }}
         >
-          <h2 className="text-[140px] font-black  dark:text-[#F4F5F4] flex">
+          <h2 className="text-[140px] font-black dark:text-[#F4F5F4] flex max-[1279px]:text-[56px] sm:max-[1279px]:text-[84px] md:max-[1279px]:text-[110px]">
             {"WooSeo".split("").map((char, idx) => (
               <span
                 key={idx}
@@ -110,6 +110,9 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
             className={`
               text-[140px] font-black ml-4
               dark:text-[#F4F5F4]
+              max-[1279px]:ml-2 max-[1279px]:text-[56px]
+              sm:max-[1279px]:ml-3 sm:max-[1279px]:text-[84px]
+              md:max-[1279px]:text-[110px]
               transition-all duration-100
               ${
                 botAttacks
@@ -124,19 +127,19 @@ const ChatSearchInput = ({ onSearch }: SearchProps) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-center mt-40 z-30">
-        <div className="flex w-full max-w-xl bg-white dark:bg-[#1F1F1F] rounded-full shadow-md px-4 py-2 border border-gray-300 dark:border-gray-600">
+      <div className="flex items-center justify-center mt-40 z-30 max-[1279px]:mt-16 sm:max-[1279px]:mt-24 md:max-[1279px]:mt-32">
+        <div className="flex w-full max-w-xl bg-white dark:bg-[#1F1F1F] rounded-full shadow-md px-4 py-2 border border-gray-300 dark:border-gray-600 max-[1279px]:px-3 sm:max-[1279px]:px-4">
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="우석이에게 궁금한 것을 물어봐주세요."
-            className="flex-grow bg-transparent outline-none text-lg placeholder-gray-500 dark:placeholder-gray-400 text-black dark:text-[#F4F5F4] px-4"
+            className="flex-grow bg-transparent outline-none text-lg placeholder-gray-500 dark:placeholder-gray-400 text-black dark:text-[#F4F5F4] px-4 max-[1279px]:px-3 max-[1279px]:text-base sm:max-[1279px]:px-4 sm:max-[1279px]:text-lg"
           />
           <button
             type="submit"
             aria-label="검색하기 버튼"
-            className="flex items-center justify-center text-white bg-gradient-to-r from-pink-500 to-orange-400 hover:opacity-80 px-5 py-2 rounded-full transition-all duration-200"
+            className="flex items-center justify-center text-white bg-gradient-to-r from-pink-500 to-orange-400 hover:opacity-80 px-5 py-2 rounded-full transition-all duration-200 max-[1279px]:px-4 max-[1279px]:text-sm sm:max-[1279px]:px-5 sm:max-[1279px]:text-base"
           >
             🔍
           </button>

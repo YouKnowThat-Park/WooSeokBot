@@ -16,7 +16,7 @@ const TechStackTable = ({ title, description, items }: TechStackTableProps) => {
   const grouped = groupByCategory(items);
 
   return (
-    <div className="my-8 w-[700px] flex flex-col items-start ml-10">
+    <div className="my-8 ml-0 w-full max-w-[700px] flex flex-col items-start px-4 sm:ml-10 sm:px-0">
       <p className="font-semibold mb-2">{title}</p>
 
       <div className="mt-2 text-sm mx-auto w-full max-w-[900px]">
@@ -24,7 +24,8 @@ const TechStackTable = ({ title, description, items }: TechStackTableProps) => {
           <p className="mb-2 text-gray-600 dark:text-gray-400">{description}</p>
         )}
 
-        <table className="table-auto w-full border border-gray-300 text-left text-sm">
+        <div className="w-full overflow-x-auto">
+          <table className="table-auto w-full min-w-[640px] border border-gray-300 text-left text-sm">
           <thead className="bg-gray-100 dark:bg-[#222] dark:text-white">
             <tr>
               <th className="border px-3 py-2">구분</th>
@@ -52,7 +53,8 @@ const TechStackTable = ({ title, description, items }: TechStackTableProps) => {
               ))
             )}
           </tbody>
-        </table>
+          </table>
+        </div>
       </div>
     </div>
   );

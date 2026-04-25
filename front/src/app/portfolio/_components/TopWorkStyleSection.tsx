@@ -42,19 +42,19 @@ const TopWorkStyleSection = () => {
       case 0:
         return "z-20 scale-100 rotate-0 translate-x-0";
       case 1:
-        return "z-10 scale-95 rotate-6 translate-x-[120px] translate-y-[20px]";
+        return "z-10 scale-95 rotate-6 translate-x-[120px] translate-y-[20px] max-[767px]:translate-x-[20px] max-[767px]:translate-y-[12px] max-[767px]:rotate-3";
       case 2:
-        return "z-0 scale-90 rotate-12 translate-x-[180px] translate-y-[40px]";
+        return "z-0 scale-90 rotate-12 translate-x-[180px] translate-y-[40px] max-[767px]:translate-x-[40px] max-[767px]:translate-y-[24px] max-[767px]:rotate-6";
       default:
         return "hidden";
     }
   };
 
   return (
-    <section className="w-ful mx-auto px-6 py-16 bg-white dark:bg-[#111111] text-black dark:text-white flex flex-col items-center">
+    <section className="w-ful mx-auto px-4 py-16 bg-white dark:bg-[#111111] text-black dark:text-white flex flex-col items-center sm:px-6">
       <div className="flex flex-col md:flex-row items-start justify-between gap-10 w-full max-w-[1200px]">
         {/* 왼쪽 소개 */}
-        <div className="md:w-2/5 text-left space-y-4 mt-28 ml-2">
+        <div className="md:w-2/5 text-left space-y-4 mt-8 ml-0 md:mt-28 md:ml-2">
           <h3 className="text-xl font-semibold mb-2">사용자 중심</h3>
           <p className="text-sm text-gray-700 dark:text-neutral-300 leading-relaxed">
             실제 사용자의 흐름과 비즈니스 목적을 동시에 고려하여 기능을 설계하고
@@ -64,7 +64,7 @@ const TopWorkStyleSection = () => {
         </div>
 
         {/* 오른쪽 카드 */}
-        <div className="md:w-3/5 relative h-[420px] flex items-center justify-center">
+        <div className="relative h-[360px] w-full flex items-center justify-center overflow-visible md:w-3/5 md:h-[420px]">
           {workStyles.map((style, index) => {
             const position =
               (index - currentIndex + workStyles.length) % workStyles.length;
@@ -75,7 +75,7 @@ const TopWorkStyleSection = () => {
               <div
                 key={index}
                 onClick={nextCard}
-                className={`absolute transition-all border duration-500 ease-in-out w-[300px] h-[385px] rounded-xl shadow-xl py-2 px-4 whitespace-pre-wrap cursor-pointer
+                className={`absolute transition-all border duration-500 ease-in-out w-[300px] h-[385px] rounded-xl shadow-xl py-2 px-4 whitespace-pre-wrap cursor-pointer max-[767px]:w-[min(78vw,300px)] max-[767px]:h-[360px] max-[767px]:px-3
         ${getCardStyle(index)} 
         ${isFront ? "hover:scale-[1.05]" : ""}
       bg-white dark:bg-[#1f1f1f]`}
