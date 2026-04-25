@@ -13,13 +13,14 @@ interface TeamRolesSectionProps {
 
 const TeamRoles = ({ title, members }: TeamRolesSectionProps) => {
   return (
-    <div className="w-full flex flex-col items-center mt-10">
+    <div className="w-full flex flex-col items-center mt-10 px-4 sm:px-0">
       {title && (
-        <h3 className="text-lg font-semibold mb-4 text-left w-[600px]">
+        <h3 className="text-lg font-semibold mb-4 text-left w-full max-w-[600px]">
           {title}
         </h3>
       )}
-      <table className="table-auto w-[600px] border border-gray-300 text-sm">
+      <div className="w-full max-w-[600px] overflow-x-auto">
+        <table className="table-auto w-full min-w-[600px] border border-gray-300 text-sm">
         <thead className="bg-gray-100 dark:bg-[#222]">
           <tr>
             <th className="border px-4 py-2 text-left">역할</th>
@@ -40,7 +41,8 @@ const TeamRoles = ({ title, members }: TeamRolesSectionProps) => {
             </tr>
           ))}
         </tbody>
-      </table>
+        </table>
+      </div>
     </div>
   );
 };

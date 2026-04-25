@@ -58,12 +58,12 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen mr-[-450px] dark:bg-[#111] ">
+    <div className="relative min-h-screen mr-[-450px] dark:bg-[#111] max-[1279px]:w-full max-[1279px]:max-w-[970px] max-[1279px]:mr-0">
       {/* 메인 콘텐츠 */}
       <div className="relative z-40 ">
         {showScroll && (
           <motion.div
-            className="w-[100px] h-[30px] absolute top-[-140px] right-0 text-sm text-gray-300 font-semibold"
+            className="w-[100px] h-[30px] absolute top-[-140px] right-0 text-sm text-gray-300 font-semibold max-[1279px]:hidden"
             initial={{ y: 0 }}
             animate={{ y: [0, -10, 0] }}
             transition={{
@@ -80,7 +80,7 @@ const Home: React.FC = () => {
 
       {/* 홈에서만 보이는 검색창 */}
       {showSearch && (
-        <div className="fixed w-[700px] top-[350px] ml-32 z-30">
+        <div className="fixed w-[700px] top-[350px] ml-32 z-30 max-[767px]:hidden max-[1279px]:left-1/2 max-[1279px]:top-[220px] max-[1279px]:ml-0 max-[1279px]:w-[calc(100vw-2rem)] max-[1279px]:max-w-[700px] max-[1279px]:-translate-x-1/2 sm:max-[1279px]:top-[260px] md:max-[1279px]:top-[300px] lg:max-[1279px]:top-[320px]">
           <ChatSearchInput onSearch={handleSearch} />
         </div>
       )}
