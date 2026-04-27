@@ -24,35 +24,35 @@ const TechStackTable = ({ title, description, items }: TechStackTableProps) => {
           <p className="mb-2 text-gray-600 dark:text-gray-400">{description}</p>
         )}
 
-        <div className="w-full overflow-x-auto">
+        <div className="w-full overflow-x-auto overflow-y-hidden pb-2 scrollbar-x-hint">
           <table className="table-auto w-full min-w-[640px] border border-gray-300 text-left text-sm">
-          <thead className="bg-gray-100 dark:bg-[#222] dark:text-white">
-            <tr>
-              <th className="border px-3 py-2">구분</th>
-              <th className="border px-3 py-2">기술</th>
-              <th className="border px-3 py-2">선택 이유</th>
-            </tr>
-          </thead>
-          <tbody className="text-gray-800 dark:text-gray-100">
-            {Object.entries(grouped).map(([category, techs]) =>
-              techs.map((item, i) => (
-                <tr key={`${category}-${item.tech}`}>
-                  {i === 0 && (
-                    <td
-                      rowSpan={techs.length}
-                      className="border px-3 py-2 font-semibold align-top whitespace-nowrap"
-                    >
-                      {category}
+            <thead className="bg-gray-100 dark:bg-[#222] dark:text-white">
+              <tr>
+                <th className="border px-3 py-2">구분</th>
+                <th className="border px-3 py-2">기술</th>
+                <th className="border px-3 py-2">선택 이유</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800 dark:text-gray-100">
+              {Object.entries(grouped).map(([category, techs]) =>
+                techs.map((item, i) => (
+                  <tr key={`${category}-${item.tech}`}>
+                    {i === 0 && (
+                      <td
+                        rowSpan={techs.length}
+                        className="border px-3 py-2 font-semibold align-top whitespace-nowrap"
+                      >
+                        {category}
+                      </td>
+                    )}
+                    <td className="border px-3 py-2 whitespace-nowrap">
+                      {item.tech}
                     </td>
-                  )}
-                  <td className="border px-3 py-2 whitespace-nowrap">
-                    {item.tech}
-                  </td>
-                  <td className="border px-3 py-2">{item.reason}</td>
-                </tr>
-              ))
-            )}
-          </tbody>
+                    <td className="border px-3 py-2">{item.reason}</td>
+                  </tr>
+                )),
+              )}
+            </tbody>
           </table>
         </div>
       </div>
